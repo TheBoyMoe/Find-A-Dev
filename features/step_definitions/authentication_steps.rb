@@ -79,6 +79,11 @@ Given(/^I do not exist as a user$/) do
 	delete_user
 end
 
+Given /^I am logged in$/ do
+	create_user
+	sign_in
+end
+
 Given(/^I am not logged in$/) do
 	expect(page).to have_content "Sign up"
 	expect(page).to have_content "Sign in"
