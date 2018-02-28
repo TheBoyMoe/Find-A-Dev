@@ -17,12 +17,16 @@ Background:
     And I click on the confirmation link in the email to "peterparker@example.com"
     Then I should be on the "sign in" page
     And I sign in as "peterparker@example.com" with password "spideysense" and password confirmation "spideysense"
-    Then I should be on the "profile" page for "peterparker@example.com"
+    Then I should be on the profile page for "peterparker@example.com"
 
 
   Scenario: User signs up without a name
     When I sign up with out a name
     Then I should see a missing name message
+
+  Scenario: User signs up without an email
+    When I sign up with out an email
+    Then I should see an missing email message
 
   Scenario: User signs up with an invalid email
     When I sign up with an invalid email
@@ -38,7 +42,7 @@ Background:
 
   Scenario: User signs up with a password that is less than 8 characters
     When I sign up with a password that is less than 8 characters
-    Then I should see an invalid password message
+    Then I should see a password too short message
 
   Scenario: User signs up with mismatched password and password confirmation
     When I sign up with a mismatched passwords

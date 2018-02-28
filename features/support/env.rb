@@ -5,6 +5,10 @@ require 'cucumber/rails'
 
 ActionController::Base.allow_rescue = false
 
+# tell cucumber where to find additional support files
+Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
+Dir[Rails.root.join('spec/support/matchers/*.rb')].each { |file| require file  }
+
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
