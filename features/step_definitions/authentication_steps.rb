@@ -55,6 +55,61 @@ When(/^I sign up with out an email$/) do
 	sign_up
 end
 
+When(/^I sign in with the wrong email$/) do
+	@visitor = @visitor.merge(email: "wrong@email.com")
+	sign_in
+end
+
+When(/^I sign in with the wrong password$/) do
+	@visitor = @vistor.merge(password: '12345678')
+	sign_in
+end
+
+When(/^I sign in with valid credentials$/) do
+	create_visitor
+	sign_in
+end
+
+Given(/^I exist as a user$/) do
+	create_user
+end
+
+Given(/^I do not exist as a user$/) do
+	create_visitor
+	delete_user
+end
+
+Given(/^I am not logged in$/) do
+	expect(page).to have_content "Sign up"
+	expect(page).to have_content "Sign in"
+	expect(page).to_not have_content "Log out"
+end
+
+When(/^I return to the site$/) do
+	visit root_path
+end
+
+Then(/^I should be signed in$/) do
+	expect(page).to_not have_content "Sign up"
+	expect(page).to_not have_content "Sign in"
+	expect(page).to have_content "Log out"
+end
+
+Then(/^I should be signed out$/) do
+	expect(page).to have_content "Sign up"
+	expect(page).to have_content "Sign in"
+	expect(page).to_not have_content "Log out"
+end
+
+Then(/^I should not see a sign in link$/) do
+	expect(page).to_not have_content "Sign in"
+end
+
+Then(/^I should see a sign out link$/) do
+	expect(page).to have_content "Log out"
+end
+
+
 When /^I sign out$/ do
 	page.driver.submit :delete, destroy_user_session_path, {}
 end
@@ -64,7 +119,7 @@ Then /^I should see a successful sign in message$/ do
 end
 
 Then /^I should see a successful sign up message$/ do
-	expect(page).to have_content "Welcome! You have signed up successfully."
+	expect(page).to have_content "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 end
 
 Then /^I should see a successful sign out message$/ do
@@ -105,4 +160,12 @@ end
 
 Then(/^I should see email taken message$/) do
 	expect(page).to have_content "Email has already been taken"
+end
+
+Then(/^I should see account activation required message$/) do
+	expect(page).to have_content "You have to confirm your email address before continuing."
+end
+
+Then(/^I should see an invalid login message$/) do
+	expect(page).to have_content "Invalid Email or password."
 end

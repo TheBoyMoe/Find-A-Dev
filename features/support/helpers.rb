@@ -9,6 +9,14 @@ module Helpers
 		}
 	end
 
+	def create_user
+
+	end
+
+	def delete_user
+
+	end
+
 	def sign_up
 		visit new_user_registration_path
 		fill_in 'user_name', with: @visitor[:name]
