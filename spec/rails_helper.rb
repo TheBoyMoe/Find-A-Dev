@@ -6,7 +6,9 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara-webkit'
 require 'shoulda/matchers'
+require 'factory_bot_rails'
 require 'byebug'
 
 # Checks for pending migrations and applies them before tests are run.
