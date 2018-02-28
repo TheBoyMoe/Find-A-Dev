@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -25,6 +27,20 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'simplecov', require: false
+  gem 'capybara', '~> 2.12.0'
+  gem 'capybara-webkit', '~> 1.14'
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'shoulda-matchers', require: false
+  gem 'guard', '~> 2.14', '>= 2.14.2'
+  gem 'guard-rspec', require: false
+  gem 'guard-cucumber', '~> 2.1', '>= 2.1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
