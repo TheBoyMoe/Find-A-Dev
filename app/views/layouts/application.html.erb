@@ -2,14 +2,14 @@
 <html>
   <head>
     <title>FindADev</title>
-    <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+		<%= csrf_meta_tags %>
+		<%= analytics_init if Rails.env.production? %>
   </head>
 
   <body>
-		<%= render 'layouts/navbar' %>
+		<%= render 'layouts/header' %>
 		<div class="container">
 			<%= render "layouts/flash" %>
 
