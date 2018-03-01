@@ -17,6 +17,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+gem 'omniauth-google-oauth2', '~> 0.5.2'
+gem 'omniauth-github', '~> 1.3'
 
 
 group :development, :test do
