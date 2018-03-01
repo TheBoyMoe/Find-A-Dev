@@ -42,3 +42,18 @@ Feature: Sign in
     When I sign in with the wrong password
     Then I should see an invalid sign in message
     And I should be signed out
+
+
+  @omniauth
+  Scenario: User who is registered tries to sign in with a Google account
+    Given I have previously signed up with "Google"
+    And I am not signed in
+    When I click the "Google" button
+    Then I should see "Signed in successfully."
+
+  @omniauth
+  Scenario: User who is registered tries to sign in with a Github account
+    Given I have previously signed up with "Github"
+    And I am not signed in
+    When I click the "Github" button
+    Then I should see "Signed in successfully."

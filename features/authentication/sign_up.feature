@@ -3,11 +3,6 @@ Feature: Signup
   So that I can use sites services
   I want to register as a user
 
-Background:
-  Given the following user is registered:
-  | name  | email   | password | password_confirmation  |
-  | Green Goblin | greengoblin@example.com   | password  | password |
-
   Scenario: Sign up as a new user
     Given I visit the "sign up" page
     And I sign up as "Peter Parker" with email "peterparker@example.com" and password "spideysense" and password confirmation "spideysense"
@@ -51,5 +46,44 @@ Background:
   Scenario: Sign up as an existing user
     Given That I am registered as "Green Goblin" with email "greengoblin@example.com" and password "password"
     And I sign up as "Green Goblin" with email "greengoblin@example.com" and password "password" and password confirmation "password"
+    Then I should see email taken message
+    And I should not receive a confirmation email
+
+
+  @omniauth
+  Scenario: User signs up with a Google account
+    Given I visit the "sign up" page
+    When I click the "Google" button
+    Then I should see "Signed in successfully."
+
+  @omniauth
+  Scenario: User signs up with a Github account
+    Given I visit the "sign up" page
+    When I click the "Github" button
+    Then I should see "Signed in successfully."
+
+  @omniauth-with-invalid-credentials
+  Scenario: Try to sign up with a Google account with invalid credentials
+    Given I visit the "sign up" page
+    When I click the "Google" button
+    Then I should see "invalid_credentials"
+    And I should be signed out
+
+  @omniauth-with-invalid-credentials
+  Scenario: Try to sign up with Github account with invalid credentials
+    Given I visit the "sign up" page
+    When I click the "Github" button
+    Then I should see "invalid_credentials"
+    And I should be signed out
+
+  Scenario: Having previously signed in with Google, user tries to sign up
+    Given I have previously signed up with "Google"
+    And I sign up as "Peter Parker" with email "peterparker@example.com" and password "spideysense" and password confirmation "spideysense"
+    Then I should see email taken message
+    And I should not receive a confirmation email
+
+  Scenario: Having previously signed in with Github, the user tries to sign up
+    Given I have previously signed up with "Github"
+    And I sign up as "Peter Parker" with email "peterparker@example.com" and password "spideysense" and password confirmation "spideysense"
     Then I should see email taken message
     And I should not receive a confirmation email

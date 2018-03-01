@@ -15,7 +15,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.4', '>= 4.4.1'
-gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
@@ -23,6 +22,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

@@ -38,6 +38,11 @@ module Helpers
 		ActionMailer::Base.deliveries.clear
 	end
 
+	def create_omniauth_user(provider)
+		create_user
+		@user.merge(uid: '12345678', provider: provider)
+	end
+
 	def sign_up
 		visit new_user_registration_path
 		fill_in 'user_name', with: @visitor[:name]
