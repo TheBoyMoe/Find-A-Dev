@@ -61,7 +61,7 @@ When(/^I sign in with the wrong email$/) do
 end
 
 When(/^I sign in with the wrong password$/) do
-	@visitor = @vistor.merge(password: '12345678')
+	@visitor = @visitor.merge(password: '12345678')
 	sign_in
 end
 
