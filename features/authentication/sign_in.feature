@@ -46,14 +46,14 @@ Feature: Sign in
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Google account
-    Given I have previously signed up with "Google"
+    Given I exist as a user
     And I am not signed in
-    When I click the "Google" button
-    Then I should see "Signed in successfully."
+    When I click "Sign in with Google"
+    Then I should see "Successfully authenticated from Google account."
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Github account
-    Given I have previously signed up with "Github"
+    Given I exist as a user
     And I am not signed in
-    When I click the "Github" button
-    Then I should see "Signed in successfully."
+    When I click "Sign in with GitHub"
+    Then I should see "Successfully authenticated from Github account."

@@ -6,6 +6,6 @@ Then /^I should( not)? see "([^"]*)"$/ do |negative, string|
 	end
 end
 
-When(/^I click the "([^"]*)" button$/) do |string|
+When(/^I click "([^"]*)"$/) do |text|
 	click_link_or_button(text)
 end

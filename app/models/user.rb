@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   # generate user based on omniauth data received from 3rd party providers
   def self.from_omniauth(auth)
-    user = User.find_by_email(auth.info.email.downcase)
+    user = User.find_by_email(auth['info']['email'].downcase)
     # user has an existing account via devise/google
     if user
       self.update_user_attributes(user, auth)
@@ -37,15 +37,15 @@ class User < ApplicationRecord
 
   private
     def self.update_user_attributes(user, auth)
-      user.update_attributes(provider: auth.provider, uid: auth.uid)
+      user.update_attributes(provider: auth['provider'], uid: auth['uid'])
       user
     end
 
     def self.sign_in_with_provider(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-        user.email = auth.info.email
+      where(provider: auth['provider'], uid: auth['uid']).first_or_create! do |user|
+        user.email = auth['info']['email']
         user.password = Devise.friendly_token[0,20]
-        user.name = auth.info.name
+        user.name = auth['info']['name']
         # user.image = auth.info.image # assuming the user model has an image
         user.skip_confirmation! # don't send the user a confirmation email
       end
