@@ -10,11 +10,19 @@ module Helpers
 	end
 
 	def create_user
-
+		@user ||= FactoryBot.create(:user, create_visitor)
+		@current_user = @user
 	end
 
 	def delete_user
+		@user.destroy if @user
+		@user = nil
+		@current_user = nil
+	end
 
+	def activate_account
+		@user.confirmed_at = Time.now.utc
+		@user.save
 	end
 
 	def sign_up
@@ -30,7 +38,6 @@ module Helpers
 		visit new_user_session_path
 		fill_in 'user_email', with: @visitor[:email]
 		fill_in 'user_password', with: @visitor[:password]
-		fill_in 'user_password_confirmation', with: @visitor[:password_confirmation]
 		click_button 'Sign in'
 	end
 
@@ -38,11 +45,10 @@ module Helpers
 
 	end
 
-	def sign_in_with_valid_data(email, password, password_confirmation)
+	def sign_in_with_valid_data(email, password)
 		visit new_user_session_path
 		fill_in 'user_email', with: email
 		fill_in 'user_password', with: password
-		fill_in 'user_password_confirmation', with: password_confirmation
 		click_button 'Sign in'
 	end
 

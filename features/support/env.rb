@@ -2,6 +2,7 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 require 'cucumber/rails'
+require 'factory_bot_rails'
 
 ActionController::Base.allow_rescue = false
 

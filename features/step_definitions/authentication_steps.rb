@@ -37,7 +37,7 @@ When(/^I sign up without a password confirmation$/) do
 	sign_up
 end
 
-When(/^I sign up with a password that is less than (\d+) characters$/) do |arg1|
+When(/^I sign up with a password that is less than (\d+) characters$/) do |number|
 	create_visitor
 	@visitor = @visitor.merge(password: '123456', password_confirmation: '123456')
 	sign_up
@@ -66,7 +66,6 @@ When(/^I sign in with the wrong password$/) do
 end
 
 When(/^I sign in with valid credentials$/) do
-	create_visitor
 	sign_in
 end
 
@@ -79,15 +78,19 @@ Given(/^I do not exist as a user$/) do
 	delete_user
 end
 
-Given /^I am logged in$/ do
+Given(/^I have activated my account$/) do
+	activate_account
+end
+
+Given /^I am signed in$/ do
 	create_user
 	sign_in
 end
 
-Given(/^I am not logged in$/) do
+Given(/^I am not signed in$/) do
 	expect(page).to have_content "Sign up"
 	expect(page).to have_content "Sign in"
-	expect(page).to_not have_content "Log out"
+	expect(page).to_not have_content "Sign out"
 end
 
 When(/^I return to the site$/) do
@@ -97,13 +100,13 @@ end
 Then(/^I should be signed in$/) do
 	expect(page).to_not have_content "Sign up"
 	expect(page).to_not have_content "Sign in"
-	expect(page).to have_content "Log out"
+	expect(page).to have_content "Sign out"
 end
 
 Then(/^I should be signed out$/) do
 	expect(page).to have_content "Sign up"
 	expect(page).to have_content "Sign in"
-	expect(page).to_not have_content "Log out"
+	expect(page).to_not have_content "Sign out"
 end
 
 Then(/^I should not see a sign in link$/) do
@@ -111,7 +114,7 @@ Then(/^I should not see a sign in link$/) do
 end
 
 Then(/^I should see a sign out link$/) do
-	expect(page).to have_content "Log out"
+	expect(page).to have_content "Sign out"
 end
 
 
@@ -171,6 +174,6 @@ Then(/^I should see account activation required message$/) do
 	expect(page).to have_content "You have to confirm your email address before continuing."
 end
 
-Then(/^I should see an invalid login message$/) do
+Then(/^I should see an invalid sign in message$/) do
 	expect(page).to have_content "Invalid Email or password."
 end

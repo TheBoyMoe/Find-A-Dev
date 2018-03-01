@@ -3,7 +3,7 @@ def paths(page)
 			'home'=> root_path,
 			'sign in' => new_user_session_path,
 			'sign up' => new_user_registration_path,
-			'sign out' => delete_user_session_path
+			'sign out' => destroy_user_session_path
 	}[page]
 end
 
