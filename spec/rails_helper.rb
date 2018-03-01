@@ -26,6 +26,8 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
+  config.before(:each) { ActionMailer::Base.deliveries.clear }
+
 	# DatabaseCleaner strategy
 	config.use_transactional_fixtures = false
 

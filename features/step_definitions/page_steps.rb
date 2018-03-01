@@ -23,6 +23,6 @@ Given(/^I (visit|should be on) the "([^"]*)" page$/) do |string, title|
 end
 
 Then(/^I should be on the profile page for "([^"]*)"$/) do |email|
-	 user = User.find_by(email: email)
-	 expect(current_path).to eq user_path(user)
+	user = User.find_by(email: email)
+	expect(current_path).to eq user_path(user)
 end

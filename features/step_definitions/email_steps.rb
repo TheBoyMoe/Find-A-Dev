@@ -5,7 +5,8 @@ Then(/^I should receive a "([^"]*)" email$/) do |text|
 	expect(subjects).to include text
 end
 
-Then(/^I click on the confirmation link in the email to "([^"]*)"$/) do |arg1|
+Then(/^I click on the confirmation link in the email to "([^"]*)"$/) do |email|
+	activate_current_user(email)
 	visit new_user_session_path
 end
 

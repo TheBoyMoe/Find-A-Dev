@@ -6,5 +6,5 @@ Feature: Sign out
   Scenario: User sign out
     Given I am signed in
     When I sign out
-    Then I should be on the "sign in" page
+    Then I should be on the "home" page
     And I should be signed out

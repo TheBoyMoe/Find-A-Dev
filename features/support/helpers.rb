@@ -25,6 +25,19 @@ module Helpers
 		@user.save
 	end
 
+	def activate_current_user(email)
+		user = User.find_by(email: email)
+		user.confirmed_at = Time.now.utc
+		user.save
+	end
+
+	def create_activated_user(name, email, password)
+		user = User.new(name: name, email: email, password: password, password_confirmation: password)
+		user.confirmed_at = Time.now.utc
+		user.save
+		ActionMailer::Base.deliveries.clear
+	end
+
 	def sign_up
 		visit new_user_registration_path
 		fill_in 'user_name', with: @visitor[:name]

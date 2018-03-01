@@ -9,8 +9,12 @@ Given(/^I sign up as "([^"]*)" with email "([^"]*)" and password "([^"]*)" and p
 	sign_up_with_valid_data(name, email, password, password_confirmation)
 end
 
-Then(/^I sign in as "([^"]*)" with password "([^"]*)" and password confirmation "([^"]*)"$/) do |email, password, password_confirmation|
-	sign_in_with_valid_data(email, password, password_confirmation)
+Then(/^I sign in as "([^"]*)" with password "([^"]*)"$/) do |email, password|
+	sign_in_with_valid_data(email, password)
+end
+
+Given(/^That I am registered as "([^"]*)" with email "([^"]*)" and password "([^"]*)"$/) do |name, email, password|
+	create_activated_user(name, email,password)
 end
 
 When(/^I sign up with out a name$/) do
@@ -39,7 +43,7 @@ end
 
 When(/^I sign up with a password that is less than (\d+) characters$/) do |number|
 	create_visitor
-	@visitor = @visitor.merge(password: '123456', password_confirmation: '123456')
+	@visitor = @visitor.merge(password: '1234', password_confirmation: '1234')
 	sign_up
 end
 
@@ -126,7 +130,7 @@ Then /^I should see a successful sign in message$/ do
 	expect(page).to have_content "Signed in successfully."
 end
 
-Then /^I should see a successful sign up message$/ do
+Then /^I should see a activate account message$/ do
 	expect(page).to have_content "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 end
 
@@ -143,7 +147,7 @@ Then(/^I should see an missing email message$/) do
 end
 
 Then(/^I should see an invalid email message$/) do
-	expect(page).to have_content "Invalid Email or password."
+	expect(page).to have_content "Email is invalid"
 end
 
 Then(/^I should see a missing password message$/) do
@@ -176,4 +180,8 @@ end
 
 Then(/^I should see an invalid sign in message$/) do
 	expect(page).to have_content "Invalid Email or password."
+end
+
+Then(/^I should see a signed in successfully message$/) do
+	expect(page).to have_content "Signed in successfully."
 end
