@@ -21,3 +21,24 @@ end
 ```
 
 To use javascript in you Cucumber scenarios, tag your scenarios with the `@javascript` tag.
+
+
+### References
+
+Bootstrap configuration  
+[Integrating Bootstrap 3 into a Rails App](https://rails.devcamp.com/professional-rails-development-course/ui-ux-integration/implementing-twitter-bootstrap-into-a-rails-application)  
+[Organising Stylesheets in a Rails App](https://mattboldt.com/organizing-css-and-sass-rails/)  
+
+Email configuration:  
+[Configure Devise to send a confirmation email](https://github.com/plataformatec/devise/wiki/How-To:-Use-custom-mailer)  
+[Custom Mailer](https://github.com/plataformatec/devise/wiki/How-To:-Use-custom-mailer)  
+[Setup mailcatcher gem to capture emails](https://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise)
+
+Authentication using Devise
+[Authentication using Devise](https://rails.devcamp.com/trails/dissecting-rails-5/campsites/rails-5-authentication)  
+[Enable email confirmation via Devise](https://github.com/plataformatec/devise/wiki/How-To:-Add-:confirmable-to-Users)  
+[Devise docs on setting up omniauth strategy using Facebook](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview)  
+[Setting up multiple providers using omniauth and Devise](https://scotch.io/tutorials/integrating-social-login-in-a-ruby-on-rails-application)  
+[Google Omniauth Strategy](https://github.com/zquestz/omniauth-google-oauth2)  
+[Github Omniauth Strategy](https://github.com/omniauth/omniauth-github)  
+ 

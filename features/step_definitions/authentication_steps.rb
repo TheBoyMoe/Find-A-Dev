@@ -73,6 +73,10 @@ When(/^I sign in with valid credentials$/) do
 	sign_in
 end
 
+Given(/^I have previously signed up with "([^"]*)"$/) do |provider|
+	create_omniauth_user(provider)
+end
+
 Given(/^I exist as a user$/) do
 	create_user
 end
