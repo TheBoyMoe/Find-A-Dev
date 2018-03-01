@@ -15,6 +15,9 @@ require 'byebug'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+#  autoload files in the support/ directory
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -22,6 +25,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:each) { ActionMailer::Base.deliveries.clear }
 
 	# DatabaseCleaner strategy
 	config.use_transactional_fixtures = false
