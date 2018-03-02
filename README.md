@@ -23,6 +23,22 @@ end
 To use javascript in you Cucumber scenarios, tag your scenarios with the `@javascript` tag.
 
 
+### TODO
+
+[x] Redirect users to their profile page until it has been completed
+[] Allow users to create/edit their profiles
+[] List Developer Profiles
+[] Allow founders the ability to create opportunities
+[] List founder opportunities
+[] Add messaging system
+
+
+[] Add search of developers
+[] Send email notification when someone has sent you a message
+[] Add option to your account page to turn notifications on/off
+
+
+
 ### References
 
 Bootstrap configuration  
