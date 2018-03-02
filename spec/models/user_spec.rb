@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
 	it {should respond_to(:password_confirmation)}
 	it {should respond_to(:uid)}
 	it {should respond_to(:provider)}
+	it {should respond_to(:role)}
 
 	it "is valid with a name, email and password" do
 		expect(user).to be_valid
@@ -46,6 +47,24 @@ RSpec.describe User, type: :model do
 		it 'without a password' do
 			expect(@user.errors[:password]).to include("can't be blank")
 		end
+	end
+
+	context "implements a devise role that" do
+
+		it "is by default 'user'" do
+			expect(user.role).to eq 'user'
+		end
+
+		it "can be a 'developer'" do
+			developer = FactoryBot.build(:user, role: 1)
+			expect(developer.role).to eq 'developer'
+		end
+
+		it "can be a 'founder'" do
+			founder = FactoryBot.build(:user, role: 2)
+			expect(founder.role).to eq 'founder'
+		end
+
 	end
 
 end

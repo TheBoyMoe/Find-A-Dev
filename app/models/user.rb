@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
+  # user roles
+  enum role: [:user, :developer, :founder]
+  after_initialize :set_default_role, if: :new_record?
+
   def first_name
     self.name.split.first
   end
@@ -35,6 +39,10 @@ class User < ApplicationRecord
   end
 
   private
+    def set_default_role
+      self.role = :user
+    end
+
     def self.update_user_attributes(user, auth)
       user.update_attributes(provider: auth['provider'], uid: auth['uid'])
       user.skip_confirmation! # req'd for cuke feature to pass!
