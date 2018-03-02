@@ -22,7 +22,18 @@ Given(/^I (visit|should be on) the "([^"]*)" page$/) do |string, title|
 	end
 end
 
-Then(/^I should be on the profile page for "([^"]*)"$/) do |email|
+Then(/^I should be on the "([^"]*)" page for "([^"]*)"$/) do |title, email|
 	user = User.find_by(email: email)
-	expect(current_path).to eq user_path(user)
+	if user.role == 'user'
+		expect(current_path).to eq edit_user_path(user)
+	else
+		case title
+			when 'edit'
+				expect(current_path).to eq edit_user_path(user)
+			when	'account'
+				expect(current_path).to eq user_path(user)
+			else
+				root_path
+		end
+	end
 end

@@ -13,13 +13,13 @@ Feature: Sign in
     And I should be signed out
 
   Scenario: User is registered and the account is not activated
-    Given I exist as a user
+    Given I am a registered user
     And I am not signed in
     When I sign in with valid credentials
     Then I should see account activation required message
 
   Scenario: User is registered and the account is activated
-    Given I exist as a user
+    Given I am a registered user
     And I have activated my account
     And I am not signed in
     When I sign in with valid credentials
@@ -43,17 +43,55 @@ Feature: Sign in
     Then I should see an invalid sign in message
     And I should be signed out
 
+  Scenario: Newly activated users are directed to edit their profile when signing in
+    Given I am a registered user
+    And I have activated my account
+    And I am not signed in
+    When I sign in as "mock@example.com" with password "password"
+    Then I should be on the "edit" page for "mock@example.com"
+
+  Scenario: Registered users are directed to their account page once their profile is complete upon sign in
+    Given I am a registered user
+    And I am not signed in
+    And I have activated my account
+    And I have completed the profile for "mock@example.com"
+    When I sign in as "mock@example.com" with password "password"
+    Then I should be on the "account" page for "mock@example.com"
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Google account
     Given I am a registered user
     And I am not signed in
-    When I click "Sign in with Google"
+    When I visit the "sign in" page
+    And I click "Sign in with Google"
     Then I should see "Successfully authenticated from Google account."
+    Then I should be on the "edit" page for "mock@example.com"
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Github account
     Given I am a registered user
     And I am not signed in
-    When I click "Sign in with GitHub"
+    When I visit the "sign in" page
+    And I click "Sign in with GitHub"
     Then I should see "Successfully authenticated from Github account."
+    Then I should be on the "edit" page for "mock@example.com"
+
+  @omniauth
+  Scenario: User who is registered and has completed their profile tries to sign in with a Google account
+    Given I am a registered user
+    And I have completed the profile for "mock@example.com"
+    And I am not signed in
+    When I visit the "sign in" page
+    And I click "Sign in with Google"
+    Then I should see "Successfully authenticated from Google account."
+    Then I should be on the "account" page for "mock@example.com"
+
+  @omniauth
+  Scenario: User who is registeredand has completed their profile tries to sign in with a Github account
+    Given I am a registered user
+    And I have completed the profile for "mock@example.com"
+    And I am not signed in
+    When I visit the "sign in" page
+    And I click "Sign in with GitHub"
+    Then I should see "Successfully authenticated from Github account."
+    Then I should be on the "account" page for "mock@example.com"
