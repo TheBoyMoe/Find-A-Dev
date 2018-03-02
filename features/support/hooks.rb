@@ -4,15 +4,15 @@ Before('@omniauth') do
 			'provider' => 'github',
 			'uid' => '12345678',
 			'info' => {
-					'email' => 'mock@email.com',
-					'name' => 'mock user'
+					'email' => 'mock@example.com',
+					'name' => 'Mock User'
 			}
 	}
 	OmniAuth.config.mock_auth[:google] = {
 			'provider' => 'google',
 			'uid' => '12345678',
 			'info' => {
-					'email' => 'mock@email.com',
+					'email' => 'mock@example.com',
 					'name' => 'Mock User'
 			},
 			'credentials' => {'token' => 'test_token'}

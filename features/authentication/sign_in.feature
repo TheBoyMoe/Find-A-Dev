@@ -30,14 +30,14 @@ Feature: Sign in
     And I should see a sign out link
 
   Scenario: User enters the wrong email
-    Given I exist as a user
+    Given I am a registered user
     And I am not signed in
     When I sign in with the wrong email
     Then I should see an invalid sign in message
     And I should be signed out
 
   Scenario: User enters the wrong password
-    Given I exist as a user
+    Given I am a registered user
     And I am not signed in
     When I sign in with the wrong password
     Then I should see an invalid sign in message
@@ -46,14 +46,14 @@ Feature: Sign in
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Google account
-    Given I exist as a user
+    Given I am a registered user
     And I am not signed in
     When I click "Sign in with Google"
     Then I should see "Successfully authenticated from Google account."
 
   @omniauth
   Scenario: User who is registered tries to sign in with a Github account
-    Given I exist as a user
+    Given I am a registered user
     And I am not signed in
     When I click "Sign in with GitHub"
     Then I should see "Successfully authenticated from Github account."

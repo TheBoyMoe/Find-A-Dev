@@ -5,25 +5,29 @@ module Helpers
 				name: "Mock User",
 				email: 'mock@example.com',
 				password: 'password',
-				password_confirmation: 'password'
+				password_confirmation: 'password',
+				uid: '12345678',
+				provider: 'google'
 		}
 	end
 
 	def create_user
 		@user ||= FactoryBot.create(:user, create_visitor)
-		@current_user = @user
 	end
 
 	def create_omniauth_user(provider)
-		@user ||= User.create(name: 'Mock User', email: 'mock@example.com', password: 'password', uid: '12345678', provider: provider)
-		@current_user = @user
-		ActionMailer::Base.deliveries.clear
+		registered_user
+		@user.provider = provider
+		@user.save
+	end
+
+	def registered_user
+		@user ||= User.create(name: 'Mock User', email: 'mock@example.com', password: 'password', uid: '12345678', provider: 'google')
 	end
 
 	def delete_user
 		@user.destroy if @user
 		@user = nil
-		@current_user = nil
 	end
 
 	def activate_account
@@ -80,6 +84,9 @@ module Helpers
 		click_button 'Sign up'
 	end
 
+	def clear_mail_queue
+		ActionMailer::Base.deliveries.clear
+	end
 
 end
 

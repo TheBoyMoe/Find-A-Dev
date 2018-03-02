@@ -34,7 +34,7 @@ Email configuration:
 [Custom Mailer](https://github.com/plataformatec/devise/wiki/How-To:-Use-custom-mailer)  
 [Setup mailcatcher gem to capture emails](https://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise)
 
-Authentication using Devise
+Authentication using Devise  
 [Authentication using Devise](https://rails.devcamp.com/trails/dissecting-rails-5/campsites/rails-5-authentication)  
 [Enable email confirmation via Devise](https://github.com/plataformatec/devise/wiki/How-To:-Add-:confirmable-to-Users)  
 [Devise docs on setting up omniauth strategy using Facebook](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview)  

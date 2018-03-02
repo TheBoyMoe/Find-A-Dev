@@ -60,11 +60,13 @@ When(/^I sign up with out an email$/) do
 end
 
 When(/^I sign in with the wrong email$/) do
+	create_visitor
 	@visitor = @visitor.merge(email: "wrong@email.com")
 	sign_in
 end
 
 When(/^I sign in with the wrong password$/) do
+	create_visitor
 	@visitor = @visitor.merge(password: '12345678')
 	sign_in
 end
@@ -75,6 +77,7 @@ end
 
 Given(/^I have previously signed up with "([^"]*)"$/) do |provider|
 	create_omniauth_user(provider)
+	clear_mail_queue
 end
 
 Given(/^I exist as a user$/) do
@@ -88,6 +91,11 @@ end
 
 Given(/^I have activated my account$/) do
 	activate_account
+end
+
+Given(/^I am a registered user$/) do
+	registered_user
+	clear_mail_queue
 end
 
 Given /^I am signed in$/ do
