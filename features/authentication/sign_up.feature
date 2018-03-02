@@ -44,11 +44,10 @@ Feature: Signup
     Then I should see a mismatched password message
 
   Scenario: Sign up as an existing user
-    Given That I am registered as "Text User" with email "test@example.com" and password "12345678"
-    And I sign up as "Test User" with email "test@example.com" and password "12345678" and password confirmation "12345678"
+    Given I am a registered user
+    And I sign up as "Mock User" with email "mock@example.com" and password "password" and password confirmation "password"
     Then I should see email taken message
     And I should not receive a confirmation email
-
 
   @omniauth
   Scenario: User signs up with a Google account

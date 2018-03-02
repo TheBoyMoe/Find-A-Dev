@@ -18,7 +18,6 @@ class User < ApplicationRecord
   # generate user based on omniauth data received from 3rd party providers
   def self.from_omniauth(auth)
     user = User.find_by_email(auth['info']['email'].downcase)
-    # user has an existing account via devise/google
     if user
       self.update_user_attributes(user, auth)
     else
@@ -38,6 +37,7 @@ class User < ApplicationRecord
   private
     def self.update_user_attributes(user, auth)
       user.update_attributes(provider: auth['provider'], uid: auth['uid'])
+      user.skip_confirmation! # req'd for cuke feature to pass!
       user
     end
 
@@ -50,4 +50,5 @@ class User < ApplicationRecord
         user.skip_confirmation! # don't send the user a confirmation email
       end
     end
+
 end
