@@ -1,2 +1,7 @@
 <h1>Edit your profile</h1>
-<h3>Hi <%= current_user.name %>, tells a little about your self</h3>
+<h3>Hi <%= @user.name %>, tells a little about your self</h3>
+<%= render partial: 'form', locals: {user: @user} %>
+<br>
+<% if @user.role != 'user' %>
+	<%= link_to 'Back', user_path(@user) %>
+<% end %>

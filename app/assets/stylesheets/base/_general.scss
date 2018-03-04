@@ -52,7 +52,20 @@ form {
 	  height: 35px;
 	  width: 100%;
 	}
+
+	.field_with_errors input {
+	  border: 2px solid red;
+	}
   }
+
+  .control-group input {
+	height: 41px;
+	border-radius: 4px;
+	border-style: solid;
+	border-color: #dadada;
+	padding-left: 15px;
+  }
+
 }
 
 
