@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google, :github]
 
+  has_many :user_social_links
+  has_many :social_links, through: :user_social_links
+  accepts_nested_attributes_for :social_links
+
   validates_presence_of :name, :role, :bio
 
   # user roles
