@@ -6,6 +6,7 @@ FactoryBot.define do
 		password_confirmation {password}
 		uid '12345678'
 		provider 'google'
+		bio 'text'
 		role 0
 	end
 end

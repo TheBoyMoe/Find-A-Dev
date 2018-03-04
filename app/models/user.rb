@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google, :github]
 
-  validates_presence_of :name, :role
+  validates_presence_of :name, :role, :bio
 
   # user roles
   enum role: [:user, :developer, :founder]

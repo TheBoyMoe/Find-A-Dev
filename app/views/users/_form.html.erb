@@ -5,19 +5,28 @@
 	<div class="field">
 		<div class="control-group">
 			<%= f.label :name, class: 'control-label' %>
-			<span class="controls">
+			<div class="controls">
 				<%= f.text_field :name %>
-			</span>
+			</div>
 		</div>
 	</div><br>
 
 	<div class="field">
-		<span class="control-group">
+		<div class="control-group">
 			<%= f.label :email,class: 'control-label' %>
-			<span class="controls">
+			<div class="controls">
 				<%= f.text_field :email %>
-			</span>
-		</span>
+			</div>
+		</div>
+	</div><br>
+
+	<div class="field">
+		<div class="control-group">
+			<%= f.label :bio,class: 'control-label' %>
+			<div class="controls">
+				<%= f.text_area :bio %>
+			</div>
+		</div>
 	</div><br>
 
 	<div class="field">
