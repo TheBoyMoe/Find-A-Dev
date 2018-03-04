@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
-			# todo check role set
 			redirect_to user_path @user, notice: "Updated record successfully"
 		else
 			render action: 'edit'
@@ -24,6 +23,6 @@ class UsersController < ApplicationController
 		end
 
 		def user_params
-			params.require(:user).permit(:name, :email)
+			params.require(:user).permit(:name, :email, :role)
 		end
 end

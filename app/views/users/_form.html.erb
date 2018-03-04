@@ -20,6 +20,13 @@
 		</span>
 	</div><br>
 
+	<div class="field">
+		<div class="control-group">
+			<%= f.label :role, "Specify the account type", class: 'control-label' %><br>
+			<%= f.select :role, options_for_select([['Developer', 'developer'], ['Founder', 'founder']]), {include_blank: true} %>
+		</div>
+	</div><br>
+
 	<div class="actions">
 		<%= f.submit %>
 	</div>

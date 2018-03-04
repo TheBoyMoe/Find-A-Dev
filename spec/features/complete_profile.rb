@@ -14,6 +14,11 @@ RSpec.feature 'Feature test: create user profile', type: :feature do
 
 		expect(current_path).to eq "/users/#{@user.id}/edit"
 		expect(page).to have_content('Edit your profile')
+
+		select 'Developer', from: 'user_role'
+		click_button "Update User"
+
+		expect(@user.reload.role).to eq 'developer'
 	end
 
 end
