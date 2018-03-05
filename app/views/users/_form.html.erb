@@ -41,12 +41,14 @@
 		<%= f.fields_for :social_links do |builder| %>
 			<div class="control-group">
 				<%= render partial: 'social_link_field', locals: {f: builder} %>
-
-				<!--allow the user to add more social links-->
-				<%= add_social_link_field 'Add Link', f, :social_links %>
 			</div><br>
-
 		<% end %>
+
+		<!--allow the user to add more social links-->
+		<div class="control-group">
+			<%= add_social_link_field 'Add Link', f, :social_links %>
+		</div>
+
 	</div>
 
 	<div class="actions">
