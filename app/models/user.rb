@@ -44,6 +44,19 @@ class User < ApplicationRecord
     end
   end
 
+  def social_links_attributes=(attributes)
+    values = attributes.uniq do |hash|
+      hash[1][:name]
+    end
+    array = []
+    values.flatten.each_with_index do |item,index|
+      if index % 2 != 0
+        array.push(item)
+      end
+    end
+    self.social_links.build(array)
+  end
+
   private
     def set_default_role
       self.role = :user

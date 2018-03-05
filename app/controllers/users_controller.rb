@@ -3,9 +3,13 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def show
+		@social_links = @user.social_links
 	end
 
 	def edit
+		if @user.social_links.count == 0
+			@user.social_links.build
+		end
 		if @user.bio == 'add bio'
 			@user.bio = ''
 		end
@@ -26,6 +30,15 @@ class UsersController < ApplicationController
 		end
 
 		def user_params
-			params.require(:user).permit(:name, :email, :role, :bio)
+			params.require(:user).permit(
+					:name,
+					:email,
+					:role,
+					:bio,
+					social_links_attributes: [
+							:name,
+							:url
+					]
+			)
 		end
 end
