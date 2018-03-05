@@ -38,6 +38,10 @@ class UsersController < ApplicationController
 					social_links_attributes: [
 							:name,
 							:url
+					],
+					skills_attributes: [
+							:name,
+							:description
 					]
 			)
 		end
