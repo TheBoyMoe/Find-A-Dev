@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		if @user.bio == 'add bio'
+			@user.bio = ''
+		end
 	end
 
 	def update

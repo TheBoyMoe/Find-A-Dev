@@ -15,6 +15,8 @@ class User < ApplicationRecord
   enum role: [:user, :developer, :founder]
   after_initialize :set_default_role, if: :new_record?
 
+  after_initialize :set_default_bio, if: :new_record?
+
   def first_name
     self.name.split.first
   end
@@ -45,6 +47,10 @@ class User < ApplicationRecord
   private
     def set_default_role
       self.role = :user
+    end
+
+    def set_default_bio
+      self.bio = 'add bio'
     end
 
     def self.update_user_attributes(user, auth)

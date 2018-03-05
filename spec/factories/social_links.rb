@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :social_link do
-    name "MyString"
-    url "MyString"
+    name "Facebook"
+    url "https://facebook.com/mock"
   end
 end

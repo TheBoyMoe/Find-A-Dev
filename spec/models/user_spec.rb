@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
 	it {should respond_to(:uid)}
 	it {should respond_to(:provider)}
 	it {should respond_to(:role)}
+	it {should respond_to(:bio)}
 
 	it "is valid with a name, email and password" do
 		expect(user).to be_valid
@@ -32,7 +33,7 @@ RSpec.describe User, type: :model do
 
 	context "is invalid" do
 		before {
-			@user = FactoryBot.build(:user, name: nil, email: nil, password: nil)
+			@user = FactoryBot.build(:user, name: nil, email: nil, password: nil, role: nil, bio: nil)
 			@user.valid?
 		}
 
@@ -47,6 +48,15 @@ RSpec.describe User, type: :model do
 		it 'without a password' do
 			expect(@user.errors[:password]).to include("can't be blank")
 		end
+
+		it 'without a role' do
+			expect(@user.errors[:role]).to include("can't be blank")
+		end
+
+		it 'without a bio' do
+			expect(@user.errors[:bio]).to include("can't be blank")
+		end
+
 	end
 
 	context "implements a devise role that" do
@@ -63,6 +73,22 @@ RSpec.describe User, type: :model do
 		it "can be a 'founder'" do
 			founder = FactoryBot.build(:user, role: 2)
 			expect(founder.role).to eq 'founder'
+		end
+
+	end
+
+	context "relationship to Social Links and User Social Links" do
+
+		let(:facebook_link){FactoryBot.create(:social_link)}
+		# let(:mock_user){FactoryBot.create(:user)}
+		let!(:user_social_link){FactoryBot.create(:user_social_link, user: user, social_link: facebook_link)}
+
+		it "has many social links" do
+			expect(user.social_links.last).to eq facebook_link
+		end
+
+		it "has many user social links" do
+			expect(user.user_social_links.last).to eq user_social_link
 		end
 
 	end
