@@ -36,6 +36,28 @@
 		</div>
 	</div><br>
 
+	<div class="field skills">
+		<strong class="control-label">List your skills</strong>
+		<div class="skill">
+			<%= f.fields_for :skills do |builder| %>
+				<div class="control-group">
+					<%= builder.label :name, class: 'control-label' %>
+					<div class="controls">
+						<%= builder.text_field :name %>
+					</div>
+				</div>
+				<div class="control-group">
+					<%= builder.label :description, class: 'control-label' %>
+					<div class="controls">
+						<%= builder.text_area :description %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<!--# todo - link to add more skills-->
+	</div><br>
+
 	<div class="field">
 		<strong class="control-label">Social Links</strong>
 		<%= f.fields_for :social_links do |builder| %>

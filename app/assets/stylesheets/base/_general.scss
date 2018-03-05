@@ -60,11 +60,16 @@ form {
 	}
   }
 
+  .control-group textarea,
   .control-group input,
   .control-group select {
 	border-radius: 4px;
 	border: 1px solid #dadada;
 	padding-left: 15px;
+  }
+
+  .control-group textarea {
+	padding: 5px 15px;
   }
 
   .control-group input {

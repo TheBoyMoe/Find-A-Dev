@@ -10,6 +10,11 @@ class UsersController < ApplicationController
 		if @user.social_links.count == 0
 			@user.social_links.build
 		end
+
+		if @user.skills.count == 0
+			@user.skills.build
+		end
+
 		if @user.bio == 'add bio'
 			@user.bio = ''
 		end
