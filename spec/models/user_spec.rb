@@ -80,15 +80,14 @@ RSpec.describe User, type: :model do
 	context "relationship to Social Links and User Social Links" do
 
 		let(:facebook_link){FactoryBot.create(:social_link)}
-		# let(:mock_user){FactoryBot.create(:user)}
 		let!(:user_social_link){FactoryBot.create(:user_social_link, user: user, social_link: facebook_link)}
 
-		it "has many social links" do
-			expect(user.social_links.last).to eq facebook_link
+		it "has many user social links" do
+			expect(user.user_social_links).to include user_social_link
 		end
 
-		it "has many user social links" do
-			expect(user.user_social_links.last).to eq user_social_link
+		it "has many social links through user social links" do
+			expect(user.social_links).to include facebook_link
 		end
 
 	end

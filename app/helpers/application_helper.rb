@@ -11,7 +11,7 @@ module ApplicationHelper
 
 	def check_role
 		if current_user.role == 'user'
-			content_tag(:h4, "Hi #{current_user.first_name}, complete your profile before continuing")
+			content_tag(:h4, "Hi #{current_user.first_name}, please complete your profile before continuing")
 		end
 	end
 end
