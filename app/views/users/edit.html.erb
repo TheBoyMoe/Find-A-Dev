@@ -1,5 +1,7 @@
 <h1>Edit your profile</h1>
-<h4>Hi <%= @user.name %>, tells a little about your self</h4>
+
+<%= check_role %>
+
 <%= render partial: 'form', locals: {user: @user} %>
 <br>
 <% if @user.role != 'user' %>

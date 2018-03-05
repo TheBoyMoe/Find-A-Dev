@@ -8,4 +8,10 @@ module ApplicationHelper
 				(link_to "Sign in", new_user_session_path)
 		end
 	end
+
+	def check_role
+		if current_user.role == 'user'
+			content_tag(:h4, "Hi #{current_user.first_name}, complete your profile before continuing")
+		end
+	end
 end
