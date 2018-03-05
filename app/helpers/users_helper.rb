@@ -13,4 +13,10 @@ module UsersHelper
 		link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
 	end
 
+	def check_role
+		if current_user.role == 'user'
+			content_tag(:h4, "Hi #{current_user.first_name}, please complete your profile before continuing")
+		end
+	end
+
 end

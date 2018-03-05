@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :user_social_links
   has_many :social_links, through: :user_social_links
-  accepts_nested_attributes_for :social_links
+  # accepts_nested_attributes_for :social_links # replaced by custom attribute writer
 
   validates_presence_of :name, :role, :bio
 
@@ -44,17 +44,21 @@ class User < ApplicationRecord
     end
   end
 
-  def social_links_attributes=(attributes)
-    values = attributes.uniq do |hash|
-      hash[1][:name]
-    end
-    array = []
-    values.flatten.each_with_index do |item,index|
-      if index % 2 != 0
-        array.push(item)
+  def social_links_attributes=(link_attributes)
+    link_names = self.social_links.pluck(:name)
+    link_attributes.values.each do |link_attribute|
+      if link_names && link_names.count > 0
+        if link_names.include?(link_attribute[:name])
+          link = self.social_links.find_by(name: link_attribute[:name])
+          link.url = link_attribute[:url]
+          link.save
+        else
+          self.social_links.create(link_attribute)
+        end
+      else
+        self.social_links.create(link_attribute)
       end
     end
-    self.social_links.build(array)
   end
 
   private
