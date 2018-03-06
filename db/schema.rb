@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305183605) do
+ActiveRecord::Schema.define(version: 20180306102446) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20180305183605) do
     t.string "provider"
     t.integer "role"
     t.text "bio"
+    t.text "main_image"
+    t.text "thumb_image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"

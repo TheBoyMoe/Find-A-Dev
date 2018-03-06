@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
   after_initialize :set_default_bio, if: :new_record?
 
+  # set carrierwave image uploader on the database columns
+  mount_uploader :main_image, ImageUploader
+  mount_uploader :thumb_image, ImageUploader
+
   def first_name
     self.name.split.first
   end

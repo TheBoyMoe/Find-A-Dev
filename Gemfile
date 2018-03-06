@@ -20,6 +20,9 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
 gem 'omniauth-google-oauth2', '~> 0.5.2'
 gem 'omniauth-github', '~> 1.3'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'carrierwave-dropbox', '~> 2.0.0.rc1'
+gem 'mini_magick', '~> 4.8'
 
 
 group :development, :test do
