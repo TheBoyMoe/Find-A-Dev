@@ -2,7 +2,7 @@
 
 	<%= render partial: 'errors', locals: {user: user} %>
 
-	<fieldset class="information">
+	<fieldset class="info">
 		<legend>General Information</legend>
 		<%= render partial: 'text_field', locals: {builder: f, prop: :name} %>
 
@@ -21,13 +21,14 @@
 	<fieldset class="skills">
 		<legend>List your skills</legend>
 		<div class="skill">
-			<%= f.fields_for :skills do |fb| %>
-				<%= render partial: 'text_field', locals: {builder: fb, prop: :name} %>
-				<%= render partial: 'text_area', locals: {builder: fb, prop: :description} %>
+			<%= f.fields_for :skills do |builder| %>
+				<%= render partial: 'skill_field', locals: {f: builder} %>
 			<% end %>
-		</div>
 
-		<!--# todo - link to add more skills-->
+			<div class="control-group">
+				<%= add_another_field 'Add Skill', f, :skills %>
+			</div>
+		</div>
 	</fieldset>
 
 	<fieldset class="links">
@@ -41,11 +42,10 @@
 
 			<!--allow the user to add more social links-->
 			<div class="control-group">
-				<%= add_social_link_field 'Add Link', f, :social_links %>
+				<%= add_another_field 'Add Link', f, :social_links %>
 			</div>
 		</div>
 	</fieldset>
-
 
 	<div class="actions">
 		<%= f.submit class: "btn btn-info btn-block" %>
