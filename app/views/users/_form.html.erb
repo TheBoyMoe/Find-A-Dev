@@ -2,75 +2,46 @@
 
 	<%= render partial: 'errors', locals: {user: user} %>
 
-	<div class="field">
-		<div class="control-group">
-			<%= f.label :name, class: 'control-label' %>
-			<div class="controls">
-				<%= f.text_field :name %>
-			</div>
-		</div>
-	</div><br>
+	<%= render partial: 'text_field', locals: {builder: f, prop: :name} %>
 
-	<div class="field">
-		<div class="control-group">
-			<%= f.label :email,class: 'control-label' %>
-			<div class="controls">
-				<%= f.text_field :email %>
-			</div>
-		</div>
-	</div><br>
+	<%= render partial: 'text_field', locals: {builder: f, prop: :email} %>
 
-	<div class="field">
-		<div class="control-group">
-			<%= f.label :bio,class: 'control-label' %>
-			<div class="controls">
-				<%= f.text_area :bio %>
-			</div>
-		</div>
-	</div><br>
+	<%= render partial: 'text_area', locals: {builder: f, prop: :bio} %>
 
 	<div class="field">
 		<div class="control-group">
 			<%= f.label :role, "Specify the account type", class: 'control-label' %><br>
 			<%= f.select :role, options_for_select([['Developer', 'developer'], ['Founder', 'founder']], selected: user.role), {include_blank: true} %>
 		</div>
-	</div><br>
+	</div>
 
-	<div class="field skills">
+	<div class="skills">
 		<strong class="control-label">List your skills</strong>
 		<div class="skill">
-			<%= f.fields_for :skills do |builder| %>
-				<div class="control-group">
-					<%= builder.label :name, class: 'control-label' %>
-					<div class="controls">
-						<%= builder.text_field :name %>
-					</div>
-				</div>
-				<div class="control-group">
-					<%= builder.label :description, class: 'control-label' %>
-					<div class="controls">
-						<%= builder.text_area :description %>
-					</div>
-				</div>
+			<%= f.fields_for :skills do |fb| %>
+
+				<%= render partial: 'text_field', locals: {builder: fb, prop: :name} %>
+
+				<%= render partial: 'text_area', locals: {builder: fb, prop: :description} %>
+
 			<% end %>
 		</div>
 
 		<!--# todo - link to add more skills-->
-	</div><br>
+	</div>
 
 	<div class="field">
 		<strong class="control-label">Social Links</strong>
 		<%= f.fields_for :social_links do |builder| %>
 			<div class="control-group">
 				<%= render partial: 'social_link_field', locals: {f: builder} %>
-			</div><br>
+			</div>
 		<% end %>
 
 		<!--allow the user to add more social links-->
 		<div class="control-group">
 			<%= add_social_link_field 'Add Link', f, :social_links %>
 		</div>
-
 	</div>
 
 	<div class="actions">
