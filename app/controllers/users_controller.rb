@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 							:url
 					],
 					skills_attributes: [
-							:name,
+							:title,
 							:description
 					]
 			)
