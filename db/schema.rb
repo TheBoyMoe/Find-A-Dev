@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301184733) do
+ActiveRecord::Schema.define(version: 20180306102446) do
+
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "social_links", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_social_links", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "social_link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_link_id"], name: "index_user_social_links_on_social_link_id"
+    t.index ["user_id"], name: "index_user_social_links_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +56,10 @@ ActiveRecord::Schema.define(version: 20180301184733) do
     t.datetime "confirmation_sent_at"
     t.string "uid"
     t.string "provider"
+    t.integer "role"
+    t.text "bio"
+    t.text "main_image"
+    t.text "thumb_image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"

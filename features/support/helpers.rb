@@ -7,7 +7,9 @@ module Helpers
 				password: 'password',
 				password_confirmation: 'password',
 				uid: '12345678',
-				provider: 'google'
+				provider: 'google',
+				bio: 'user description',
+				role: 0
 		}
 	end
 
@@ -22,7 +24,7 @@ module Helpers
 	end
 
 	def registered_user
-		@user ||= User.create(name: 'Mock User', email: 'mock@example.com', password: 'password', uid: '12345678', provider: 'google')
+		@user ||= User.create(name: 'Mock User', email: 'mock@example.com', password: 'password', uid: '12345678', provider: 'google', bio: 'user descrption', role: 0)
 	end
 
 	def delete_user

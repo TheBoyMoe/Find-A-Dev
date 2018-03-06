@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
   # redirect users to their profile page following successful sign in
   def after_sign_in_path_for(resource)
-    user_path(current_user)
+    if user_signed_in?
+      if current_user.role == 'user'
+        edit_user_path(current_user)
+      else
+        user_path(current_user)
+      end
+    end
   end
 
 

@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+social_links = %w[Facebook Twitter Github Google-Plus Linkedin]
+i = 0
+5.times do
+	SocialLink.create!(
+			name: social_links[i]
+	)
+	i += 1
+end

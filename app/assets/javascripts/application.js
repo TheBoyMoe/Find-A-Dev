@@ -15,3 +15,15 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+
+	$('form').on('click', '.add_fields', function(e) {
+		var regexp, time;
+		time = new Date().getTime(); // get current time
+		regexp = new RegExp($(this).data('id'), 'g'); // generate a regex based on the id
+		$(this).before($(this).data('fields').replace(regexp, time)); // each field will have an id based on the current time
+		return e.preventDefault();
+	});
+
+});

@@ -8,4 +8,5 @@ module ApplicationHelper
 				(link_to "Sign in", new_user_session_path)
 		end
 	end
+
 end

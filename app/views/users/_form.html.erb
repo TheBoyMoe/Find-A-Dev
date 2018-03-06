@@ -1,0 +1,64 @@
+<%= form_for(user) do |f| %>
+
+	<%= render partial: 'errors', locals: {user: user} %>
+
+	<fieldset class="info">
+		<legend>General Information</legend>
+		<%= render partial: 'text_field', locals: {builder: f, prop: :name} %>
+
+		<%= render partial: 'text_field', locals: {builder: f, prop: :email} %>
+
+		<%= render partial: 'text_area', locals: {builder: f, prop: :bio} %>
+
+		<div class="field">
+			<div class="control-group">
+				<%= f.label :role, "Specify the account type", class: 'control-label' %><br>
+				<%= f.select :role, options_for_select([['Developer', 'developer'], ['Founder', 'founder']], selected: user.role), {include_blank: true} %>
+			</div>
+		</div>
+
+
+		<div class="field">
+			<div class="image main">
+				<%= image_tag user.main_image, width: "100%", alt: "Main portfolio image" %>
+			</div>
+			<div class="control-group">
+				<%= f.file_field :main_image %>
+			</div>
+		</div>
+	</fieldset>
+
+	<fieldset class="skills">
+		<legend>List your skills</legend>
+		<div class="skill">
+			<%= f.fields_for :skills do |builder| %>
+				<%= render partial: 'skill_field', locals: {f: builder} %>
+			<% end %>
+
+			<div class="control-group">
+				<%= add_another_field 'Add Skill', f, :skills %>
+			</div>
+		</div>
+	</fieldset>
+
+	<fieldset class="links">
+		<legend>Social Links</legend>
+		<div class="field">
+			<%= f.fields_for :social_links do |builder| %>
+				<div class="control-group">
+					<%= render partial: 'social_link_field', locals: {f: builder} %>
+				</div>
+			<% end %>
+
+			<!--allow the user to add more social links-->
+			<div class="control-group">
+				<%= add_another_field 'Add Link', f, :social_links %>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="actions">
+		<%= f.submit class: "btn btn-info btn-block" %>
+	</div>
+
+<% end %>

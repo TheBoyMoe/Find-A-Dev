@@ -72,6 +72,7 @@ When(/^I sign in with the wrong password$/) do
 end
 
 When(/^I sign in with valid credentials$/) do
+	create_visitor
 	sign_in
 end
 
@@ -85,7 +86,7 @@ Given(/^I exist as a user$/) do
 end
 
 Given(/^I do not exist as a user$/) do
-	create_visitor
+	# create_visitor
 	delete_user
 end
 
@@ -93,13 +94,20 @@ Given(/^I have activated my account$/) do
 	activate_account
 end
 
+When(/^I have completed the profile for "([^"]*)"$/) do |email|
+	user = User.find_by(email: email)
+	user.role = 1
+	user.save
+end
+
+
 Given(/^I am a registered user$/) do
 	registered_user
 	clear_mail_queue
 end
 
 Given /^I am signed in$/ do
-	create_user
+	create_visitor
 	sign_in
 end
 

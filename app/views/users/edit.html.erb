@@ -1,0 +1,9 @@
+<h1>Edit your profile</h1>
+
+<%= check_role %>
+
+<%= render partial: 'form', locals: {user: @user} %>
+<br>
+<% if @user.role != 'user' %>
+	<%= link_to 'Back', user_path(@user) %>
+<% end %>

@@ -12,7 +12,7 @@ Feature: Signup
     And I click on the confirmation link in the email to "mock@example.com"
     Then I should be on the "sign in" page
     And I sign in as "mock@example.com" with password "password"
-    Then I should be on the profile page for "mock@example.com"
+    Then I should be on the "edit" page for "mock@example.com"
     And I should see a signed in successfully message
 
   Scenario: User signs up without a name

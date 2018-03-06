@@ -5,7 +5,23 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google, :github]
 
-  validates_presence_of :name
+  has_many :skills
+  has_many :user_social_links
+  has_many :social_links, through: :user_social_links
+  # accepts_nested_attributes_for :skills # replaced by custom attribute writer
+  # accepts_nested_attributes_for :social_links # replaced by custom attribute writer
+
+  validates_presence_of :name, :role, :bio
+
+  # user roles
+  enum role: [:user, :developer, :founder]
+  after_initialize :set_default_role, if: :new_record?
+
+  after_initialize :set_default_bio, if: :new_record?
+
+  # set carrierwave image uploader on the database columns
+  mount_uploader :main_image, ImageUploader
+  mount_uploader :thumb_image, ImageUploader
 
   def first_name
     self.name.split.first
@@ -34,7 +50,39 @@ class User < ApplicationRecord
     end
   end
 
+  def social_links_attributes=(link_attributes)
+    link_names = self.social_links.pluck(:name)
+    link_attributes.values.each do |link_attribute|
+      if link_names && link_names.count > 0
+        if link_names.include?(link_attribute[:name])
+          link = self.social_links.find_by(name: link_attribute[:name])
+          link.url = link_attribute[:url]
+          link.save
+        else
+          self.social_links.create(link_attribute)
+        end
+      else
+        self.social_links.create(link_attribute)
+      end
+    end
+  end
+
+  def skills_attributes=(skills_attributes)
+    self.skills.destroy_all
+    skills_attributes.values.each do |skill_attribute|
+      self.skills.create(skill_attribute)
+    end
+  end
+
   private
+    def set_default_role
+      self.role = :user
+    end
+
+    def set_default_bio
+      self.bio = 'add bio'
+    end
+
     def self.update_user_attributes(user, auth)
       user.update_attributes(provider: auth['provider'], uid: auth['uid'])
       user.skip_confirmation! # req'd for cuke feature to pass!
