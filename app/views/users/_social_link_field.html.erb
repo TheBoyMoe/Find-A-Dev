@@ -1,14 +1,14 @@
-<div class="social-field">
+<div class="social-field clearfix">
 	<!--<span>Social</span>-->
-	<span class="controls social-link">
+	<span class="link-name">
 		<!-- fetch social media names from database-->
 		<%= f.collection_select(:name, SocialLink.all.group(:name),:name, :name, {include_blank: true}, {multiple: false}) %>
 	</span>
 
-	<span class="control-group">
-		<%= f.label :url, class: 'control-label' %>
+	<span class="link-path">
+		<%#= f.label :url, class: 'control-label' %>
 		<span class="controls">
-			<%= f.text_field :url %>
+			<%= f.text_field :url, placeholder: 'Add link path' %>
 		</span>
 	</span>
 </div>
