@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :skills
   has_many :user_social_links
   has_many :social_links, through: :user_social_links
-  accepts_nested_attributes_for :skills
+  # accepts_nested_attributes_for :skills # replaced by custom attribute writer
   # accepts_nested_attributes_for :social_links # replaced by custom attribute writer
 
   validates_presence_of :name, :role, :bio
@@ -60,6 +60,13 @@ class User < ApplicationRecord
       else
         self.social_links.create(link_attribute)
       end
+    end
+  end
+
+  def skills_attributes=(skills_attributes)
+    self.skills.destroy_all
+    skills_attributes.values.each do |skill_attribute|
+      self.skills.create(skill_attribute)
     end
   end
 
