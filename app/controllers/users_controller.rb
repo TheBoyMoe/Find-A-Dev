@@ -40,6 +40,8 @@ class UsersController < ApplicationController
 					:email,
 					:role,
 					:bio,
+					:main_image,
+					:thumb_image,
 					social_links_attributes: [
 							:name,
 							:url

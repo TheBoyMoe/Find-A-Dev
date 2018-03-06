@@ -16,6 +16,16 @@
 				<%= f.select :role, options_for_select([['Developer', 'developer'], ['Founder', 'founder']], selected: user.role), {include_blank: true} %>
 			</div>
 		</div>
+
+
+		<div class="field">
+			<div class="image main">
+				<%= image_tag user.main_image, width: "100%", alt: "Main portfolio image" %>
+			</div>
+			<div>
+				<%= f.file_field :main_image %>
+			</div>
+		</div>
 	</fieldset>
 
 	<fieldset class="skills">
