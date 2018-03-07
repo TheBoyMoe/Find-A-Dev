@@ -12,7 +12,7 @@ RSpec.feature 'User index page', :devise do
 	# 	Then I should only see a listing of developers
 	scenario 'list registered developers' do
 		developer1 = FactoryBot.create(:user, name: 'Mock developer1', email: 'developer1@ex.com', role: 'developer', confirmed_at: Time.now.utc)
-		developer2 = FactoryBot.create(:user, name: 'Mock developer1', email: 'developer2@ex.com', role: 'developer', confirmed_at: Time.now.utc)
+		developer2 = FactoryBot.create(:user, name: 'Mock developer2', email: 'developer2@ex.com', role: 'developer', confirmed_at: Time.now.utc)
 		founder = FactoryBot.create(:user, name: 'Mock founder', email: 'founder@ex.com', role: 'founder', confirmed_at: Time.now.utc)
 
 		login_as(developer1, scope: :user)
