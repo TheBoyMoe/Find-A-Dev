@@ -12,24 +12,32 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		if @user.social_links.count == 0
-			@user.social_links.build
-		end
+		if current_user == @user
+			if @user.social_links.count == 0
+				@user.social_links.build
+			end
 
-		if @user.skills.count == 0
-			@user.skills.build
-		end
+			if @user.skills.count == 0
+				@user.skills.build
+			end
 
-		if @user.bio == 'add bio'
-			@user.bio = ''
+			if @user.bio == 'add bio'
+				@user.bio = ''
+			end
+		else
+			redirect_to root_path, alert: "Access denied"
 		end
 	end
 
 	def update
-		if @user.update(user_params)
-			redirect_to user_path @user, notice: "Profile successfully updated"
+		if current_user == @user
+			if @user.update(user_params)
+				redirect_to user_path @user, notice: "Profile successfully updated"
+			else
+				render action: 'edit'
+			end
 		else
-			render action: 'edit'
+			redirect_to root_path, alert: "Access denied"
 		end
 	end
 
