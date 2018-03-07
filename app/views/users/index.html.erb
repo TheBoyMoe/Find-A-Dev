@@ -1,0 +1,7 @@
+<h1>Registered Developers</h1>
+
+<% if @users.count > 0 %>
+	<% @users.each do |user| %>
+		<p><%= user.name %></p>
+	<% end %>
+<% end %>

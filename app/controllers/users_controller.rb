@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 		@social_links = @user.social_links
 	end
 
+	def index
+		@users = User.where(role: 'developer')
+	end
+
 	def edit
 		if @user.social_links.count == 0
 			@user.social_links.build
