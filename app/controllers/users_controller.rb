@@ -2,12 +2,13 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update]
 	before_action :authenticate_user!
 
-	def show
-		@social_links = @user.social_links
-	end
-
 	def index
 		@users = User.where(role: 'developer')
+	end
+
+	def show
+		@social_links = @user.social_links
+
 	end
 
 	def edit
