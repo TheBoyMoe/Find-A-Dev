@@ -2,9 +2,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// fonts
+@import "font-awesome";
+
 // Base assets
 //@import "base/mixins";
-//@import "base/variables";
 @import "base/variables";
 @import "base/grid";
 @import "base/general";
@@ -17,5 +19,4 @@
 
 
 // Plugins
-//@import "plugins/font-awesome";
 @import "plugins/devise";
