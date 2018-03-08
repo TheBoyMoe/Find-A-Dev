@@ -22,5 +22,3 @@ RSpec.describe UsersController, type: :controller do
 
 
 	describe "a user is prevented from updating their profile with invalid data"
-
-end
