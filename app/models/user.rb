@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google, :github]
 
+  has_many :conversations, foreign_key: :initiator_id
+  has_many :messages, foreign_key: :sender_id
+
   has_many :skills
   has_many :user_social_links
   has_many :social_links, through: :user_social_links

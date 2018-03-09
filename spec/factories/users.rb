@@ -9,5 +9,6 @@ FactoryBot.define do
 		bio 'text'
 		confirmed_at nil
 		role 0
+		conversations []
 	end
 end

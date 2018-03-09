@@ -99,4 +99,28 @@ RSpec.describe User, type: :model do
 		end
 	end
 
+	context "relationship to conversations" do
+
+		let(:jack) {User.create!(name: 'jack', email: 'jack@ex.com', password: '12345678')}
+		let(:jill) {User.create(name: 'jill', email: 'jill@ex.com', password: '12345678')}
+		let(:conversation) {Conversation.create!(title: 'start a conversation', initiator: jack, recipient: jill)}
+		let(:message) {Message.create(content: 'message body', sender: jack, conversation: conversation)}
+
+		it "has many conversations" do
+			expect(jack.conversations).to include conversation
+		end
+
+		it "does not include conversations not initiated" do
+			expect(jill.conversations).to_not include conversation
+		end
+
+		it "has many messages" do
+			expect(jack.messages).to include message
+		end
+
+		it "does not include messages where they are the recipient" do
+			expect(jill.messages).to_not include message
+		end
+	end
+
 end
