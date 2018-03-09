@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:show, :edit, :update, :index]
 
+	resources :conversations, only: [:index, :create] do
+		resources :messages
+	end
+
 	root to: 'static#home'
 
 	# routes
