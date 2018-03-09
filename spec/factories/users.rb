@@ -7,6 +7,7 @@ FactoryBot.define do
 		uid '12345678'
 		provider 'google'
 		bio 'text'
+		confirmed_at nil
 		role 0
 	end
 end

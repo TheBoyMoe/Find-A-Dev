@@ -4,13 +4,13 @@
   <%= devise_error_messages! %>
 
 	<div class="field">
-		<%= f.label :name %><br />
-		<%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+		<%= f.label :name %>
+		<%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name" %>
 	</div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,22 +18,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password %>
+		<em class="top">(leave blank if you don't want to change it)</em>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em class="bottom"><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.label :current_password %>
+		<em class="top">(we need your current password to confirm your changes)</em><br />
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: "current password" %>
   </div>
 
   <div class="actions">

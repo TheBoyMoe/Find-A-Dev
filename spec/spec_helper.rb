@@ -1,13 +1,13 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-require 'capybara/rspec'
+# require 'capybara/rspec'
 
-Capybara.javascript_driver = :webkit
+# Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
 
-  config.include Capybara::DSL
+  # config.include Capybara::DSL
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -18,5 +18,6 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+  config.order = :random
 
 end

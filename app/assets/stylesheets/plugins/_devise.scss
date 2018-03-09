@@ -67,6 +67,61 @@ div.devise {
   }
 }
 
+.container .devise {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  div.field {
+	margin-bottom: 20px;
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"]{
+	  width: 100%;
+	}
+
+	input[type="submit"] {
+	  margin-bottom: 20px;
+	}
+
+	em {
+	  padding-left: 1.0em;
+	  display: inline-block;
+	}
+
+	em.bottom {
+	  margin-top: 4px;
+	}
+
+	em.top {
+	  margin-bottom: 4px;
+	}
+  }
+
+  .field label {
+	display: none;
+  }
+
+  .field.password {
+	margin-bottom: 10px;
+  }
+
+  .remember-me {
+	margin-bottom: 10px;
+
+	label {
+	  font-weight: normal;
+	}
+  }
+
+  h2,
+  a {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+
+}
 
 .alert ul {
   margin-bottom: 0;

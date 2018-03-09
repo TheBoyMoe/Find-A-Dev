@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
       if current_user.role == 'user'
         edit_user_path(current_user)
       else
-        user_path(current_user)
+        # user_path(current_user)
+        root_path
       end
     end
   end

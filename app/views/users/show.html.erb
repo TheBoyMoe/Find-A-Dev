@@ -1,4 +1,29 @@
-<h3>Hi <%= @user.first_name %>, glad you could join us!</h3>
+<h1><%= @user.name %></h1>
+<p><%= @user.email %></p>
+<div class="profile-image"><%= image_tag @user.main_image, width: '50%' %></div>
+<h3>Bio</h3>
+<p><%= @user.bio %></p>
 
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %>
+<% if @user.skills.count > 0 %>
+	<h3>Technical Skills</h3>
+	<dl>
+		<% @user.skills.each do |skill| %>
+			<dt><%= skill.title %></dt>
+			<dd><%= skill.description %></dd>
+	<% end %>
+	</dl>
+<% end %>
+
+<% if @social_links.count > 0 %>
+	<h3>Follow me</h3>
+	<% @social_links.each do |link| %>
+		<%= link_to link.url, target: "_blank", class: "link_icon" do %>
+			<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
+		<% end %>&nbsp;
+	<% end %>
+<% end %>
+
+<br><br>
+<% if current_user == @user %>
+	<%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+<% end %>

@@ -14,6 +14,7 @@ RSpec.feature 'Feature test: create user profile', type: :feature do
 			i += 1
 		end
 	}
+
 	scenario 'newly created user is directed to complete their profile' do
 		@user = FactoryBot.create(:user)
 		@user.confirmed_at = Time.now.utc
