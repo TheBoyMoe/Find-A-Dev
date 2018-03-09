@@ -36,8 +36,8 @@ RSpec.feature "user update action" do
 		expect(page).to have_content("Sales and marketing expert with over 10 years experience")
 		expect(page).to have_content("Software sales")
 		expect(page).to have_content("Over 10 years of software sales with fortune 500 companies")
-		expect(page).to have_link("Linkedin", "https://linkedin.com/#{developer.first_name}")
-
+		# expect(page).to have_link("Linkedin", "https://linkedin.com/#{developer.first_name}")
+		expect(page).to have_css(".fa-linkedin")
 	end
 
 end
