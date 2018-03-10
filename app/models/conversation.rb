@@ -24,6 +24,10 @@ class Conversation < ApplicationRecord
 		create(initiator_id: initiator_id, recipient_id: recipient_id)
 	end
 
+	def self.get_user_conversations(user_id)
+		where(initiator_id: user_id).or(where(recipient_id: user_id))
+	end
+
 	private
 		def self.two_users_exist?(initiator_id, recipient_id)
 			User.where(id: initiator_id).exists? &&

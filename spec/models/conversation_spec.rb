@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Conversation, type: :model do
 
 
-	context "is invalid" do
+	describe "is invalid" do
 		before {
 			@conversation = FactoryBot.build(:conversation, initiator: nil, recipient: nil)
 			@conversation.valid?
@@ -23,7 +23,7 @@ RSpec.describe Conversation, type: :model do
 
 	end
 
-	context "relationships" do
+	describe "relationships" do
 		let(:jack) {User.create!(name: 'jack', email: 'jack@ex.com', password: '12345678')}
 		let(:jill) {User.create(name: 'jill', email: 'jill@ex.com', password: '12345678')}
 		let(:conversation) {jack.conversations.create(title: 'start a conversation', recipient: jill)}
@@ -42,5 +42,44 @@ RSpec.describe Conversation, type: :model do
 			expect(conversation.messages).to include message
 		end
 	end
+
+	describe "class methods" do
+
+		let!(:jack) {User.create(name: 'jack', email: 'jack@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
+		let!(:jill) {User.create(name: 'jill', email: 'jill@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
+		let!(:mary) {User.create(name: 'mary', email: 'mary@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
+		let!(:jack_initiates) {jack.conversations.create(title: 'jack starts ...', recipient: jill)}
+		let!(:jill_initiates) {jill.conversations.create(title: 'jill starts ...', recipient: jack)}
+
+		describe ".find_or_create" do
+
+			it "creates a new conversation where none exists" do
+				conversation = Conversation.find_or_create(mary.id, jill.id)
+				expect([jack_initiates, jill_initiates]).to_not include conversation
+			end
+
+			it "returns an ongoing conversation" do
+				conversation = Conversation.find_or_create(jack.id, jill.id)
+				expect([jack_initiates, jill_initiates]).to include conversation
+			end
+
+			it "returns nil when either user does not exist" do
+				expect(Conversation.find_or_create(jack.id, 10)).to be nil
+			end
+
+		end
+
+		describe ".get_user_conversations" do
+			let!(:mary_initiates) {mary.conversations.create(title: 'mary initiates ...', recipient: jill)}
+
+			it "returns conversations where the user is either the initiator or the recipient" do
+				conversations = Conversation.get_user_conversations(jack.id)
+				array = conversations.map {|c| c.id}
+				expect([jack_initiates.id, jill_initiates.id]).to eq array
+			end
+		end
+
+	end
+
 
 end

@@ -1,8 +1,7 @@
 class ConversationsController < ApplicationController
 
 	def index
-		@conversations = Conversation.where(initiator_id: current_user.id).or(
-				where(recipient_id: current_user.id))
+		@conversations = Conversation.get_user_conversations(current_user.id)
 	end
 
 	def create
@@ -10,7 +9,7 @@ class ConversationsController < ApplicationController
 		if @conversation
 			redirect_to conversation_messages_path(@conversation)
 		else
-			render :index
+			redirect_to root_path, alert: "unable to find existing conversation or create a new one."
 		end
 	end
 
