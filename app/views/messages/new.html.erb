@@ -1,0 +1,18 @@
+<h1>Submit a message to <%= other_conversation_participant(@conversation) %></h1>
+
+<%= form_for [@conversation, @message], class: "reply form" do |f| %>
+
+	<div class="field">
+		<%= f.text_area :content, autofocus: true, placeholder: "Add reply", class: "form-control" %>
+	</div>
+
+	<%= f.text_field :sender_id, value: current_user.id, type: "hidden"  %>
+
+	<div class="actions">
+		<%= f.submit "Reply", class: "btn btn-block btn-info" %>
+	</div>
+
+<% end %>
+
+<br>
+<%= link_to 'Back', conversation_messages_path(@conversation) %>
