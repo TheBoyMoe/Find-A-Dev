@@ -23,7 +23,7 @@ class Conversation < ApplicationRecord
 		conversation = between(initiator_id, recipient_id).first
 		return conversation if conversation.present?
 
-		create(title: params[:title], initiator_id: initiator_id, recipient_id: recipient_id)
+		new(title: params[:title], initiator_id: initiator_id, recipient_id: recipient_id)
 	end
 
 	def self.get_user_conversations(user_id)

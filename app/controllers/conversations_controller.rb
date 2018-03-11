@@ -7,8 +7,11 @@ class ConversationsController < ApplicationController
 
 	def create
 		@conversation = Conversation.find_or_create(current_user.id, conversation_params)
-		if @conversation
-			redirect_to conversation_messages_path(@conversation)
+		if @conversation && @conversation.id.nil?
+			@conversation.save
+			redirect_to new_conversation_message_path(@conversation), notice: "Start a new conversation"
+		elsif @conversation
+			redirect_to conversation_messages_path(@conversation), alert: "Conversation ongoing"
 		else
 			redirect_to root_path, alert: "unable to find existing conversation or create a new one."
 		end

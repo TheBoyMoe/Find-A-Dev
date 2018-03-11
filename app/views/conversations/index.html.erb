@@ -14,6 +14,6 @@
 	<%= label_tag "Title" %>
 	<%= text_field_tag :title %><br>
 	<%= label_tag "Select user" %>
-	<%= select_tag "recipient_id", options_for_select(@users.collect {|u| [u.name, u.id]}), include_blank: true %>
+	<%= select_tag "recipient_id", options_for_select(@users.collect {|u| [u.name, u.id]}), include_blank: true %><br>
 	<%= submit_tag "Start conversation"	%>
 <% end %>
