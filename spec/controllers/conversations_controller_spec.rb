@@ -4,6 +4,7 @@ RSpec.describe ConversationsController, type: :controller do
 
 	let!(:jack) {User.create(name: 'jack', email: 'jack@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
 	let!(:jill) {User.create(name: 'jill', email: 'jill@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
+	let!(:mary) {User.create(name: 'mary', email: 'mary@ex.com', password: '12345678', confirmed_at: Time.now.utc)}
 	let!(:conversation) {jack.conversations.create(title: 'jack starts ...', recipient: jill)}
 
 	describe "#index" do
@@ -24,12 +25,23 @@ RSpec.describe ConversationsController, type: :controller do
 		context "with valid users" do
 			before {
 				sign_in jack
-				post :create, params: {id: jill.id}
 			}
 
-			it "display the current or new conversation when both users exist" do
-				expect(response).to redirect_to conversation_messages_path(conversation)
+			context "when a conversation exists" do
+				it "display the current conversation" do
+					post :create, params: {recipient_id: jill.id}
+					expect(response).to redirect_to conversation_messages_path(conversation)
+				end
 			end
+
+			context "when a conversation does not exist" do
+				it "creates a new one" do
+					expect {
+						post :create, params: {title: "new message ..", recipient_id: mary.id}
+					}.to change(Conversation, :count).by 1
+				end
+			end
+
 		end
 
 		context "with an invalid recipient" do
@@ -43,9 +55,6 @@ RSpec.describe ConversationsController, type: :controller do
 			end
 		end
 
-
 	end
-
-
 
 end

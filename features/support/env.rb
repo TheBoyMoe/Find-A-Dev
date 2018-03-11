@@ -1,5 +1,5 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+# SimpleCov.start 'rails'
 
 require 'cucumber/rails'
 require 'factory_bot_rails'

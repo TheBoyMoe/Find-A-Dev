@@ -54,17 +54,17 @@ RSpec.describe Conversation, type: :model do
 		describe ".find_or_create" do
 
 			it "creates a new conversation where none exists" do
-				conversation = Conversation.find_or_create(mary.id, jill.id)
+				conversation = Conversation.find_or_create(mary.id, {title: 'New conversation', recipient_id: jill.id})
 				expect([jack_initiates, jill_initiates]).to_not include conversation
 			end
 
 			it "returns an ongoing conversation" do
-				conversation = Conversation.find_or_create(jack.id, jill.id)
+				conversation = Conversation.find_or_create(jack.id, {recipient_id: jill.id})
 				expect([jack_initiates, jill_initiates]).to include conversation
 			end
 
 			it "returns nil when either user does not exist" do
-				expect(Conversation.find_or_create(jack.id, 10)).to be nil
+				expect(Conversation.find_or_create(jack.id, {recipient_id: 10})).to be nil
 			end
 
 		end
