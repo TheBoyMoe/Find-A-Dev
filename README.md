@@ -26,17 +26,19 @@ To use javascript in you Cucumber scenarios, tag your scenarios with the `@javas
 ### TODO
 
 [x] Redirect users to their profile page until it has been completed
-[] Allow users to create/edit their profiles
-[] List Developer Profiles
+[X] Allow users to create/edit their profiles
+[X] List Developer Profiles
+[X] Add messaging system
 [] Allow founders the ability to create opportunities
 [] List founder opportunities
-[] Add messaging system
+[] Paginate developer/opportunity list list
+[] Add search of developers skills
 
-
-[] Add search of developers
-[] Send email notification when someone has sent you a message
+#### Optional
+[] Display a notification when someone has sent you a message
 [] Add option to your account page to turn notifications on/off
-
+[] Add tags/categories to filter developers based on skill
+[] Add friendly urls
 
 
 ### References
@@ -57,4 +59,7 @@ Authentication using Devise
 [Setting up multiple providers using omniauth and Devise](https://scotch.io/tutorials/integrating-social-login-in-a-ruby-on-rails-application)  
 [Google Omniauth Strategy](https://github.com/zquestz/omniauth-google-oauth2)  
 [Github Omniauth Strategy](https://github.com/omniauth/omniauth-github)  
- 
+
+Messaging
+[Create a simple messaging system for rails](https://medium.com/@danamulder/tutorial-create-a-simple-messaging-system-on-rails-d9b94b0fbca1)
+[Rails chat application](https://www.nopio.com/blog/rails-real-time-chat-application-part-1/) 

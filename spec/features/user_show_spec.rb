@@ -27,7 +27,8 @@ RSpec.feature "User show page" do
 		expect(page).to have_content(developer.bio)
 		expect(page).to have_content(developer.skills.last.title)
 		expect(page).to have_content(developer.skills.last.description)
-		expect(page).to have_link("#{developer.social_links.last.name}", href: "#{developer.social_links.last.url}")
+		# expect(page).to have_link("#{developer.social_links.last.name}", href: "#{developer.social_links.last.url}")
+		expect(page).to have_css(".fa-#{developer.social_links.last.name.downcase}")
 		expect(page).to have_link("Edit Profile")
 	end
 

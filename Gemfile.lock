@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 679fd508c9f41f41b6df62024d67bc2281953395
+  branch: master
+  specs:
+    faker (1.8.7)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,7 +49,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.1.0)
+    autoprefixer-rails (8.1.0.1)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -118,8 +126,6 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    faker (1.8.7)
-      i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
@@ -353,7 +359,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.1)
   dotenv-rails (~> 2.2, >= 2.2.1)
   factory_bot_rails (~> 4.8, >= 4.8.2)
-  faker (~> 1.8, >= 1.8.7)
+  faker!
   font-awesome-rails (~> 4.7, >= 4.7.0.3)
   guard (~> 2.14, >= 2.14.2)
   guard-cucumber (~> 2.1, >= 2.1.2)

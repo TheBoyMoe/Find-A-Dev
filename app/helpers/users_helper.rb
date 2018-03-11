@@ -19,4 +19,12 @@ module UsersHelper
 		end
 	end
 
+	def other_conversation_participant(conversation)
+		if conversation.initiator_id == current_user.id
+			"#{User.find(conversation.recipient_id).name}"
+		else
+			"#{User.find(conversation.initiator_id).name}"
+		end
+	end
+
 end

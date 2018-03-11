@@ -1,5 +1,5 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+# SimpleCov.start 'rails'
 
 # require 'capybara/rspec'
 
