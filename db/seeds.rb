@@ -49,7 +49,27 @@ def update_user_profile
 	end
 end
 
+def make_conversations
+	i = 1
+	5.times do
+		user_a = User.find(i)
+		user_b = User.find(i + 1)
+		conversation = Conversation.create!(
+			title: Faker::Lorem.sentence,
+			initiator_id: user_a.id,
+			recipient_id: user_b.id
+		)
+		4.times do
+			conversation.messages.create!(content: Faker::Lorem.paragraph, sender: user_a)
+			conversation.messages.create!(content: Faker::Lorem.paragraph, sender: user_b)
+		end
+
+		i += 1
+	end
+end
+
 
 make_social_links
 make_users
 update_user_profile
+make_conversations
