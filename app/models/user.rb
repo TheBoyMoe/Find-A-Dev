@@ -53,6 +53,8 @@ class User < ApplicationRecord
     end
   end
 
+  scope :all_except, ->(user) { where.not(id: user) }
+
   def social_links_attributes=(link_attributes)
     link_names = self.social_links.pluck(:name)
     link_attributes.values.each do |link_attribute|

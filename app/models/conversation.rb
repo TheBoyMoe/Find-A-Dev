@@ -15,13 +15,15 @@ class Conversation < ApplicationRecord
 	end
 	
 	# fetch the conversation or create it
-	def self.find_or_create(initiator_id, recipient_id)
+	def self.find_or_create(id, params)
+		initiator_id = id
+		recipient_id = params[:recipient_id]
 		return unless two_users_exist?(initiator_id, recipient_id)
 
 		conversation = between(initiator_id, recipient_id).first
 		return conversation if conversation.present?
 
-		create(initiator_id: initiator_id, recipient_id: recipient_id)
+		create(title: params[:title], initiator_id: initiator_id, recipient_id: recipient_id)
 	end
 
 	def self.get_user_conversations(user_id)
