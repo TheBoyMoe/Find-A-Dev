@@ -30,6 +30,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -46,7 +47,6 @@ group :test do
   gem 'capybara-webkit', '~> 1.14'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'launchy', '~> 2.4', '>= 2.4.3'
-  gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'shoulda-matchers', require: false
   gem 'guard', '~> 2.14', '>= 2.14.2'
   gem 'guard-rspec', require: false

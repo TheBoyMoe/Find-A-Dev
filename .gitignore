@@ -26,3 +26,4 @@
 coverage/*
 .env
 public/uploads/*
+public/profile_imgs/*

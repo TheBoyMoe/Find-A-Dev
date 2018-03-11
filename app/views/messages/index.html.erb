@@ -1,0 +1,15 @@
+<h3><%= @conversation.title %></h3>
+<% if @messages.count > 0 %>
+	<% messages.each do |message| %>
+		<div class="message-author">
+			<%= message.sender.firstname %>
+			<%= image_tag message.sender.main_image, width: "50%" %>
+		</div>
+		<div class="messsage-body">
+			<p>message.body</p>
+		</div>
+	<% end %>
+<% end %>
+
+<br>
+<%= link_to "New message", new_conversation_message_path(@conversation) %>
