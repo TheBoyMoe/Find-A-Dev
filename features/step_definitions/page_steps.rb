@@ -1,6 +1,7 @@
 def paths(page)
 	{
 			'home'=> root_path,
+			'welcome' => welcome_path,
 			'sign in' => new_user_session_path,
 			'sign up' => new_user_registration_path,
 			'sign out' => destroy_user_session_path

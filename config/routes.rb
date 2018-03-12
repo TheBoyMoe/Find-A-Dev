@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
 	root to: 'static#home'
 
+	get '/welcome', to: 'static#welcome'
+
 	# routes
 	# new_user_session 				GET    /sign_in(.:format)       devise/sessions#new
 	# user_session 						POST   /sign_in(.:format)       devise/sessions#create
