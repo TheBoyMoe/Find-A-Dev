@@ -4,10 +4,10 @@
 <h3>Bio</h3>
 <p><%= @user.bio %></p>
 
-<% if @user.skills.count > 0 %>
+<% if @user.user_skills.count > 0 %>
 	<h3>Technical Skills</h3>
 	<dl>
-		<% @user.skills.each do |skill| %>
+		<% @user.user_skills.each do |skill| %>
 			<dt><%= skill.title %></dt>
 			<dd><%= skill.description %></dd>
 	<% end %>

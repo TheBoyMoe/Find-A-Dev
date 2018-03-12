@@ -92,10 +92,10 @@ RSpec.describe User, type: :model do
 
 	end
 
-	context "relationship to skills" do
-		it "has many skills" do
-			skill = FactoryBot.create(:skill, user: user)
-			expect(user.skills).to include skill
+	context "relationship to user skills" do
+		it "has many user skills" do
+			skill = FactoryBot.create(:user_skill, user: user)
+			expect(user.user_skills).to include skill
 		end
 	end
 

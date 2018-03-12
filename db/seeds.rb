@@ -38,8 +38,8 @@ def update_user_profile
 		user.role = roles[Random.rand(2)]
 		user.bio = Faker::Lorem.paragraph(6)
 		user.main_image = "/public/profile_imgs/profile-#{i}.png"
-		user.skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
-		user.skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
+		user.user_skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
+		user.user_skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
 		user.social_links.create!(name: social_links[link], url: Faker::Internet.url("#{social_links[link].downcase}.com"))
 		user.save
 		i += 1
@@ -70,10 +70,6 @@ end
 
 def make_additional_conversations
 	user_a = User.find(1)
-	# user_c = User.find(3)
-	# user_d = User.find(4)
-	# user_e = User.find(5)
-	# user_f = User.find(6)
 	i = 0
 	users = [User.find(3), User.find(4), User.find(5), User.find(6)]
 	4.times do

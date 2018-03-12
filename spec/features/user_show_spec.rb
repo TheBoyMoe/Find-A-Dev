@@ -16,17 +16,18 @@ RSpec.feature "User show page" do
 	scenario "display the user's profile details" do
 		developer.bio = "Over ten years of software development experience having worked in for many ......"
 		developer.save
-		FactoryBot.create(:skill, user: developer)
+		FactoryBot.create(:user_skill, user: developer)
 		social_link = FactoryBot.create(:social_link)
 		FactoryBot.create(:user_social_link, user: developer, social_link: social_link)
 
 		login_as(developer, scope: :user)
 		visit user_path(developer)
+
 		expect(page).to have_content(developer.name)
 		expect(page).to have_content(developer.email)
 		expect(page).to have_content(developer.bio)
-		expect(page).to have_content(developer.skills.last.title)
-		expect(page).to have_content(developer.skills.last.description)
+		expect(page).to have_content(developer.user_skills.last.title)
+		expect(page).to have_content(developer.user_skills.last.description)
 		# expect(page).to have_link("#{developer.social_links.last.name}", href: "#{developer.social_links.last.url}")
 		expect(page).to have_css(".fa-#{developer.social_links.last.name.downcase}")
 		expect(page).to have_link("Edit Profile")

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :skill do
-    title "Ruby on Rails"
-    description "Over ten years of software development experience"
-    user nil
+    title "title"
+    description "description"
+		skill_id 1
   end
 end
