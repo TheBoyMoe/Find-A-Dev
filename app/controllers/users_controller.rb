@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 				@user.social_links.build
 			end
 
-			if @user.skills.count == 0
-				@user.skills.build
+			if @user.user_skills.count == 0
+				@user.user_skills.build
 			end
 
 			if @user.bio == 'add bio'
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 							:name,
 							:url
 					],
-					skills_attributes: [
+					user_skills_attributes: [
 							:title,
 							:description
 					]

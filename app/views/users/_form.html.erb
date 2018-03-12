@@ -31,12 +31,12 @@
 	<fieldset class="skills">
 		<legend>List your skills</legend>
 		<div class="skill">
-			<%= f.fields_for :skills do |builder| %>
-				<%= render partial: 'skill_field', locals: {f: builder} %>
+			<%= f.fields_for :user_skills do |builder| %>
+				<%= render partial: 'user_skill_field', locals: {f: builder} %>
 			<% end %>
 
 			<div class="control-group">
-				<%= add_another_field 'Add Skill', f, :skills %>
+				<%= add_another_field 'Add Skill', f, :user_skills %>
 			</div>
 		</div>
 	</fieldset>

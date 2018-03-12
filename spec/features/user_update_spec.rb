@@ -26,8 +26,8 @@ RSpec.feature "user update action" do
 		visit edit_user_path(founder)
 
 		fill_in 'user_bio', with: 'Sales and marketing expert with over 10 years experience'
-		fill_in 'user_skills_attributes_0_title', with: 'Software sales'
-		fill_in 'user_skills_attributes_0_description', with: "Over 10 years of software sales with fortune 500 companies"
+		fill_in 'user_user_skills_attributes_0_title', with: 'Software sales'
+		fill_in 'user_user_skills_attributes_0_description', with: "Over 10 years of software sales with fortune 500 companies"
 		select 'Linkedin', from: 'user_social_links_attributes_0_name'
 		fill_in 'user_social_links_attributes_0_url', with: "https://linkedin.com/#{developer.first_name}"
 		click_on "Update User"

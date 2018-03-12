@@ -7,8 +7,9 @@ class User < ApplicationRecord
 
   has_many :conversations, foreign_key: :initiator_id
   has_many :messages, foreign_key: :sender_id
+  has_many :opportunities, foreign_key: :author_id
 
-  has_many :skills
+  has_many :user_skills, foreign_key: :skill_id
   has_many :user_social_links
   has_many :social_links, through: :user_social_links
   # accepts_nested_attributes_for :skills # replaced by custom attribute writer
@@ -72,10 +73,10 @@ class User < ApplicationRecord
     end
   end
 
-  def skills_attributes=(skills_attributes)
-    self.skills.destroy_all
+  def user_skills_attributes=(skills_attributes)
+    self.user_skills.destroy_all
     skills_attributes.values.each do |skill_attribute|
-      self.skills.create(skill_attribute)
+      self.user_skills.create(skill_attribute)
     end
   end
 

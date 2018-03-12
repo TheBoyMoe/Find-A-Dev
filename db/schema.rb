@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309124234) do
+ActiveRecord::Schema.define(version: 20180312093917) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "title"
@@ -30,13 +30,20 @@ ActiveRecord::Schema.define(version: 20180309124234) do
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
+  create_table "opportunities", force: :cascade do |t|
+    t.text "description"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_skills_on_user_id"
+    t.string "type"
+    t.integer "skill_id"
   end
 
   create_table "social_links", force: :cascade do |t|
