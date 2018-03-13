@@ -14,7 +14,6 @@ class OpportunitiesController < ApplicationController
 	end
 
 	def create
-		byebug
 		@opportunity = Opportunity.new(opportunity_params)
 		if @opportunity.save
 			redirect_to opportunities_path, notice: "New opportunity added"
