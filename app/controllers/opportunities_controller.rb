@@ -14,7 +14,12 @@ class OpportunitiesController < ApplicationController
 	end
 
 	def create
-
+		@opportunity = Opportunity.new(opportunity_params)
+		if @opportunity.save
+			redirect_to opportunities_path, notice: "New opportunity added"
+		else
+			render :new
+		end
 	end
 
 	def edit
@@ -28,5 +33,9 @@ class OpportunitiesController < ApplicationController
 	private
 		def set_opportunity
 			@opportunity = Opportunity.find(params[:id])
+		end
+
+		def opportunity_params
+			params.require(:opportunity).permit(:description, :author_id)
 		end
 end
