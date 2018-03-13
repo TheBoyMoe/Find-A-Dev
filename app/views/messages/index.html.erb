@@ -1,14 +1,18 @@
 <h3><%= @conversation.title %></h3>
 <% if @messages.count > 0 %>
-	<% @messages.each do |message| %>
-		<div class="message-author">
-			<%= message.sender.name %>
-			<%= image_tag message.sender.main_image, width: "50%" %>
-		</div>
-		<div class="messsage-body">
-			<p><%= message.content %></p>
-		</div>
-	<% end %>
+	<ul class="items messages">
+		<% @messages.each do |message| %>
+			<li class="item message">
+				<div class="message-author">
+					<p><%= message.sender.name %></p>
+					<%= image_tag message.sender.main_image, width: "50%" %>
+				</div>
+				<div class="messsage-body">
+					<p><%= message.content %></p>
+				</div>
+			</li>
+		<% end %>
+	</ul>
 <% end %>
 
 <br>

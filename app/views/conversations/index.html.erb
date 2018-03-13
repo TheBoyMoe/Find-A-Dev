@@ -1,9 +1,9 @@
 <h1><%= current_user.name %></h1>
 <% if @conversations.count > 0 %>
 	<h3>Your conversations</h3>
-	<ul>
+	<ul class="items conversations">
 		<% @conversations.each do |conversation| %>
-			<li><%= link_to conversation.title, conversation_messages_path(conversation) %></li>
+			<li class="item conversation"><%= link_to conversation.title, conversation_messages_path(conversation) %></li>
 		<% end %>
 	</ul>
 <% end %>

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 		resources :messages, only: [:index, :new, :create]
 	end
 
+	resources :opportunities, only: [:show, :index, :new, :create, :edit, :update]
+
 	root to: 'static#home'
+
+	get '/welcome', to: 'static#welcome'
 
 	# routes
 	# new_user_session 				GET    /sign_in(.:format)       devise/sessions#new

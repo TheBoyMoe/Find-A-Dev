@@ -1,0 +1,12 @@
+<h1>List of all current opportunities</h1>
+
+<% if @opportunities.count > 0 %>
+	<ul class="items opportunities">
+		<% @opportunities.each do |opportunity| %>
+			<li class="item opportunity">
+				<%= opportunity.description %>
+				<%= link_to "Read more", opportunity_path(opportunity) %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>

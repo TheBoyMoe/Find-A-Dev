@@ -6,10 +6,10 @@
 
 <% if @user.user_skills.count > 0 %>
 	<h3>Technical Skills</h3>
-	<dl>
+	<dl class="items skills">
 		<% @user.user_skills.each do |skill| %>
-			<dt><%= skill.title %></dt>
-			<dd><%= skill.description %></dd>
+			<dt class="skill-title"><%= skill.title %></dt>
+			<dd class="skill-description"><%= skill.description %></dd>
 	<% end %>
 	</dl>
 <% end %>

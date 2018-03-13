@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   layout :layout_by_resource
 
-  # redirect users to their profile page following successful sign in
+  # redirect users to the profile following successful sign in if it has not been completed
   def after_sign_in_path_for(resource)
     if user_signed_in?
       if current_user.role == 'user'
         edit_user_path(current_user)
       else
         # user_path(current_user)
-        root_path
+        welcome_path
       end
     end
   end

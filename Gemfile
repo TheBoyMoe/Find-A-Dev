@@ -51,6 +51,7 @@ group :test do
   gem 'guard', '~> 2.14', '>= 2.14.2'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber', '~> 2.1', '>= 2.1.2'
+	gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -16,6 +16,8 @@ body {
 }
 
 
+
+/* forms */
 form {
 
   div.field {
@@ -89,13 +91,18 @@ form {
 
 }
 
-
-div.category-list {
-  margin-bottom: 20px;
+form.button_to {
+  float: right;
 }
 
-ul.item-list {
-  list-style-type: none;
+
+
+
+
+
+/* ul lists */
+ul.items {
+  list-style: none;
   padding-left: 0;
 
   li {
@@ -103,11 +110,15 @@ ul.item-list {
   }
 }
 
-form.button_to {
-  float: right;
+
+div.category-list {
+  margin-bottom: 20px;
 }
 
+
+/* media queries */
 @media (min-width: 600px) {
+  form.new_opportunity,
   form.edit_user {
 	width: 60%;
   }
