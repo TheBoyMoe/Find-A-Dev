@@ -2,19 +2,19 @@ class OpportunitiesController < ApplicationController
 	before_action :set_opportunity, only: [:show, :edit, :update]
 
 	def index
-
+		@opportunities = Opportunity.all
 	end
 
 	def show
-
 	end
 
 	def new
 		@opportunity = Opportunity.new
-		@opportunity_skill = OpportunitySkill.new
+		@opportunity.opportunity_skills.build
 	end
 
 	def create
+		byebug
 		@opportunity = Opportunity.new(opportunity_params)
 		if @opportunity.save
 			redirect_to opportunities_path, notice: "New opportunity added"

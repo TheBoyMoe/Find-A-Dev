@@ -108,6 +108,7 @@ form.button_to {
 }
 
 @media (min-width: 600px) {
+  form.new_opportunity,
   form.edit_user {
 	width: 60%;
   }
