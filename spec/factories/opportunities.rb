@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :opportunity do
     description "Looking to build the next Amazon!"
-		author nil
+		author_id 1
   end
 end

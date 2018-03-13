@@ -78,7 +78,24 @@ RSpec.describe OpportunitiesController, type: :controller do
 	end
 
 
-	describe "#show"
+	describe "#show" do
+		let!(:opportunity) {FactoryBot.create(:opportunity, author_id: user.id)}
+
+		context "as an authenticated user" do
+			it "renders the show view" do
+				sign_in user
+				get :show, params: {id: opportunity.id}
+				expect(response).to render_template('show')
+			end
+		end
+
+		context "as a guest user" do
+			it "redirects the user to the login page" do
+				get :show, params: {id: 1}
+				expect(response).to redirect_to new_user_session_path
+			end
+		end
+	end
 
 
 	describe "#edit"
