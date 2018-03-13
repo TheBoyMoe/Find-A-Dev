@@ -6,6 +6,8 @@ class OpportunitiesController < ApplicationController
 	end
 
 	def show
+		@skills = @opportunity.opportunity_skills
+		@author = @opportunity.author
 	end
 
 	def new
@@ -46,6 +48,13 @@ class OpportunitiesController < ApplicationController
 		end
 
 		def opportunity_params
-			params.require(:opportunity).permit(:description, :author_id)
+			params.require(:opportunity).permit(
+					:description,
+					:author_id,
+					opportunity_skills_attributes: [
+							:title,
+							:description
+					]
+			)
 		end
 end
