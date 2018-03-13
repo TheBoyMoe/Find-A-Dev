@@ -11,6 +11,7 @@ class OpportunitiesController < ApplicationController
 
 	def new
 		@opportunity = Opportunity.new
+		@opportunity_skill = OpportunitySkill.new
 	end
 
 	def create

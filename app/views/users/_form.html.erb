@@ -1,14 +1,14 @@
 <%= form_for(user) do |f| %>
 
-	<%= render partial: 'errors', locals: {user: user} %>
+	<%= render partial: 'shared/errors', locals: {user: user} %>
 
 	<fieldset class="info">
 		<legend>General Information</legend>
-		<%= render partial: 'text_field', locals: {builder: f, prop: :name} %>
+		<%= render partial: 'shared/text_field', locals: {builder: f, prop: :name} %>
 
-		<%= render partial: 'text_field', locals: {builder: f, prop: :email} %>
+		<%= render partial: 'shared/text_field', locals: {builder: f, prop: :email} %>
 
-		<%= render partial: 'text_area', locals: {builder: f, prop: :bio} %>
+		<%= render partial: 'shared/text_area', locals: {builder: f, prop: :bio} %>
 
 		<div class="field">
 			<div class="control-group">
