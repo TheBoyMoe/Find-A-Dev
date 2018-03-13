@@ -23,11 +23,21 @@ class OpportunitiesController < ApplicationController
 	end
 
 	def edit
-
+		if current_user != @opportunity.author
+			redirect_to welcome_path, alert: "Access denied"
+		end
 	end
 
 	def update
-
+		if current_user == @opportunity.author
+			if @opportunity.update(opportunity_params)
+				redirect_to opportunity_path(@opportunity), notice: "Opportunity successfully updated"
+			else
+				render :edit
+			end
+		else
+			redirect_to welcome_path, alert: "Access denied"
+		end
 	end
 
 	private
