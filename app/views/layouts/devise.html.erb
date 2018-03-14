@@ -8,13 +8,14 @@
 	<%= analytics_init if Rails.env.production? %>
 </head>
 
-<body>
+<body id="devise">
 	<%= render 'layouts/header' %>
 
 	<div class="container">
 		<%= render 'layouts/flash' %>
+		<%= devise_error_messages! %>
 
-		<div class="devise">
+		<div class="devise clearfix">
 			<%= yield %>
 		</div>
 

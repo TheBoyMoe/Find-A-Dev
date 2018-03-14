@@ -4,99 +4,180 @@
   text-align: right;
 }
 
-div.devise form {
-  margin: 0 auto;
 
-  .field {
-	margin-bottom: 0.5em;
-  }
 
-  input {
-	width: 100%;
-	border-radius: 4px;
-	border: 1px solid #DADADA;
-  }
-
-  input[type="checkbox"] {
-	width: inherit;
-	height: inherit;
-  }
-
-  input[type="submit"] {
-	margin-bottom: 1.0em;
-	border: 1px solid #007bff;
-  }
-
-  a.btn.btn-primary.btn-block {
-	padding-top: 0.7em;
-	padding-bottom: 0.7em;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-	height: 46px;
-	padding-left: 1.0em;
-  }
-
-  input[type="submit"] {
-	height: 46px;
-	font-size: 15px;
-  }
-
+body#devise {
+  background: #1F424E;
 }
 
 .container .devise {
-  width: 380px;
+  width: 864px;
   margin: 80px auto 0;
-  padding: 40px;
   background: #fff;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 
-  div.field {
 
-	input[type="text"],
-	input[type="email"],
-	input[type="password"] {
-	  width: 100%;
+  .intro {
+	padding: 40px;
+	background: #ff6261;
+	color: #fff;
+	height: 612px;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+
+	.logo {
+	  width: 150px;
+	  height: 150px;
+	  background-image: url('logo.png');
+	  background-repeat: no-repeat;
+	  background-size: 100%;
+	  margin: 48px auto;
 	}
 
-	input[type="submit"] {
-	  margin-bottom: 20px;
-	}
-
-	em {
-	  padding-left: 1.0em;
+	.fa-circle-thin {
+	  font-weight: 700;
 	  display: inline-block;
+	  margin-right: 8px;
 	}
 
-	em.bottom {
-	  margin-top: 4px;
+  }
+
+
+  .register {
+	padding: 40px;
+	width: 438px;
+
+	div.field {
+	  margin-bottom: 0.5em;
+
+	  input[type="text"],
+	  input[type="email"],
+	  input[type="password"] {
+		width: 100%;
+		border-radius: 4px;
+		border: 1px solid #DADADA;
+		height: 46px;
+		padding-left: 1.0em;
+	  }
+
+	  input[type="checkbox"] {
+		width: inherit;
+		height: inherit;
+	  }
+
+	  em {
+		padding-left: 1.0em;
+		display: inline-block;
+	  }
+
+	  em.bottom {
+		margin-top: 4px;
+	  }
+
+	  em.top {
+		margin-bottom: 4px;
+	  }
+
+	  a.btn.btn-primary.btn-block {
+		padding-top: 0.7em;
+		padding-bottom: 0.7em;
+	  }
 	}
 
-	em.top {
-	  margin-bottom: 4px;
+	div.actions {
+	  input[type="submit"] {
+		margin-bottom: 1.0em;
+		border: 1px solid #007bff;
+		height: 46px;
+		font-size: 15px;
+	  }
 	}
-  }
 
-  .field label {
-	display: none;
-  }
-
-  .field.password {
-	margin-bottom: 10px;
-  }
-
-  .remember-me {
-	margin-bottom: 10px;
-
-	label {
-	  font-weight: normal;
+	.field label {
+	  display: none;
 	}
+
+	.field.password {
+	  margin-bottom: 10px;
+	}
+
+	.remember-me {
+	  margin-bottom: 10px;
+
+	  label {
+		font-weight: normal;
+	  }
+	}
+
+	/* omniauth providers */
+	.social {
+	  float: none;
+	  margin: 0 auto 36px;
+	  text-align: center;
+
+	  .circle {
+		background-color: #EEEEEE;
+		color: #FFFFFF;
+		border-radius: 25px;
+		display: inline-block;
+		margin: 0 8px;
+		padding: 15px;
+	  }
+
+	  .circle span {
+		text-indent: -99999px;
+		display: inline-block;
+		width: 0;
+		height: 0;
+	  }
+
+	  .google {
+		background-color: #F74933;
+	  }
+
+	  .github {
+		background-color: #403A3A;
+	  }
+
+	  .facebook {
+		background-color: #455CA8;
+	  }
+
+	  .circle:hover {
+		opacity: 0.8;
+	  }
+	}
+
+
+	/* horizontal line */
+	.division {
+	  float: none;
+	  margin: 0 auto 36px;
+	  overflow: hidden;
+	  position: relative;
+	  text-align: center;
+	  width: 100%;
+
+	  .line {
+		border-top: 1px solid #DFDFDF;
+		position: absolute;
+		top: 10px;
+		width: 42%;
+	  }
+
+	  .line.left {
+		left: 0;
+	  }
+
+	  .line.right {
+		right: 0;
+	  }
+	}
+
   }
+
 
   h2,
   a {
@@ -105,69 +186,6 @@ div.devise form {
 	margin-top: 0;
   }
 
-  /* omniauth providers */
-  .social {
-	float: none;
-	margin: 0 auto 36px;
-	text-align: center;
-
-	.circle {
-	  background-color: #EEEEEE;
-	  color: #FFFFFF;
-	  border-radius: 25px;
-	  display: inline-block;
-	  margin: 0 8px;
-	  padding: 15px;
-	}
-
-	.circle span {
-	  text-indent: -99999px;
-	  display: inline-block;
-	  width: 0;
-	  height: 0;
-	}
-
-	.google {
-	  background-color: #F74933;
-	}
-
-	.github {
-	  background-color: #403A3A;
-	}
-
-	.facebook {
-	  background-color: #455CA8;
-	}
-
-	.circle:hover {
-	  opacity: 0.8;
-	}
-  }
-
-  /* horizontal line */
-  .division {
-	float: none;
-	margin: 0 auto 36px;
-	overflow: hidden;
-	position: relative;
-	text-align: center;
-	width: 100%;
-
-	.line {
-	  border-top: 1px solid #DFDFDF;
-	  position: absolute;
-	  top: 10px;
-	  width: 42%;
-	}
-
-	.line.left {
-	  left: 0;
-	}
-
-	.line.right {
-	  right: 0;
-	}
-  }
 
 }
 
