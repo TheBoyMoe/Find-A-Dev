@@ -11,8 +11,8 @@ RSpec.describe UsersController, type: :controller do
 			patch :update,  params: {id: developer.id, bio: "Sales and marketing expert with over 10 years experience"}
 		}
 
-		it "redirects the user to the home page" do
-			expect(response).to redirect_to root_path
+		it "redirects the developers listing page" do
+			expect(response).to redirect_to users_path
 		end
 
 		it "does not change developer bio" do

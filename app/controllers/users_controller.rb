@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 				@user.bio = ''
 			end
 		else
-			redirect_to root_path, alert: "Access denied"
+			redirect_to users_path, alert: "Access denied"
 		end
 	end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 				render action: 'edit'
 			end
 		else
-			redirect_to root_path, alert: "Access denied"
+			redirect_to users_path, alert: "Access denied"
 		end
 	end
 

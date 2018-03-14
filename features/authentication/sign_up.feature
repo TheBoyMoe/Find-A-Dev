@@ -6,7 +6,6 @@ Feature: Signup
   Scenario: Sign up as a new user
     Given I visit the "sign up" page
     And I sign up as "Mock User" with email "mock@example.com" and password "password" and password confirmation "password"
-    Then I should be on the "home" page
     And I should see a activate account message
     And I should receive a "Confirmation instructions" email
     And I click on the confirmation link in the email to "mock@example.com"
