@@ -7,5 +7,5 @@ Feature: Sign out
     Given I am a registered user
     And I am signed in
     When I sign out
-    Then I should be on the "home" page
+    Then I should be on the "sign in" page
     And I should be signed out

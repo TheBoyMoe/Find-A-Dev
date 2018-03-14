@@ -13,6 +13,6 @@ RSpec.feature "Edit user profile page" do
 		login_as(founder, scope: :user)
 		visit edit_user_path(developer)
 		expect(page).to have_content("Access denied")
-		expect(current_path).to eq root_path
+		expect(current_path).to eq users_path
 	end
 end

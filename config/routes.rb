@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
 	resources :opportunities, only: [:show, :index, :new, :create, :edit, :update]
 
-	root to: 'static#home'
+	# root to: 'static#home'
+	root to: redirect("/sign_in")
 
 	get '/welcome', to: 'static#welcome'
 
