@@ -10,7 +10,7 @@
 
 </div>
 
-<div class="register">
+<div class="devise-form">
 	<div class="form-wrap">
 
 		<h2>signup with</h2>
@@ -19,7 +19,6 @@
 		<%= render "devise/shared/division" %>
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<%#= devise_error_messages! %>
 
 			<div class="field">
 				<%= f.label :name %>

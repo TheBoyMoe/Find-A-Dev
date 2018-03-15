@@ -48,7 +48,7 @@ body#devise {
   }
 
 
-  .register {
+  .devise-form {
 	padding: 40px;
 	width: 440px;
 
@@ -182,6 +182,11 @@ body#devise {
   }
 
 
+  .devise-form.stand-alone {
+	border-radius: 4px;
+  }
+
+
   h2,
   a {
 	text-align: center;
@@ -209,7 +214,7 @@ body#devise {
 		border-top-right-radius: 0;
 	  }
 
-	  .register {
+	  .devise-form {
 		float: right;
 	  }
 	}
