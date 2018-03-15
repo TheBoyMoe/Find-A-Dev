@@ -32,7 +32,7 @@
 
 					<div class="profile-skills item">
 						<% if @user.user_skills.count > 0 %>
-							<h3>Technical Skills</h3>
+							<h3><%= get_skill_title(@user) %></h3>
 							<dl class="items skills">
 								<% @user.user_skills.each do |skill| %>
 									<dt class="skill-title"><%= skill.title %></dt>

@@ -27,4 +27,8 @@ module UsersHelper
 		end
 	end
 
+	def get_skill_title(user)
+		(user.role == 'developer')? 'Technical Skills' : 'Experience'
+	end
+
 end
