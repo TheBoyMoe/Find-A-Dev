@@ -59,16 +59,18 @@ class User < ApplicationRecord
   def social_links_attributes=(link_attributes)
     link_names = self.social_links.pluck(:name)
     link_attributes.values.each do |link_attribute|
-      if link_names && link_names.count > 0
-        if link_names.include?(link_attribute[:name])
-          link = self.social_links.find_by(name: link_attribute[:name])
-          link.url = link_attribute[:url]
-          link.save
+      if link_attribute[:name].present?
+        if link_names && link_names.count > 0
+          if link_names.include?(link_attribute[:name])
+            link = self.social_links.find_by(name: link_attribute[:name])
+            link.url = link_attribute[:url]
+            link.save
+          else
+            self.social_links.create(link_attribute)
+          end
         else
           self.social_links.create(link_attribute)
         end
-      else
-        self.social_links.create(link_attribute)
       end
     end
   end
@@ -76,7 +78,9 @@ class User < ApplicationRecord
   def user_skills_attributes=(skills_attributes)
     self.user_skills.destroy_all
     skills_attributes.values.each do |skill_attribute|
-      self.user_skills.create(skill_attribute)
+      if skill_attribute[:title].present?
+        self.user_skills.create(skill_attribute)
+      end
     end
   end
 
