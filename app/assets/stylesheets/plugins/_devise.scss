@@ -8,10 +8,13 @@
 
 body#devise {
   background: #1F424E;
+  padding-top: 0;
+  padding-bottom: 40px;
 }
 
+
 .container .devise {
-  width: 864px;
+  width: 440px;
   margin: 80px auto 0;
   background: #fff;
   border-radius: 4px;
@@ -20,12 +23,12 @@ body#devise {
 
 
   .intro {
+	width: 440px;
 	padding: 40px;
 	background: #ff6261;
 	color: #fff;
-	height: 612px;
-	border-bottom-left-radius: 4px;
 	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 
 	.logo {
 	  width: 150px;
@@ -47,7 +50,7 @@ body#devise {
 
   .register {
 	padding: 40px;
-	width: 438px;
+	width: 440px;
 
 	div.field {
 	  margin-bottom: 0.5em;
@@ -191,4 +194,25 @@ body#devise {
 
 .alert ul {
   margin-bottom: 0;
+}
+
+@media (min-width: 900px) {
+  body#devise {
+
+	.container .devise {
+	  width: 880px;
+
+	  .intro {
+		float: left;
+		height: 612px;
+		border-bottom-left-radius: 4px;
+		border-top-right-radius: 0;
+	  }
+
+	  .register {
+		float: right;
+	  }
+	}
+
+  }
 }
