@@ -10,12 +10,16 @@ module UsersHelper
 			render(association.to_s.singularize + "_field", f: builder)
 		end
 		# generate a link to add more fields using js
-		link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+		link_to(name, '#', class: "add_fields btn btn-info", data: {id: id, fields: fields.gsub("\n", "")})
 	end
 
 	def check_role
 		if current_user.role == 'user'
-			content_tag(:h4, "Hi #{current_user.first_name}, please complete your profile before continuing")
+			str =	'<p class="alert alert-warning alert-dismissible" role="alert">'
+			str += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+			str += "Please complete your profile before continuing"
+			str += '</p>'
+			str.html_safe
 		end
 	end
 

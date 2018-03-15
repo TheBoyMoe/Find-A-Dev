@@ -13,8 +13,8 @@ body#devise {
 }
 
 
-.container .devise {
-  width: 440px;
+.container .devise-form {
+  width: 446px;
   margin: 80px auto 0;
   background: #fff;
   border-radius: 4px;
@@ -22,8 +22,8 @@ body#devise {
   background-clip: padding-box;
 
 
-  .intro {
-	width: 440px;
+  .intro-wrap {
+	width: 446px;
 	padding: 40px;
 	background: #ff6261;
 	color: #fff;
@@ -48,9 +48,9 @@ body#devise {
   }
 
 
-  .devise-form {
+  .form-wrap {
 	padding: 40px;
-	width: 440px;
+	width: 446px;
 
 	div.field {
 	  margin-bottom: 0.5em;
@@ -182,11 +182,6 @@ body#devise {
   }
 
 
-  .devise-form.stand-alone {
-	border-radius: 4px;
-  }
-
-
   h2,
   a {
 	text-align: center;
@@ -197,27 +192,38 @@ body#devise {
 
 }
 
+
+.container .devise-form.stand-alone {
+  border-radius: 4px;
+  margin: 80px auto 0;
+  width: 446px;
+  background: #fff;
+
+}
+
 .alert ul {
   margin-bottom: 0;
 }
 
 @media (min-width: 900px) {
-  body#devise {
 
-	.container .devise {
-	  width: 880px;
+  .container .devise-form {
+	width: 892px;
 
-	  .intro {
-		float: left;
-		height: 612px;
-		border-bottom-left-radius: 4px;
-		border-top-right-radius: 0;
-	  }
-
-	  .devise-form {
-		float: right;
-	  }
+	.intro-wrap {
+	  float: left;
+	  height: 612px;
+	  border-bottom-left-radius: 4px;
+	  border-top-right-radius: 0;
 	}
 
+	.form-wrap {
+	  float: right;
+	}
   }
+
+  .container .devise-form.stand-alone .form-wrap {
+	float: none;
+  }
+
 }

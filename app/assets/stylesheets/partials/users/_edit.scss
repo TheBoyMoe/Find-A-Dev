@@ -1,0 +1,24 @@
+/* edit profile styles */
+
+.user-profile h1,
+.user-profile fieldset {
+  margin-bottom: 40px;
+}
+
+.user-profile {
+  margin-bottom: 40px;
+	fieldset {
+
+	  textarea {
+		height: 160px;
+	  }
+
+	  .image img {
+		width: 200px;
+	  }
+	}
+}
+
+fieldset.links  .control-group a {
+  margin-top: 14px;
+}

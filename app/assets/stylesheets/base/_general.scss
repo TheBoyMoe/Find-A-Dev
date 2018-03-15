@@ -121,9 +121,6 @@ form.button_to {
 
 
 
-
-
-
 /* ul lists */
 ul.items {
   list-style: none;
@@ -142,8 +139,7 @@ div.category-list {
 
 /* media queries */
 @media (min-width: 600px) {
-  form.new_opportunity,
-  form.edit_user {
+  form.new_opportunity{
 	width: 60%;
   }
 }
