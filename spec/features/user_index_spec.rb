@@ -17,8 +17,8 @@ RSpec.feature 'User index page', :devise do
 
 		login_as(developer1, scope: :user)
 		visit users_path
-		expect(page).to have_content developer1.name
-		expect(page).to have_content developer2.name
+		expect(page).to have_content developer1.name.upcase
+		expect(page).to have_content developer2.name.upcase
 		expect(page).to_not have_content founder.name
 	end
 end
