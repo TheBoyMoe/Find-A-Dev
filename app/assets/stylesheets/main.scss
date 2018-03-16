@@ -20,6 +20,8 @@
 @import "partials/users/index";
 @import "partials/users/show";
 @import "partials/users/edit";
+@import "partials/messages/index";
+@import "partials/messages/new";
 
 // Plugins
 @import "plugins/devise";

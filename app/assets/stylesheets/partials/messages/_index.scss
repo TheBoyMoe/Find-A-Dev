@@ -1,0 +1,107 @@
+/* message list styles */
+
+ul.items {
+  margin: 0 auto;
+
+  li.message {
+	min-width: 360px;
+	max-width: 700px;
+	margin-bottom: 60px;
+	position: relative;
+
+	.message-author {
+
+	  p {
+		position: absolute;
+		margin-top: 10px;
+	  }
+
+	  .image {
+		width: 80px;
+		height: auto;
+		position: absolute;
+		bottom: -30px;
+
+		.circle {
+		  border-radius: 50%;
+		  display: block;
+		  max-width: 100%;
+		  height: auto;
+		}
+	  }
+
+	}
+
+
+
+	.message-wrap {
+	  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+	  background-clip: padding-box;
+	  border-radius: 12px;
+	  padding: 20px;
+
+	  .messsage-body {
+		position: relative;
+		padding: 20px 20px 20px 26px;
+
+		.fa-quote-left {
+		  position: absolute;
+		  left: 0;
+		  top: 10px;
+		}
+
+		.fa-quote-right {
+		  position: absolute;
+		  right: 0;
+		  bottom: 10px;
+		}
+	  }
+	}
+  }
+}
+
+
+ul.items li.message:nth-child(even){
+
+  margin-left: 15%;
+
+  .message-wrap {
+	padding-right: 60px;
+  }
+
+
+  .message-author {
+
+	p {
+	  left: 20px
+	}
+
+	.image {
+	  right: -30px;
+	}
+  }
+
+}
+
+ul.items li.message:nth-child(odd){
+
+  margin-left: 5%;
+  margin-right: 10%;
+
+  .message-wrap {
+	padding-left: 60px;
+  }
+
+
+  .message-author {
+
+	p {
+	  right: 20px;
+	}
+
+	.image {
+	  left: -30px;
+	}
+  }
+
+}
