@@ -43,7 +43,10 @@ footer {
   }
 }
 
-
+.content-wrap {
+  max-width: 750px;
+  margin: 0 auto;
+}
 
 /* forms */
 form {
@@ -154,4 +157,7 @@ div.category-list {
 	margin: 0;
   }
 
+  .contents-wrap {
+	margin: 0 auto;
+  }
 }

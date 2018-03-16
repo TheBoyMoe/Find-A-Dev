@@ -1,6 +1,6 @@
 /* developer listing styles */
 
-ul.items li.user {
+ul.items li.opportunity {
   min-width: 300px;
   border-radius: 4px;
   margin-bottom: 40px;
@@ -44,7 +44,7 @@ ul.items li.user {
 	padding: 40px;
 	background: #fafafa;
 
-	.bio {
+	.description {
 	  position: relative;
 	  margin-bottom: 0;
 	  padding: 20px 20px 20px 26px;
@@ -71,10 +71,14 @@ ul.items li.user {
 
 }
 
+.new-opportunity {
+  display: block;
+  margin-bottom: 40px;
+}
 
 /* media queries */
 @media (min-width: 600px) {
-  ul.items li.user {
+  ul.items li.opportunity {
 
 	.contents-wrap {
 	  display: flex;
@@ -92,7 +96,7 @@ ul.items li.user {
 	}
   }
 
-  ul.items li.user:nth-child(even) {
+  ul.items li.opportunity:nth-child(even) {
 	.contents-wrap {
 	  flex-direction: row-reverse;
 	}
