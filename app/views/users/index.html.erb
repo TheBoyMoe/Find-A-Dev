@@ -1,10 +1,43 @@
-<h1>Registered Developers</h1>
+<h1 class="page-title">Registered Developers</h1>
 
 <% if @users.count > 0 %>
 	<ul class="items users">
 		<% @users.each do |user| %>
 			<li class="item user">
-				<%= link_to user.name, user_path(user) %>
+				<div class="contents-wrap clearfix">
+
+					<div class="profile">
+						<div class="image">
+							<%= image_tag user.main_image, class: 'circle' %>
+						</div>
+						<div class="details">
+							<h3><%= link_to user.name.upcase, user_path(user) %></h3>
+							<p><%= user.email %></p>
+							<% if user.social_links.count > 0 %>
+								<div>
+									<% user.social_links.each do |link| %>
+										<%= link_to link.url, target: "_blank", class: "link_icon" do %>
+											<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
+										<% end %>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+					</div>
+
+					<div class="contents">
+						<div class="bio-wrap">
+							<p class="bio">
+								<i class="fa fa-quote-left" aria-hidden="true"></i>
+								<!--<span class="inside-quote"></span>-->
+								<%= user.bio[0..300] %>...
+								<i class="fa fa-quote-right" aria-hidden="true"></i>
+							</p>
+							<%= link_to "Read more", user_path(user)  %>
+						</div>
+					</div>
+
+				</div>
 			</li>
 		<% end %>
 	</ul>
