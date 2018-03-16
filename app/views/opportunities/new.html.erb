@@ -1,5 +1,12 @@
-<h1>Create a new opportunity</h1>
+<div class="content-wrap">
 
-<%= render partial: 'form', locals: {opportunity: @opportunity, skill: @skill} %>
-<br>
-<%= link_to "Back", opportunities_path %>
+	<h1 class="page-title">Create a new opportunity</h1>
+
+
+	<%= link_to "Back to opportunities", opportunities_path, class: 'page-link' %>
+
+
+	<%= render partial: 'form', locals: {opportunity: @opportunity, skill: @skill} %>
+
+</div>
+

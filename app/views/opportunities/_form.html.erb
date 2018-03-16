@@ -2,7 +2,8 @@
 	<%= render partial: 'shared/errors', locals: {obj: opportunity} %>
 
 	<fieldset class="general">
-		<legend>Add a description(required)</legend>
+		<legend>Describe the opportunity</legend>
+		<%= render partial: "shared/text_field", locals: {builder: f, prop: :title} %>
 		<%= render partial: 'shared/text_area', locals: {builder: f, prop: :description} %>
 
 		<%= f.hidden_field :author_id, value: "#{current_user.id}" %>
@@ -21,5 +22,5 @@
 		</div>
 	</fieldset>
 
-	<%= f.submit class: "btn tbn-info btn-block" %>
+	<%= f.submit class: "btn btn-info btn-block" %>
 <% end %>

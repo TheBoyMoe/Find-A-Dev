@@ -49,6 +49,7 @@ class OpportunitiesController < ApplicationController
 
 		def opportunity_params
 			params.require(:opportunity).permit(
+					:title,
 					:description,
 					:author_id,
 					opportunity_skills_attributes: [

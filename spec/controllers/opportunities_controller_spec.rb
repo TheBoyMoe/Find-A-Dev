@@ -58,7 +58,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 			it "adds an opportunity when valid data is submitted" do
 				sign_in user
 				expect {
-					post :create, params: {opportunity: {description: "New opportunity for a Rails dev.....", author_id: user.id}}
+					post :create, params: {opportunity: {title: "Looking for talent", description: "New opportunity for a Rails dev.....", author_id: user.id}}
 				}.to change(user.opportunities, :count).by(1)
 			end
 

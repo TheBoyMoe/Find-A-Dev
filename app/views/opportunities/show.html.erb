@@ -1,23 +1,30 @@
-<h1>Opportunity</h1>
+<div class="content-wrap">
 
-<p><%= @opportunity.description %></p>
+	<h1 class="page-title"><%= @opportunity.title %></h1>
 
-<% if @skills.count > 0 %>
-	<dl class="items skills">
-		<% @skills.each do |skill| %>
-			<dt class="skill-title"><%= skill.title %></dt>
-			<dd class="skill-description"><%= skill.description %></dd>
+	<%= link_to "Back to opportunities", opportunities_path, class: "page-link" %>
+
+	<p><%= @opportunity.description %></p>
+
+	<% if @skills.count > 0 %>
+		<dl class="items skills">
+			<% @skills.each do |skill| %>
+				<dt class="skill-title"><%= skill.title %></dt>
+				<dd class="skill-description"><%= skill.description %></dd>
+			<% end %>
+		</dl>
 	<% end %>
-	</dl>
-<% end %>
 
-<div class="author-details">
-	<h3><%= link_to @author.name, user_path(@author) %></h3>
-	<% if current_user != @author %>
-		<%= form_tag conversations_path, method: 'post' do %>
-			<%= hidden_field_tag :title, value = @opportunity.description[0, 60]  %>
-			<%= hidden_field_tag :recipient_id, value = @author.id %>
-			<%= submit_tag "Start a conversation"	%>
+	<div class="author-details">
+		<h3><%= link_to @author.name, user_path(@author) %></h3>
+		<% if current_user != @author %>
+			<%= form_tag conversations_path, method: 'post' do %>
+				<%= hidden_field_tag :title, value = @opportunity.description[0, 60]  %>
+				<%= hidden_field_tag :recipient_id, value = @author.id %>
+				<%= submit_tag "Start a conversation"	%>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
+
 </div>
+
