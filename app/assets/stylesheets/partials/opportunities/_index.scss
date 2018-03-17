@@ -44,6 +44,11 @@ ul.items li.opportunity {
 	padding: 40px;
 	background: #fafafa;
 
+	.title {
+	  font-weight: 700;
+	  text-align: center;
+	}
+
 	.description {
 	  position: relative;
 	  margin-bottom: 0;

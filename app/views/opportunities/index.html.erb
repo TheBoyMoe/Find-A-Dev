@@ -29,10 +29,11 @@
 						</div>
 
 						<div class="contents">
+							<p class="title"><%= opportunity.title %></p>
 							<div class="description-wrap">
 								<p class="description">
 									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<%= opportunity.description[0..300] %>...
+									<%= opportunity.description[0..200] %>...
 									<i class="fa fa-quote-right" aria-hidden="true"></i>
 								</p>
 								<%= link_to "Read more", opportunity_path(opportunity)  %>
