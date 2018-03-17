@@ -1,1 +1,64 @@
 /* opportunity styles */
+
+.opportunity-wrap {
+  position: relative;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  border-radius: 12px;
+  padding: 50px 40px 40px 50px;
+  margin: 80px 0 0 40px;
+
+  .opportunity {
+
+	dd {
+	  margin-bottom: 20px;
+	}
+  }
+
+  .author-details {
+	line-height: 16px;
+
+	.image {
+	  width: 120px;
+	  height: auto;
+	  position: absolute;
+	  top: -60px;
+	  left: -50px;
+
+	  .circle {
+		border-radius: 50%;
+		display: block;
+		max-width: 100%;
+		height: auto;
+	  }
+	}
+
+	.author-links {
+	  line-height: 32px;
+
+	  p,
+	  span,
+	  input[type="submit"] {
+		font-weight: 700;
+		font-size: 16px;
+		float: left;
+	  }
+
+	  input[type="submit"] {
+		border: none;
+		background-color: #fff;
+		color: #337ab7;
+		margin-top: -1px;
+	  }
+
+	  input[type="submit"]:hover {
+		text-decoration: underline;
+	  }
+
+	  p {
+		margin-bottom: 0;
+	  }
+	}
+  }
+
+}

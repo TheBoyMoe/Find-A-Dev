@@ -76,6 +76,10 @@ ul.items li.opportunity {
 
 }
 
+ul.items li.opportunity:last-child {
+  margin-bottom: 0;
+}
+
 
 /* media queries */
 @media (min-width: 600px) {
