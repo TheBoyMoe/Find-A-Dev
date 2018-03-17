@@ -22,6 +22,9 @@
 							<p><%= link_to conversation.title, conversation_messages_path(conversation) %></p>
 							<i class="fa fa-quote-right" aria-hidden="true"></i>
 						</div>
+						<div class="conversation-details">
+							<p>Initiated by <%= conversation_details(conversation) %></p>
+						</div>
 					</div>
 				</li>
 			<% end %>

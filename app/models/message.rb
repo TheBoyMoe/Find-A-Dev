@@ -4,7 +4,7 @@ class Message < ApplicationRecord
 
   validates_presence_of :content
 
-  def message_time
+  def sent_at
     created_at.strftime("%l:%M %p on %d#{created_at.day.ordinal} %B %Y")
   end
 end
