@@ -1,6 +1,8 @@
 <div class="content-wrap">
 	<h1 class="page-title"><%= @conversation.title %></h1>
 
+	<%= link_to "Back to conversations", conversations_path, class: 'page-link' %>
+
 	<% if @messages.count > 0 %>
 		<ul class="items messages">
 			<% @messages.each do |message| %>
