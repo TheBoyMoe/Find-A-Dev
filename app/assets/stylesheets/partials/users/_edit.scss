@@ -9,8 +9,12 @@
 	  height: 160px;
 	}
 
-	.image img {
-	  width: 200px;
+	.image {
+	  margin-bottom: 12px;
+
+	  img {
+		width: 200px;
+	  }
 	}
 
 	input[type="file"] {
