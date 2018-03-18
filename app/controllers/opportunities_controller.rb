@@ -2,7 +2,7 @@ class OpportunitiesController < ApplicationController
 	before_action :set_opportunity, only: [:show, :edit, :update]
 
 	def index
-		@opportunities = Opportunity.all
+		@opportunities = Opportunity.order("created_at DESC")
 	end
 
 	def show
@@ -49,6 +49,7 @@ class OpportunitiesController < ApplicationController
 
 		def opportunity_params
 			params.require(:opportunity).permit(
+					:title,
 					:description,
 					:author_id,
 					opportunity_skills_attributes: [

@@ -1,29 +1,61 @@
-<h1><%= @user.name %></h1>
-<p><%= @user.email %></p>
-<div class="profile-image"><%= image_tag @user.main_image, width: '50%' %></div>
-<h3>Bio</h3>
-<p><%= @user.bio %></p>
+<div class="profile-wrap">
+	<div class="profile-background">
+		<div class="background-filter"></div>
+	</div>
+	<div class="profile-content">
+		<div class="container">
+			<% if @user.main_image %>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+						<div class="profile-avatar">
+							<%= image_tag @user.main_image, class: 'circle' %>
+						</div>
+					</div>
+				</div>
+			<% end %>
 
-<% if @user.user_skills.count > 0 %>
-	<h3>Technical Skills</h3>
-	<dl class="items skills">
-		<% @user.user_skills.each do |skill| %>
-			<dt class="skill-title"><%= skill.title %></dt>
-			<dd class="skill-description"><%= skill.description %></dd>
-	<% end %>
-	</dl>
-<% end %>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center">
+					<div class="profile-info item">
+						<h1><%= @user.name.upcase %></h1>
+						<p>
+							<%= @user.email %>
+							<% if current_user == @user %>
+								&nbsp;|&nbsp;<%= link_to 'Edit Profile', edit_user_path(@user)%>
+							<% end %>
+						</p>
+					</div>
 
-<% if @social_links.count > 0 %>
-	<h3>Follow me</h3>
-	<% @social_links.each do |link| %>
-		<%= link_to link.url, target: "_blank", class: "link_icon" do %>
-			<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
-		<% end %>&nbsp;
-	<% end %>
-<% end %>
+					<div class="profile-bio item">
+						<p><%= @user.bio %></p>
+					</div>
 
-<br><br>
-<% if current_user == @user %>
-	<%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
-<% end %>
+					<div class="profile-skills item">
+						<% if @user.user_skills.count > 0 %>
+							<h3><%= get_skill_title(@user) %></h3>
+							<dl class="items skills">
+								<% @user.user_skills.each do |skill| %>
+									<dt class="skill-title"><%= skill.title %></dt>
+									<dd class="skill-description"><%= skill.description %></dd>
+								<% end %>
+							</dl>
+						<% end %>
+					</div>
+
+					<div class="profile-social-links item">
+						<% if @social_links.count > 0 %>
+							<h3>Follow me</h3>
+							<% @social_links.each do |link| %>
+								<%= link_to link.url, target: "_blank", class: "link_icon" do %>
+									<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
+								<% end %>&nbsp;
+							<% end %>
+						<% end %>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

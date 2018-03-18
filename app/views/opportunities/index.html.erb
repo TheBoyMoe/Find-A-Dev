@@ -1,12 +1,48 @@
-<h1>List of all current opportunities</h1>
+<div class="content-wrap">
+	<h1 class="page-title">Current projects</h1>
 
-<% if @opportunities.count > 0 %>
-	<ul class="items opportunities">
-		<% @opportunities.each do |opportunity| %>
-			<li class="item opportunity">
-				<%= opportunity.description %>
-				<%= link_to "Read more", opportunity_path(opportunity) %>
-			</li>
-		<% end %>
-	</ul>
-<% end %>
+	<%= link_to 'Add a new project', new_opportunity_path, class: "page-link" %>
+
+	<% if @opportunities.count > 0 %>
+		<ul class="items opportunities">
+			<% @opportunities.each do |opportunity| %>
+				<li class="item opportunity">
+					<div class="contents-wrap clearfix">
+
+						<div class="profile">
+							<div class="image">
+								<%= image_tag opportunity.author.main_image, class: 'circle' %>
+							</div>
+							<div class="details">
+								<h3><%= link_to opportunity.author.name.upcase, user_path(opportunity.author) %></h3>
+								<p><%= opportunity.author.email %></p>
+								<% if opportunity.author.social_links.count > 0 %>
+									<div>
+										<% opportunity.author.social_links.each do |link| %>
+											<%= link_to link.url, target: "_blank", class: "link_icon" do %>
+												<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
+											<% end %>
+										<% end %>
+									</div>
+								<% end %>
+							</div>
+						</div>
+
+						<div class="contents">
+							<p class="title"><%= opportunity.title %></p>
+							<div class="description-wrap">
+								<p class="description">
+									<i class="fa fa-quote-left" aria-hidden="true"></i>
+									<%= opportunity.description[0..200] %>...
+									<i class="fa fa-quote-right" aria-hidden="true"></i>
+								</p>
+								<%= link_to "Read more", opportunity_path(opportunity)  %>
+							</div>
+						</div>
+
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>

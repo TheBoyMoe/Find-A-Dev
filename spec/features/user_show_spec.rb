@@ -23,7 +23,7 @@ RSpec.feature "User show page" do
 		login_as(developer, scope: :user)
 		visit user_path(developer)
 
-		expect(page).to have_content(developer.name)
+		expect(page).to have_content(developer.name.upcase)
 		expect(page).to have_content(developer.email)
 		expect(page).to have_content(developer.bio)
 		expect(page).to have_content(developer.user_skills.last.title)

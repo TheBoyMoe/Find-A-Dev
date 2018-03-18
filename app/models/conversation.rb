@@ -13,6 +13,10 @@ class Conversation < ApplicationRecord
 			where(initiator_id: recipient_id, recipient_id: initiator_id)																																		 
 		)
 	end
+
+	def initiated_at
+		created_at.strftime("%l:%M %p on %d#{created_at.day.ordinal} %B %Y")
+	end
 	
 	# fetch the conversation or create it
 	def self.find_or_create(id, params)

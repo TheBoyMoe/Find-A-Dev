@@ -1,6 +1,43 @@
-<h1>Welcome</h1>
+<div class="content-wrap">
 
-<br>
-<%= link_to "Create an Opportunity", new_opportunity_path %> |
-<%= link_to "Browse Opportunities", opportunities_path %> |
-<%= link_to "Browse Developers", users_path %>
+	<div class="banner">
+		<h1 class="page-title">Got a idea for a new Web or Mobile App</h1>
+	</div>
+
+	<div class="section projects">
+		<h2>CREATE A PROJECT</h2>
+		<div class="details">
+			<p>Create a project listing detailing the scope of the project and the skills your looking for</p>
+		</div>
+		<div class="images">
+			<div class="image one">
+				<%= image_tag 'project-list.png' %>
+			</div>
+		</div>
+	</div>
+
+	<div class="section developers">
+		<h2>FIND A DEVELOPER</h2>
+		<div class="details">
+			<p>Review the registered developers and examine their profiles to find the right developer</p>
+		</div>
+		<div class="images">
+			<div class="image two">
+				<%= image_tag 'user-profile-detail.png' %>
+			</div>
+		</div>
+	</div>
+
+	<div class="section messages">
+		<h2>STAY CONNECTED</h2>
+		<div class="details">
+			<p>You can reach out to any developer that fulfills your needs and stay connected via our messaging system</p>
+		</div>
+		<div class="images">
+			<div class="image two">
+				<%= image_tag 'message-list.png' %>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,19 @@
+/* edit profile styles */
+
+.user-profile {
+  margin-bottom: 40px;
+	fieldset {
+
+	  textarea {
+		height: 160px;
+	  }
+
+	  .image img {
+		width: 200px;
+	  }
+	}
+}
+
+fieldset.links  .control-group a {
+  margin-top: 14px;
+}

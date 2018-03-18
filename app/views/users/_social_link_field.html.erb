@@ -1,5 +1,4 @@
 <div class="social-field clearfix">
-	<!--<span>Social</span>-->
 	<span class="link-name">
 		<!-- fetch social media names from database-->
 		<%= f.collection_select(:name, SocialLink.all.group(:name),:name, :name, {include_blank: true}, {multiple: false}) %>

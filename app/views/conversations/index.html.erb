@@ -1,12 +1,37 @@
-<h1><%= current_user.name %></h1>
-<% if @conversations.count > 0 %>
-	<h3>Your conversations</h3>
-	<ul class="items conversations">
-		<% @conversations.each do |conversation| %>
-			<li class="item conversation"><%= link_to conversation.title, conversation_messages_path(conversation) %></li>
-		<% end %>
-	</ul>
-<% end %>
+<div class="content-wrap">
 
-<h3>Start a conversation</h3>
-<%= render partial: 'new_conversation', locals: {users: @users} %>
+	<h1 class="page-title">Your conversations</h1>
+
+	<% if @conversations.count > 0 %>
+		<ul class="items conversations">
+			<% @conversations.each do |conversation| %>
+				<li class="item conversation">
+					<div class="conversation-wrap">
+						<div class="conversation-authors">
+							<div class="images">
+								<div class="image initiator">
+									<%= image_tag conversation.initiator.main_image, class: "circle" %>
+								</div>
+								<div class="image recipient">
+									<%= image_tag conversation.recipient.main_image, class: "circle" %>
+								</div>
+							</div>
+						</div>
+						<div class="conversation-body">
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
+							<p><%= link_to conversation.title, conversation_messages_path(conversation) %></p>
+							<i class="fa fa-quote-right" aria-hidden="true"></i>
+						</div>
+						<div class="conversation-details">
+							<p>Initiated by <%= conversation_details(conversation) %></p>
+						</div>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>Your not currently engaged in any conversations with any other users</p>
+	<% end %>
+
+	<%= render partial: 'new_conversation', locals: {users: @users} %>
+</div>

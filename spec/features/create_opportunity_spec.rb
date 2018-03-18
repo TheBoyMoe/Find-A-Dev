@@ -10,6 +10,7 @@ RSpec.feature "create opportunity" do
 	scenario "a user can create an opportunity" do
 		login_as user, scope: :user
 		visit new_opportunity_path
+		fill_in "opportunity_title", with: "Looking for talent"
 		fill_in "opportunity_description", with: "Looking to build the next Amazon!"
 		fill_in "opportunity_opportunity_skills_attributes_0_title", with: "Fullstack development"
 		fill_in "opportunity_opportunity_skills_attributes_0_description", with: "Looking for that rockstar with....."

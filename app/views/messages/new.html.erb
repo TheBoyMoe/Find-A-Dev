@@ -1,18 +1,20 @@
-<h1>Submit a message to <%= other_conversation_participant(@conversation) %></h1>
+<div class="wrap message-form">
+	<h1 class="page-title">Submit a message to <%= other_conversation_participant(@conversation) %></h1>
 
-<%= form_for [@conversation, @message], class: "reply form" do |f| %>
+	<%= form_for [@conversation, @message], class: "reply form" do |f| %>
 
-	<div class="field">
-		<%= f.text_area :content, autofocus: true, placeholder: "Add reply", class: "form-control" %>
-	</div>
+		<div class="field">
+			<%= f.text_area :content, autofocus: true, placeholder: "Add reply", class: "form-control" %>
+		</div>
 
-	<%= f.text_field :sender_id, value: current_user.id, type: "hidden"  %>
+		<%= f.text_field :sender_id, value: current_user.id, type: "hidden"  %>
 
-	<div class="actions">
-		<%= f.submit "Send message", class: "btn btn-block btn-info" %>
-	</div>
+		<div class="actions">
+			<%= f.submit "Send message", class: "btn btn-block btn-info" %>
+		</div>
 
-<% end %>
+	<% end %>
 
-<br>
-<%= link_to 'Back', conversation_messages_path(@conversation) %>
+	<br>
+	<%= link_to 'Back', conversation_messages_path(@conversation) %>
+</div>

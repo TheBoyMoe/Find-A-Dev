@@ -1,20 +1,31 @@
-<h3><%= @conversation.title %></h3>
-<% if @messages.count > 0 %>
-	<ul class="items messages">
-		<% @messages.each do |message| %>
-			<li class="item message">
-				<div class="message-author">
-					<p><%= message.sender.name %></p>
-					<%= image_tag message.sender.main_image, width: "50%" %>
-				</div>
-				<div class="messsage-body">
-					<p><%= message.content %></p>
-				</div>
-			</li>
-		<% end %>
-	</ul>
-<% end %>
+<div class="content-wrap">
+	<h1 class="page-title"><%= @conversation.title %></h1>
 
-<br>
-<%= link_to "New message", new_conversation_message_path(@conversation) %> |
-<%= link_to "Back", conversations_path %>
+	<%= link_to "Back to conversations", conversations_path, class: 'page-link' %>
+
+	<% if @messages.count > 0 %>
+		<ul class="items messages">
+			<% @messages.each do |message| %>
+				<li class="item message">
+					<div class="message-wrap">
+						<div class="messsage-body">
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
+							<p><%= message.content %></p>
+							<i class="fa fa-quote-right" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="message-author">
+						<div class="image">
+							<%= image_tag message.sender.main_image, class: "circle" %>
+						</div>
+						<p><%= link_to message.sender.name, user_path(message.sender) %> @ <%= message.sent_at %></p>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<br>
+	<%= link_to "New message", new_conversation_message_path(@conversation) %> |
+	<%= link_to "Back", conversations_path %>
+</div>

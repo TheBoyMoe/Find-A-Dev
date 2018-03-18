@@ -1,0 +1,70 @@
+.profile-background {
+  background-image: url('dino-reichmuth-bkgd.jpg');
+  background-position: center center;
+  background-size: cover;
+  height: 300px;
+  position: relative;
+  margin-top: -40px;
+}
+
+.background-filter {
+  background-color: rgba(0, 0, 0, 0.3);
+  content: "";
+  display: block;
+  height: 300px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.profile-avatar {
+  margin-top: -80px;
+
+  padding: 15px;
+  position: relative;
+  z-index: 3;
+  margin-bottom: 20px;
+
+  img.circle {
+	border-radius: 50%;
+	display: block;
+	max-width: 100%;
+	height: auto;
+  }
+}
+
+.profile-content {
+
+  .item {
+	margin-bottom: 40px;
+
+	h1 {
+	  font-size: 20px;
+	  font-weight: 700;
+	}
+	dt {
+	  font-size: 18px;
+	}
+	p, dd {
+	  font-size: 14px;
+	}
+  }
+
+  dd,
+  h3,
+  .profile-info {
+	margin-bottom: 20px;
+
+	p {
+	  font-size: 18px;
+	}
+  }
+
+}
+
+.profile-content .item:last-child {
+  margin-bottom: 0;
+}
+

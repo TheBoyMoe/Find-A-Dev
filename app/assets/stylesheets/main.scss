@@ -3,6 +3,7 @@
 @import "bootstrap";
 
 // fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import "font-awesome";
 
 // Base assets
@@ -16,7 +17,18 @@
 
 
 // Partials
-@import "partials/opportunities";
+@import "partials/users/index";
+@import "partials/users/show";
+@import "partials/users/edit";
+@import "partials/messages/index";
+@import "partials/messages/new";
+@import "partials/opportunities/index";
+@import "partials/opportunities/show";
+@import "partials/conversations/index";
+
+
+// Pages
+@import "pages/welcome";
 
 // Plugins
 @import "plugins/devise";
