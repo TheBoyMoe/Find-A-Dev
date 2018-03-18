@@ -35,6 +35,11 @@ class User < ApplicationRecord
     self.name.split.last
   end
 
+  # ActiveRecord scope method
+  def self.developers
+    User.where(role: 'developer')
+  end
+
   # generate user based on omniauth data received from 3rd party providers
   def self.from_omniauth(auth)
     user = User.find_by_email(auth['info']['email'].downcase)
