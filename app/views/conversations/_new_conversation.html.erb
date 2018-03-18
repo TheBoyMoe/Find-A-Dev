@@ -2,7 +2,7 @@
 <%= form_tag(conversations_path, {method: 'post', class: 'new-conversation'}) do %>
 	<fieldset>
 		<legend>Start a conversation</legend>
-		<%= text_field_tag :title, placeholder = "enter a subject" %><br>
+		<%= text_field_tag :title, nil, placeholder: "enter a subject" %><br>
 		<%= label_tag "Select a user" %><br>
 		<%= select_tag "recipient_id", options_for_select(users.collect {|u| [u.name, u.id]}), include_blank: true %><br>
 		<%= submit_tag "Start conversation", class: "btn btn-info"	%>

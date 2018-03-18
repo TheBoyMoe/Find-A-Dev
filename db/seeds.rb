@@ -84,7 +84,7 @@ end
 
 
 make_social_links
-# make_users
-# update_user_profile
-# make_conversations
-# make_additional_conversations
+make_users
+update_user_profile
+make_conversations
+make_additional_conversations

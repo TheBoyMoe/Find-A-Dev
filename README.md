@@ -3,7 +3,17 @@ Rails app which allows non-technical founders find the perfect developer to buil
 
 ## Setup
 
-Run the migrations and populate the database with the following commands
+Create a .env file in the root of the app and add the following keys for Google, Github (third party authentication) and Dropbox(file uploads). You'll need to create a Google app to get the client_id and client_secret. You'll need a Github and Dropbox accounts for their respective keys. 
+
+```text
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+DROPBOX_ACCESS_TOKEN=
+```
+
+Run `bundle install`, followed by running the migrations and populate the database with the following commands
 
 ```ruby
 bundle exec rails db:migrate
@@ -29,11 +39,11 @@ Navigate to the `Signup` page, create an account and check your email account fo
 [X] Add messaging system
 [x] Allow founders the ability to create projects
 [x] List founder opportunities
-[] Add search of developers skills
 
 
 
 ### Features to be added in the future
+[] Add search of developers skills
 [] Paginate developer/opportunity list list
 [] Display a notification when someone has sent you a message
 [] Add option to your account page to turn notifications on/off
@@ -74,3 +84,6 @@ UI Layout/Design
 File uploads  
 [Carrierwave and image uploads](https://rails.devcamp.com/dissecting-rails-5/images-videos-rails-5/deep-dive-installing-configuring-carrierwave-image-uploads-rails-5)  
 [File uploads to Dropbox](https://github.com/robin850/carrierwave-dropbox)  
+
+Miscellaneous
+[Single Table Inheritance](http://www.informit.com/articles/article.aspx?p=2220311&seqNum=4)  
