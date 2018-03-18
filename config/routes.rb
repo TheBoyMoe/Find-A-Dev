@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 			 omniauth_callbacks: 'users/omniauth_callbacks'
 	 }
 
+	get '/users/developers', to: 'users#index', as: :developers
+
 	resources :users, only: [:show, :edit, :update, :index]
 
 	resources :conversations, only: [:index, :create] do
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
 	root to: redirect("/sign_in")
 
 	get '/welcome', to: 'static#welcome'
+
 
 	# routes
 	# new_user_session 				GET    /sign_in(.:format)       devise/sessions#new

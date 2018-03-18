@@ -20,10 +20,11 @@
 
 		<div class="field">
 			<div class="image main">
-				<%= image_tag user.main_image, width: "100%", alt: "Main portfolio image" %>
+				<%= f.label "Portfolio image" %>
+				<%= image_tag user.main_image, width: "100%" %>
 			</div>
 			<div class="control-group">
-				<%#= f.file_field :main_image %>
+				<%= f.file_field :main_image %>
 			</div>
 		</div>
 	</fieldset>

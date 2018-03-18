@@ -1,45 +1,50 @@
 # Find-A-Dev
-Rails app which allows non-technial founders find the perfect developer to bring their vision to the market
+Rails app which allows non-technical founders find the perfect developer to build their vision.
 
-### Using Capybara
+## Installation Guide
 
-Place your Capybara specs in `spec/features`, or alternately tag your spec example groups with `type: :feature`, e.g. 
+Create a .env file in the root of the app and add the following keys for Google, Github (third party authentication) and Dropbox(file uploads). You'll need to create a Google app to get the client_id and client_secret. You'll need a Github and Dropbox accounts for their respective keys. 
 
-```ruby
-describe "the signin process", type: :feature do
-	it "signs me in" 
-	it "signs me out"
-end
+```text
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+DROPBOX_ACCESS_TOKEN=
 ```
 
-Use `js: true` tag to use the the javascript driver, selenium by default, e.g.
+Run `bundle install`, followed by running the migrations and populate the database with the following commands
 
 ```ruby
-describe 'some stuff which requires js', js: true do
-	it 'will use the js driver'
-end
+bundle exec rails db:migrate
+bundle exec rails db:migrate RAILS_ENV=test
+bundle exec db:seed
 ```
 
-To use javascript in you Cucumber scenarios, tag your scenarios with the `@javascript` tag.
+Then run the rails server
+
+```ruby
+bundle exec rails s
+```
+
+Navigate to the `Signup` page, create an account and check your email account for the confirmation email to activate your account an login. A simpler option is to sign in via a google or github account as no confirmation is required. After signing in complete your profile.
 
 
-### TODO
+### Contributing
 
-[x] Redirect users to their profile page until it has been completed
-[X] Allow users to create/edit their profiles
-[X] List Developer Profiles
-[X] Add messaging system
-[] Allow founders the ability to create opportunities
-[] List founder opportunities
-[] Paginate developer/opportunity list list
+If you notice a problem you should raise a Github issue containing a clear description of the problem. Include relevant snippets of the content and/or screenshots if applicable. If you'd like to improve the app, then fork the repository, make the change to your fork and then submit a pull request.
+
+
+### Features to be added in the future
 [] Add search of developers skills
-
-#### Optional
+[] Paginate developer/opportunity list list
 [] Display a notification when someone has sent you a message
 [] Add option to your account page to turn notifications on/off
 [] Add tags/categories to filter developers based on skill
 [] Add friendly urls
 
+
+[This project has been licensed under the MIT open source license](LICENSE)
 
 ### References
 
@@ -63,3 +68,16 @@ Authentication using Devise
 Messaging
 [Create a simple messaging system for rails](https://medium.com/@danamulder/tutorial-create-a-simple-messaging-system-on-rails-d9b94b0fbca1)
 [Rails chat application](https://www.nopio.com/blog/rails-real-time-chat-application-part-1/) 
+
+UI Layout/Design
+[UI Theme](https://www.creative-tim.com/product/paper-kit)  
+[Signin/signup form](https://dribbble.com/shots/1816129-25DaysOf-io-Login/attachments/301216)  
+[Developer/Project listing](http://lesseverything.com/)  
+
+
+File uploads  
+[Carrierwave and image uploads](https://rails.devcamp.com/dissecting-rails-5/images-videos-rails-5/deep-dive-installing-configuring-carrierwave-image-uploads-rails-5)  
+[File uploads to Dropbox](https://github.com/robin850/carrierwave-dropbox)  
+
+Miscellaneous
+[Single Table Inheritance](http://www.informit.com/articles/article.aspx?p=2220311&seqNum=4)  
