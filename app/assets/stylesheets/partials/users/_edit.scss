@@ -2,16 +2,21 @@
 
 .user-profile {
   margin-bottom: 40px;
-	fieldset {
 
-	  textarea {
-		height: 160px;
-	  }
+  fieldset {
 
-	  .image img {
-		width: 200px;
-	  }
+	textarea {
+	  height: 160px;
 	}
+
+	.image img {
+	  width: 200px;
+	}
+
+	input[type="file"] {
+	  margin-top: 0;
+	}
+  }
 }
 
 fieldset.links  .control-group a {

@@ -30,6 +30,7 @@ RSpec.feature "user update action" do
 		fill_in 'user_user_skills_attributes_0_description', with: "Over 10 years of software sales with fortune 500 companies"
 		select 'Linkedin', from: 'user_social_links_attributes_0_name'
 		fill_in 'user_social_links_attributes_0_url', with: "https://linkedin.com/#{developer.first_name}"
+		attach_file("user_main_image", Rails.root + "app/assets/images/logo.png")
 		click_on "Update User"
 
 		expect(current_path).to eq user_path(founder)

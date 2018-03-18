@@ -33,6 +33,7 @@ RSpec.feature 'Feature test: create user profile', type: :feature do
 		fill_in 'user_user_skills_attributes_0_description', with: "I'm a professional Ruby on Rails developer with over eight years experience"
 		select 'Twitter', from: 'user_social_links_attributes_0_name'
 		fill_in 'user_social_links_attributes_0_url', with: "https://twitter.com/#{@user.first_name}"
+		attach_file("user_main_image", Rails.root + "app/assets/images/logo.png")
 		click_on "Update User"
 
 		@user.reload
