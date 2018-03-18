@@ -36,12 +36,13 @@ If you notice a problem you should raise a Github issue containing a clear descr
 
 
 ### Features to be added in the future
-[] Add search of developers skills
-[] Paginate developer/opportunity list list
-[] Display a notification when someone has sent you a message
-[] Add option to your account page to turn notifications on/off
-[] Add tags/categories to filter developers based on skill
-[] Add friendly urls
+[] Add search of developers skills  
+[] Paginate developer/opportunity list list  
+[] Display a notification when someone has sent you a message  
+[] Add option to your account page to turn notifications on/off  
+[] Add tags/categories to filter developers based on skill  
+[] Add friendly urls  
+
 
 
 [This project has been licensed under the MIT open source license](LICENSE)
@@ -65,9 +66,9 @@ Authentication using Devise
 [Google Omniauth Strategy](https://github.com/zquestz/omniauth-google-oauth2)  
 [Github Omniauth Strategy](https://github.com/omniauth/omniauth-github)  
 
-Messaging
-[Create a simple messaging system for rails](https://medium.com/@danamulder/tutorial-create-a-simple-messaging-system-on-rails-d9b94b0fbca1)
-[Rails chat application](https://www.nopio.com/blog/rails-real-time-chat-application-part-1/) 
+Messaging  
+[Create a simple messaging system for rails](https://medium.com/@danamulder/tutorial-create-a-simple-messaging-system-on-rails-d9b94b0fbca1)  
+[Rails chat application](https://www.nopio.com/blog/rails-real-time-chat-application-part-1/)   
 
 UI Layout/Design
 [UI Theme](https://www.creative-tim.com/product/paper-kit)  
@@ -79,5 +80,5 @@ File uploads
 [Carrierwave and image uploads](https://rails.devcamp.com/dissecting-rails-5/images-videos-rails-5/deep-dive-installing-configuring-carrierwave-image-uploads-rails-5)  
 [File uploads to Dropbox](https://github.com/robin850/carrierwave-dropbox)  
 
-Miscellaneous
+Miscellaneous  
 [Single Table Inheritance](http://www.informit.com/articles/article.aspx?p=2220311&seqNum=4)  
