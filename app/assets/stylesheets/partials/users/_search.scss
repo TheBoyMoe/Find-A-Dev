@@ -1,0 +1,23 @@
+/* Search form styles */
+
+.search-wrap {
+  padding-right: 40px;
+
+  form {
+	float: right;
+
+	input {
+	  height: 35px;
+	}
+
+	input[type="text"] {
+	  width: 300px;
+	}
+
+	input[type="submit"] {
+	  position: relative;
+	  top: -1px;
+	}
+  }
+
+}
