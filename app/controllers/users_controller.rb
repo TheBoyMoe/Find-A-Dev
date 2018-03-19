@@ -3,27 +3,21 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@users = User.developers
+		if params[:search]
+			@users = User.search(params[:search])
+			provide_feedback
+		else
+			@users = User.developers
+		end
 	end
 
 	def show
 		@social_links = @user.social_links
-
 	end
 
 	def edit
 		if current_user == @user
-			if @user.social_links.count == 0
-				@user.social_links.build
-			end
-
-			if @user.user_skills.count == 0
-				@user.user_skills.build
-			end
-
-			if @user.bio == 'add bio'
-				@user.bio = ''
-			end
+			config_user
 		else
 			redirect_to users_path, alert: "Access denied"
 		end
@@ -45,6 +39,30 @@ class UsersController < ApplicationController
 	private
 		def set_user
 			@user = User.find(params[:id])
+		end
+
+		def config_user
+			if @user.social_links.count == 0
+				@user.social_links.build
+			end
+
+			if @user.user_skills.count == 0
+				@user.user_skills.build
+			end
+
+			if @user.bio == 'add bio'
+				@user.bio = ''
+			end
+		end
+
+		def provide_feedback
+			@query = nil
+			if @users.count == 0
+				flash.now[:alert] = "No matches found"
+				@users = User.developers
+			else
+				@query = params[:search] unless params[:search].empty?
+			end
 		end
 
 		def user_params

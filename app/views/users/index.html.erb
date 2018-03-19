@@ -1,6 +1,8 @@
 <div class="content-wrap">
 	<h1 class="page-title">Registered Developers</h1>
 
+	<%= render 'search' %>
+
 	<% if @users.count > 0 %>
 		<ul class="items users">
 			<% @users.each do |user| %>

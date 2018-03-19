@@ -1,0 +1,33 @@
+/* Search form styles */
+
+.search-wrap {
+  padding-right: 40px;
+  padding-left: 40px;
+
+  p.query {
+	margin-bottom: 0;
+	float: left;
+	line-height: 35px;
+	font-weight: 600;
+	font-size: 16px;
+  }
+
+  form {
+	float: right;
+
+	input {
+	  height: 35px;
+	  padding-left: 10px;
+	}
+
+	input[type="text"] {
+	  width: 260px;
+	}
+
+	input[type="submit"] {
+	  position: relative;
+	  top: -1px;
+	}
+  }
+
+}
