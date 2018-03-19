@@ -3,7 +3,16 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@users = User.developers
+		if params[:search]
+			byebug
+			@users = User.search(params[:search])
+			if @users.count == 0
+				flash[:alert] = "No matches found"
+				@users = User.developers
+			end
+		else
+			@users = User.developers
+		end
 	end
 
 	def show

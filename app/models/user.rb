@@ -89,6 +89,11 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(query)
+    skills = UserSkill.search(query)
+    skills.select {|skill| skill.user.role == 'developer'}.map{|skill| skill.user}.uniq
+  end
+
   private
     def set_default_role
       self.role = :user

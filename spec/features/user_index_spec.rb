@@ -32,9 +32,9 @@ RSpec.feature 'User index page', :devise do
 		fill_in 'search', with: 'Rails'
 		click_on 'Search'
 
-		expect(page).to have_content('Ten years experience building apps based on the Rails framework...')
-		expect(page).to_not have_content('Over a dozen years experience building apps with java and Java Spring...')
-		expect(page).to_not have_content('Over twelve years working in Fortune 500......')
+		expect(page).to have_content(developer1.name.upcase)
+		expect(page).to_not have_content(developer2.name.upcase)
+		expect(page).to_not have_content(founder.name.upcase)
 	end
 
 
