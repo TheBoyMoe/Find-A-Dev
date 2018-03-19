@@ -36,7 +36,6 @@ If you notice a problem you should raise a Github issue containing a clear descr
 
 
 ### Features to be added in the future
-[] Add search of developers skills  
 [] Paginate developer/opportunity list list  
 [] Display a notification when someone has sent you a message  
 [] Add option to your account page to turn notifications on/off  
