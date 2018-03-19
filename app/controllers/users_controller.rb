@@ -4,11 +4,13 @@ class UsersController < ApplicationController
 
 	def index
 		if params[:search]
-			byebug
 			@users = User.search(params[:search])
+			@query = nil
 			if @users.count == 0
-				flash[:alert] = "No matches found"
+				flash.now[:alert] = "No matches found"
 				@users = User.developers
+			else
+				@query = params[:search] unless params[:search].empty?
 			end
 		else
 			@users = User.developers
@@ -17,7 +19,6 @@ class UsersController < ApplicationController
 
 	def show
 		@social_links = @user.social_links
-
 	end
 
 	def edit
