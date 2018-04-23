@@ -22,7 +22,7 @@
 
 		<div class="author-details">
 			<div class="image">
-				<%= image_tag @author.main_image, class: "circle" %>
+				<%= image_tag user_avatar(@author.main_image), class: "circle" %>
 			</div>
 			<% if current_user != @author %>
 				<div class="author-links clearfix">

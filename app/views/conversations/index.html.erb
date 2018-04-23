@@ -10,10 +10,10 @@
 						<div class="conversation-authors">
 							<div class="images">
 								<div class="image initiator">
-									<%= image_tag conversation.initiator.main_image, class: "circle" %>
+									<%= image_tag user_avatar(conversation.initiator.main_image), class: "circle" %>
 								</div>
 								<div class="image recipient">
-									<%= image_tag conversation.recipient.main_image, class: "circle" %>
+									<%= image_tag user_avatar(conversation.recipient.main_image), class: "circle" %>
 								</div>
 							</div>
 						</div>
