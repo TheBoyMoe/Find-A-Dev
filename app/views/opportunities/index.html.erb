@@ -11,7 +11,7 @@
 
 						<div class="profile">
 							<div class="image">
-								<%= image_tag opportunity.author.main_image, class: 'circle' %>
+								<%= image_tag user_avatar(opportunity.author.main_image), class: 'circle' %>
 							</div>
 							<div class="details">
 								<h3><%= link_to opportunity.author.name.upcase, user_path(opportunity.author) %></h3>

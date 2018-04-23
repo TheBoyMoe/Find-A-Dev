@@ -16,7 +16,7 @@
 					</div>
 					<div class="message-author">
 						<div class="image">
-							<%= image_tag message.sender.main_image, class: "circle" %>
+							<%= image_tag user_avatar(message.sender.main_image), class: "circle" %>
 						</div>
 						<p><%= link_to message.sender.name, user_path(message.sender) %> @ <%= message.sent_at %></p>
 					</div>
