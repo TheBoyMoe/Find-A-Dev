@@ -17,7 +17,7 @@ RSpec.feature "create opportunity" do
 		# click_link "Add skill"
 		# fill_in "opportunity_opportunity_skills_attributes_1_title", with: "Team Leader"
 		# fill_in "opportunity_apportunity_skills_attributes_1_description", with: "Your a team leader, having..."
-		click_on "Create Opportunity"
+		click_on "Create Project"
 
 		expect(current_path).to eq opportunities_path
 		expect(page).to have_content "Looking to build the next Amazon!"
