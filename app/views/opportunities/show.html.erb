@@ -37,8 +37,8 @@
 			<% end %>
 		</div>
 	</div>
-  <% if((@opportunity.id - 1) > 0 && @opportunity.id - 1 <= Opportunity.count) %>
-    <%= link_to 'Next Project', opportunity_path(@opportunity.id - 1), id: "next-project" %>
-  <% end %>
+  <%# if((@opportunity.id - 1) > 0 && @opportunity.id - 1 <= Opportunity.count) %>
+    <%#= link_to 'Next Project', opportunity_path(@opportunity.id - 1), id: "next-project" %>
+  <%# end %>
+  <%= prev_project_link(@opportunity.id) %>
 </div>
-

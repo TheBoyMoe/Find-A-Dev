@@ -13,4 +13,5 @@ class Opportunity < ApplicationRecord
 			end
 		end
 	end
+
 end
