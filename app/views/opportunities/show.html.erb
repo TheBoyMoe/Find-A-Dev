@@ -1,11 +1,11 @@
 <div class="content-wrap">
 
-	<h1 class="page-title"><%= @opportunity.title %></h1>
 
-	<%= link_to "Back to projects", opportunities_path, class: "page-link" %>
+	<%#= link_to "Back to projects", opportunities_path, class: "page-link" %>
 
 	<div class="opportunity-wrap">
 		<div class="opportunity">
+	    <h1 class="page-title"><%= @opportunity.title %></h1>
 			<p><%= @opportunity.description %></p>
 
 			<% if @skills.count > 0 %>
