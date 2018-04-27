@@ -24,6 +24,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'carrierwave-dropbox', '~> 2.0.0.rc1'
 gem 'mini_magick', '~> 4.8'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
+gem 'active_model_serializers', '~> 0.10.7'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'pry-rails'
 end
 
 group :development do

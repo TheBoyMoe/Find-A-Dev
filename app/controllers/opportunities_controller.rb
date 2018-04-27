@@ -8,6 +8,10 @@ class OpportunitiesController < ApplicationController
 	def show
 		@skills = @opportunity.opportunity_skills
 		@author = @opportunity.author
+    respond_to do |format|
+      format.html
+      format.json { render json: @opportunity }
+    end
 	end
 
 	def new
