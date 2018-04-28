@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
-  let nextProject = document.getElementById('load-next-project');
-  if(nextProject) nextProject.addEventListener('click', callback);
+  let prevProject = document.getElementById('load-prev-project');
+  if(prevProject) prevProject.addEventListener('click', callback);
   let useremail = document.querySelector('body').dataset.useremail;
 	let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -58,18 +58,18 @@ document.addEventListener('turbolinks:load', function() {
 
     }
    
-    // link to next project
-    let elm = document.createElement('a');
+    // link to prev project
+    let prev = document.createElement('a');
     if(response.id - 1 > 0){
-      let text = document.createTextNode('Next');
-      elm.appendChild(text);
-      elm.setAttribute('id', 'load-next-project');
-      elm.setAttribute('href', '/opportunities/' + (response.id - 1));
-      elm.addEventListener('click', callback);
+      let text = document.createTextNode('Previous');
+      prev.appendChild(text);
+      prev.setAttribute('id', 'load-prev-project');
+      prev.setAttribute('href', '/opportunities/' + (response.id - 1));
+      prev.addEventListener('click', callback);
     }
 
     opportunityContainer.innerHTML = opportunity;
-    opportunityContainer.append(elm);
+    opportunityContainer.append(prev);
   }
 
 });
