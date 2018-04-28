@@ -1,5 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
-  document.getElementById('load-next-project').addEventListener('click', callback);
+  let nextProject = document.getElementById('load-next-project');
+  if(nextProject) nextProject.addEventListener('click', callback);
 
   function callback(e){
     e.preventDefault();
