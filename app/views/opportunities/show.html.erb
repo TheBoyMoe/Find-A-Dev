@@ -1,7 +1,6 @@
 <div class="content-wrap">
 
 
-	<%#= link_to "Back to projects", opportunities_path, class: "page-link" %>
 
 	<div class="opportunity-wrap">
 		<div class="opportunity">
@@ -36,9 +35,9 @@
 				</div>
 			<% end %>
 		</div>
+
+    <%= prev_project_link(@opportunity.id) %>
 	</div>
-  <%# if((@opportunity.id - 1) > 0 && @opportunity.id - 1 <= Opportunity.count) %>
-    <%#= link_to 'Next Project', opportunity_path(@opportunity.id - 1), id: "next-project" %>
-  <%# end %>
-  <%= prev_project_link(@opportunity.id) %>
+
+	<%= link_to "Back to projects", opportunities_path, class: "page-link" %>
 </div>

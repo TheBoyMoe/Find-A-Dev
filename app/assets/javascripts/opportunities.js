@@ -1,11 +1,14 @@
+document.addEventListener('turbolinks:load', function() {
+  document.getElementById('load-next-project').addEventListener('click', callback);
 
-$(function(){
-  $('#load-prev-project').on('click', (e)=>{
+  function callback(e){
+    e.preventDefault();
+    console.log('CLICKED NEXT');
+
     $.getJSON(e.target.href, (response)=>{
       displayProject(response);
     });
-    e.preventDefault();
-  });
+  }
 
   function displayProject(response){
    let opportunityContainer = document.querySelector('.opportunity-wrap');
@@ -30,13 +33,14 @@ $(function(){
    }
   
 
-		<div class="author-details">
-			<div class="image">
-				<%= image_tag user_avatar(@author.main_image), class: "circle" %>
-			</div>
-		</div>
+		// <div class="author-details">
+		// 	 <div class="image">
+		// 	   <%= image_tag user_avatar(@author.main_image), class: "circle" %>
+		// 	 </div>
+		// </div>
 
 
    opportunityContainer.innerHTML = opportunity;
   }
+
 });

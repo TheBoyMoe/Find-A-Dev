@@ -1,5 +1,9 @@
 /* opportunity styles */
 
+.content-wrap .page-link {
+  margin: 40px 0 0 40px;
+}
+
 .opportunity-wrap {
   position: relative;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -10,55 +14,56 @@
 
   .opportunity {
 
-	dd {
-	  margin-bottom: 20px;
-	}
+	  dd {
+	    margin-bottom: 20px;
+	  }
   }
 
   .author-details {
-	line-height: 16px;
+	  line-height: 16px;
 
-	.image {
-	  width: 120px;
-	  height: auto;
-	  position: absolute;
-	  top: -60px;
-	  left: -50px;
+	  .image {
+	    width: 120px;
+	    height: auto;
+	    position: absolute;
+	    top: -60px;
+	    left: -50px;
 
-	  .circle {
-		border-radius: 50%;
-		display: block;
-		max-width: 100%;
-		height: auto;
-	  }
-	}
-
-	.author-links {
-	  line-height: 32px;
-
-	  p,
-	  span,
-	  input[type="submit"] {
-		font-weight: 700;
-		font-size: 16px;
-		float: left;
+	    .circle {
+	  	  border-radius: 50%;
+	  	  display: block;
+	  	  max-width: 100%;
+	  	  height: auto;
+	    }
 	  }
 
-	  input[type="submit"] {
-		border: none;
-		background-color: #fff;
-		color: #337ab7;
-		margin-top: -1px;
-	  }
+	  .author-links {
+	    line-height: 32px;
 
-	  input[type="submit"]:hover {
-		text-decoration: underline;
-	  }
+	    p,
+	    span,
+	    input[type="submit"] {
+	  	  font-weight: 700;
+	  	  font-size: 16px;
+	  	  float: left;
+	    }
 
-	  p {
-		margin-bottom: 0;
+	    input[type="submit"] {
+	  	  border: none;
+	  	  background-color: #fff;
+	  	  color: #337ab7;
+	  	  margin-top: -1px;
+	    }
+
+	    input[type="submit"]:hover {
+	  	  text-decoration: underline;
+	    }
+
+	    p {
+	  	  margin-bottom: 0;
+	    }
+
 	  }
-	}
   }
 
 }
