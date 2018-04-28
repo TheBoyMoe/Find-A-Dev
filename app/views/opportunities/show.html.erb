@@ -34,7 +34,10 @@
 			<% end %>
 		</div>
 
-    <%= prev_project_link(@opportunity.id) %>
+		<div class="project-nav clearfix">
+    	<%= next_project_link(@opportunity.id) %>
+    	<%= prev_project_link(@opportunity.id) %>
+		</div>
 	</div>
 
 	<%= link_to "Back to projects", opportunities_path, class: "page-link-bottom" %>

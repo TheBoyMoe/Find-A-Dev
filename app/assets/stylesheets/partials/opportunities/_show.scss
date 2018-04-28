@@ -11,6 +11,18 @@
   border-radius: 12px;
   padding: 50px 40px 40px 50px;
   margin: 80px 0 40px 40px;
+	
+	.project-nav {
+		margin-top: 20px;
+
+		#load-next-project {
+			float: left;
+		}
+
+		#load-prev-project {
+			float: right;
+		}
+	}
 
   .opportunity {
 
