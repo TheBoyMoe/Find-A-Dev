@@ -2,6 +2,7 @@ document.addEventListener('turbolinks:load', function() {
   let nextProject = document.getElementById('load-next-project');
   if(nextProject) nextProject.addEventListener('click', callback);
   let useremail = document.querySelector('body').dataset.useremail;
+	let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   function callback(e){
     e.preventDefault();
@@ -44,9 +45,14 @@ document.addEventListener('turbolinks:load', function() {
       // link to users profile
       opportunity += '<div class="author-links clearfix">';
       opportunity += '<p>Check <a href="/users/' + response.author.id  +'">' + response.author.name + '\'s</a> profile</p>';
-      opportunity += '</div>'
+      opportunity += '<span>&nbsp;or </span>'
 
       // start a conversation form
+			opportunity += '<form action="/conversations" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />';
+			opportunity += '<input type="hidden" name="authenticity_token" value="' + token + '" />';
+			opportunity += '<input type="hidden" name="title" id="title" value="'+ response.title +'" />';
+			opportunity += '<input type="hidden" name="recipient_id" id="recipient_id" value="'+ response.author.id +'" />';
+			opportunity += '<input type="submit" name="commit" value="start a conversation" class="btn-conversation" data-disable-with="start a conversation" /></form>';
 
       opportunity += '</div>';
 
