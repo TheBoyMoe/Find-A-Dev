@@ -36,14 +36,17 @@ document.addEventListener('turbolinks:load', function() {
     // add user avatar
     opportunity += '<div class="author-details"><div class="image">';
 	  opportunity += '<img src="'+ response.author.main_image.url + '"  class="circle" alt="profile image" >';
-	  opportunity	+= '</div></div>';
+	  opportunity	+= '</div>';
 
     // link to users profile
-
+    opportunity += '<div class="author-links clearfix">';
+    opportunity += '<p>Check <a href="/users/' + response.author.id  +'">' + response.author.name + '\'s</a> profile</p>';
+    opportunity += '</div>'
 
     // start a conversation form
 
-
+    opportunity += '</div>';
+    
     // link to next project
     let elm = document.createElement('a');
     if(response.id - 1 > 0){
@@ -52,8 +55,6 @@ document.addEventListener('turbolinks:load', function() {
       elm.setAttribute('id', 'load-next-project');
       elm.setAttribute('href', '/opportunities/' + (response.id - 1));
       elm.addEventListener('click', callback);
-
-      // opportunity += '<a id="load-next-project" href="/opportunities/' + (response.id - 1) + '">Next</a>';
     }
 
     opportunityContainer.innerHTML = opportunity;
