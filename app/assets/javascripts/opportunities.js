@@ -1,6 +1,7 @@
 document.addEventListener('turbolinks:load', function() {
   let nextProject = document.getElementById('load-next-project');
   if(nextProject) nextProject.addEventListener('click', callback);
+  let useremail = document.querySelector('body').dataset.useremail;
 
   function callback(e){
     e.preventDefault();
@@ -16,8 +17,7 @@ document.addEventListener('turbolinks:load', function() {
 	  let opportunity =	
       `<div class="opportunity">
 	   	  <h2>${response.title}</h2>
-         <p>${response.description}</p>
-	     </div>`;
+         <p>${response.description}</p>`;
 
     // include required skills
     if(response.opportunity_skills.length > 0){
@@ -30,7 +30,7 @@ document.addEventListener('turbolinks:load', function() {
          `<dt class="skill-title">${skill.title}</dt>
 	   		<dd class="skill-description">${skill.description}</dd>`
        });
-	   	opportunity += `</dl></div>`;
+	   	opportunity += '</dl></div>';
     }
 
     // add user avatar
@@ -38,15 +38,20 @@ document.addEventListener('turbolinks:load', function() {
 	  opportunity += '<img src="'+ response.author.main_image.url + '"  class="circle" alt="profile image" >';
 	  opportunity	+= '</div>';
 
-    // link to users profile
-    opportunity += '<div class="author-links clearfix">';
-    opportunity += '<p>Check <a href="/users/' + response.author.id  +'">' + response.author.name + '\'s</a> profile</p>';
-    opportunity += '</div>'
 
-    // start a conversation form
+    if(useremail !== response.author.email){
 
-    opportunity += '</div>';
-    
+      // link to users profile
+      opportunity += '<div class="author-links clearfix">';
+      opportunity += '<p>Check <a href="/users/' + response.author.id  +'">' + response.author.name + '\'s</a> profile</p>';
+      opportunity += '</div>'
+
+      // start a conversation form
+
+      opportunity += '</div>';
+
+    }
+   
     // link to next project
     let elm = document.createElement('a');
     if(response.id - 1 > 0){
