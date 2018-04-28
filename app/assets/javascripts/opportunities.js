@@ -33,12 +33,9 @@ document.addEventListener('turbolinks:load', function() {
 			opportunity += `</dl></div>`;
    }
   
-
-		// <div class="author-details">
-		// 	 <div class="image">
-		// 	   <%= image_tag user_avatar(@author.main_image), class: "circle" %>
-		// 	 </div>
-		// </div>
+    opportunity += '<div class="author-details"><div class="image">';
+		opportunity += '<img src="'+ response.author.main_image.url + '"  class="circle" alt="profile image" >';
+		opportunity	+= '</div></div>';
 
 
    opportunityContainer.innerHTML = opportunity;
