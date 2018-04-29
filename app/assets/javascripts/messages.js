@@ -11,7 +11,8 @@ document.addEventListener('turbolinks:load', function(){
     $.ajax({
       method: method,
       url: action,
-      data: { message: { sender_id: id, content: message } }
+      data: { message: { sender_id: id, content: message } },
+      dataType: 'script'
     });
     e.preventDefault();
   }
