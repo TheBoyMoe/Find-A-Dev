@@ -10,8 +10,8 @@ class MessagesController < ApplicationController
 		@message = @conversation.messages.build(message_params)
 		if @message.save
       respond_to do |format|
-  			format.html { redirect_to conversation_messages_path(@conversation) }
-        format.js { render :index }
+        format.html { redirect_to conversation_messages_path(@conversation) }
+        format.js { render :create, layout: false }
       end
 		end
 	end
