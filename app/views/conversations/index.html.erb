@@ -2,36 +2,38 @@
 
 	<h1 class="page-title">Your conversations</h1>
 
-	<% if @conversations.count > 0 %>
-		<ul class="items conversations">
-			<% @conversations.each do |conversation| %>
-				<li class="item conversation">
-					<div class="conversation-wrap">
-						<div class="conversation-authors">
-							<div class="images">
-								<div class="image initiator">
-									<%= image_tag user_avatar(conversation.initiator.main_image), class: "circle" %>
-								</div>
-								<div class="image recipient">
-									<%= image_tag user_avatar(conversation.recipient.main_image), class: "circle" %>
-								</div>
-							</div>
-						</div>
-						<div class="conversation-body">
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<p><%= link_to conversation.title, conversation_messages_path(conversation) %></p>
-							<i class="fa fa-quote-right" aria-hidden="true"></i>
-						</div>
-						<div class="conversation-details">
-							<p>Initiated by <%= conversation_details(conversation) %></p>
-						</div>
-					</div>
-				</li>
-			<% end %>
-		</ul>
-	<% else %>
-		<p>Your not currently engaged in any conversations with any other users</p>
-	<% end %>
+  <div id="conversations-container">
+	  <% if @conversations.count > 0 %>
+	  	<ul class="items conversations">
+	  		<% @conversations.each do |conversation| %>
+	  			<li class="item conversation">
+	  				<div class="conversation-wrap">
+	  					<div class="conversation-authors">
+	  						<div class="images">
+	  							<div class="image initiator">
+	  								<%= image_tag user_avatar(conversation.initiator.main_image), class: "circle" %>
+	  							</div>
+	  							<div class="image recipient">
+	  								<%= image_tag user_avatar(conversation.recipient.main_image), class: "circle" %>
+	  							</div>
+	  						</div>
+	  					</div>
+	  					<div class="conversation-body">
+	  						<i class="fa fa-quote-left" aria-hidden="true"></i>
+	  						<p><%= link_to conversation.title, conversation_messages_path(conversation) %></p>
+	  						<i class="fa fa-quote-right" aria-hidden="true"></i>
+	  					</div>
+	  					<div class="conversation-details">
+	  						<p>Initiated by <%= conversation_details(conversation) %></p>
+	  					</div>
+	  				</div>
+	  			</li>
+	  		<% end %>
+	  	</ul>
+	  <% else %>
+	  	<p>Your not currently engaged in any conversations with any other users</p>
+	  <% end %>
+  </div>
 
 	<%= render partial: 'new_conversation', locals: {users: @users} %>
 </div>
