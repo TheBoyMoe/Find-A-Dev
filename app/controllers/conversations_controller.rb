@@ -3,6 +3,10 @@ class ConversationsController < ApplicationController
 	def index
 		@conversations = Conversation.get_user_conversations(current_user.id)
 		@users = User.all_except(current_user)
+    respond_to do |format|
+      format.html
+      format.json { render json: @conversations }
+    end
 	end
 
 	def create
