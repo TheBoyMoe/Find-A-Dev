@@ -5,23 +5,7 @@
 
 	<% if @messages.count > 0 %>
 		<ul id="messages-list" class="items messages">
-			<% @messages.each do |message| %>
-				<li class="item message">
-					<div class="message-wrap">
-						<div class="messsage-body">
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<p><%= message.content %></p>
-							<i class="fa fa-quote-right" aria-hidden="true"></i>
-						</div>
-					</div>
-					<div class="message-author">
-						<div class="image">
-							<%= image_tag user_avatar(message.sender.main_image), class: "circle" %>
-						</div>
-						<p><%= link_to message.sender.name, user_path(message.sender) %> @ <%= message.sent_at %></p>
-					</div>
-				</li>
-			<% end %>
+      <%= render @messages %>
 		</ul>
 	<% end %>
 
@@ -32,6 +16,4 @@
     <%= render partial: 'message_form', locals: { conversation: @conversation, message: Message.new } %>
   </div>
 
-	<%#= link_to "New message", new_conversation_message_path(@conversation) %>
-	<%#= link_to "Back", conversations_path %>
 </div>
