@@ -1,10 +1,14 @@
 document.addEventListener('turbolinks:load', function() {
   let prevProject = document.getElementById('load-prev-project');
-  if(prevProject) prevProject.addEventListener('click', callback);
-  let useremail = document.querySelector('body').dataset.useremail;
+  if(prevProject) prevProject.addEventListener('click', loadProject);
+  let nextProject = document.getElementById('load-next-project');
+  if(nextProject) nextProject.addEventListener('click', loadProject);
+
+  let userEmail = document.querySelector('body').dataset.useremail;
+	let projectCount = parseInt(document.querySelector('body').dataset.projectcount);
 	let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-  function callback(e){
+  function loadProject(e){
     e.preventDefault();
 
     $.getJSON(e.target.href, (response)=>{
@@ -17,22 +21,24 @@ document.addEventListener('turbolinks:load', function() {
 
 	  let opportunity =	
       `<div class="opportunity">
-	   	  <h2>${response.title}</h2>
-         <p>${response.description}</p>`;
+	   	  <h2 class="page-title">${response.title}</h2>
+        <p>${response.description}</p>`;
 
     // include required skills
     if(response.opportunity_skills.length > 0){
        opportunity += 
 	   		`<h3>You will have the following capabilities</h3>
-	   		<dl class="items skills">`;
+	   		 <dl class="items skills">`;
 
 	   	response.opportunity_skills.forEach((skill)=>{
 	   		opportunity += 		
          `<dt class="skill-title">${skill.title}</dt>
-	   		<dd class="skill-description">${skill.description}</dd>`
+	   		  <dd class="skill-description">${skill.description}</dd>`
        });
-	   	opportunity += '</dl></div>';
+	   	opportunity += '</dl>';
     }
+
+    opportunity += '</div>';
 
     // add user avatar
     opportunity += '<div class="author-details"><div class="image">';
@@ -40,7 +46,7 @@ document.addEventListener('turbolinks:load', function() {
 	  opportunity	+= '</div>';
 
 
-    if(useremail !== response.author.email){
+    if(userEmail !== response.author.email){
 
       // link to users profile
       opportunity += '<div class="author-links clearfix">';
@@ -55,21 +61,38 @@ document.addEventListener('turbolinks:load', function() {
 			opportunity += '<input type="submit" name="commit" value="start a conversation" class="btn-conversation" data-disable-with="start a conversation" /></form>';
 
       opportunity += '</div>';
-
     }
-   
+
+    opportunity += '</div>';
+
+    opportunityContainer.innerHTML = opportunity;
+	
+    let btnContainer = document.createElement('div');
+    btnContainer.setAttribute('id', 'project-nav');
+    btnContainer.setAttribute('class', 'clearfix');
+
+    // link to next project
+    if(response.id < projectCount){
+      let next = document.createElement('a');
+      let text = document.createTextNode('Next');
+      next.appendChild(text);
+      next.setAttribute('id', 'load-next-project');
+      next.setAttribute('href', '/opportunities/' + (response.id + 1));
+      next.addEventListener('click', loadProject);
+      btnContainer.append(next);
+    }
+
     // link to prev project
-    let prev = document.createElement('a');
     if(response.id - 1 > 0){
-      let text = document.createTextNode('Previous');
+      let prev = document.createElement('a');
+      let text = document.createTextNode('Prevous');
       prev.appendChild(text);
       prev.setAttribute('id', 'load-prev-project');
       prev.setAttribute('href', '/opportunities/' + (response.id - 1));
-      prev.addEventListener('click', callback);
+      prev.addEventListener('click', loadProject);
+      btnContainer.append(prev);
     }
-
-    opportunityContainer.innerHTML = opportunity;
-    opportunityContainer.append(prev);
+    opportunityContainer.append(btnContainer);
   }
 
 });
