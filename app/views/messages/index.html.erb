@@ -4,7 +4,7 @@
 	<%= link_to "Back to conversations", conversations_path, class: 'page-link' %>
 
 	<% if @messages.count > 0 %>
-		<ul class="items messages">
+		<ul id="messages-list" class="items messages">
 			<% @messages.each do |message| %>
 				<li class="item message">
 					<div class="message-wrap">
@@ -25,7 +25,13 @@
 		</ul>
 	<% end %>
 
-	<br>
-	<%= link_to "New message", new_conversation_message_path(@conversation) %> |
-	<%= link_to "Back", conversations_path %>
+  <hr>
+
+  <div class="wrap message-form">
+    <h3 class="page-title">Submit a message to <%= other_conversation_participant(@conversation) %></h3>
+    <%= render partial: 'message_form', locals: { conversation: @conversation, message: Message.new } %>
+  </div>
+
+	<%#= link_to "New message", new_conversation_message_path(@conversation) %>
+	<%#= link_to "Back", conversations_path %>
 </div>
