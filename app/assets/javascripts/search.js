@@ -24,7 +24,10 @@ document.addEventListener('turbolinks:load', function(){
       response.forEach((user)=>{
         htmlString += listItem(user);
       });
-      console.log(htmlString);
+      document.getElementById('dev-list').innerHTML = htmlString;
+      // set query string
+      let queryFragment = document.createRange().createContextualFragment(`<p class="query">Results for: ${ query }</p>`);
+      document.querySelector('.search-wrap').insertBefore(queryFragment, form);
     } else {
       let container = document.getElementById('container');
       let resultsList = document.getElementById('content-wrap');
@@ -52,11 +55,11 @@ document.addEventListener('turbolinks:load', function(){
 					<div class="contents-wrap clearfix">
 						<div class="profile">
 							<div class="image">
-								<img src="${user.main_image}" class="circle">
+								<img src="${user.main_image.url}" class="circle">
 							</div>
 							<div class="details">
-								<h3><a href="/users/${user.id}">${ user.name.upcase }</a></h3>
-								<p>${ user.email}</p>
+								<h3><a href="/users/${user.id}">${ user.name.toUpperCase() }</a></h3>
+								<p>${ user.email }</p>
 							  ${ displayLinks(user.social_links) }
               </div>
 						</div>
