@@ -5,7 +5,10 @@ class UsersController < ApplicationController
 	def index
 		if params[:search]
 			@users = User.search(params[:search])
-			provide_feedback
+      respond_to do |format|
+        format.html { provide_feedback }
+        format.json { render json: @users }
+      end
 		else
 			@users = User.developers
 		end
@@ -63,11 +66,6 @@ class UsersController < ApplicationController
 			else
 				@query = params[:search] unless params[:search].empty?
 			end
-      respond_to do |format|
-        byebug
-        format.html
-        format.json { render json: @users }
-      end
 		end
 
 		def user_params
