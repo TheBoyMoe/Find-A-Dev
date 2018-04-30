@@ -2,8 +2,9 @@ document.addEventListener('turbolinks:load', function(){
   let form = document.querySelector('form.search-submit');
   if(form) form.addEventListener('submit', searchHandler);
   let query = null;
-  
+
   function searchHandler(e){
+    e.preventDefault();
     let action = e.target.action;
     query = e.target.search.value;
 
@@ -14,7 +15,6 @@ document.addEventListener('turbolinks:load', function(){
       success: displayResults
     });
     form.reset();
-    e.preventDefault();
   }
 
   function displayResults(response){
@@ -34,6 +34,7 @@ document.addEventListener('turbolinks:load', function(){
       let domFragment = document.createRange().createContextualFragment(createAlertMessage());
       container.insertBefore(domFragment, resultsList);
     }
+    form.querySelector('input[type="submit"]').disabled = false;
   }
 
   function createAlertMessage(){
