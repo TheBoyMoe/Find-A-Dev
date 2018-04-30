@@ -1,2 +1,3 @@
 $('#message_content').val('');
+$('#new_message .btn').prop('disabled', false);
 $('#messages-list').append("<%= j(render partial: 'messages/message', locals: { message: @message }) %>");
