@@ -8,6 +8,10 @@ class OpportunitiesController < ApplicationController
 	def show
 		@skills = @opportunity.opportunity_skills
 		@author = @opportunity.author
+    respond_to do |format|
+      format.html
+      format.json { render json: @opportunity }
+    end
 	end
 
 	def new
@@ -18,7 +22,7 @@ class OpportunitiesController < ApplicationController
 	def create
 		@opportunity = Opportunity.new(opportunity_params)
 		if @opportunity.save
-			redirect_to opportunities_path, notice: "New opportunity added"
+			redirect_to opportunities_path, notice: "New project added"
 		else
 			render :new
 		end
@@ -33,7 +37,7 @@ class OpportunitiesController < ApplicationController
 	def update
 		if current_user == @opportunity.author
 			if @opportunity.update(opportunity_params)
-				redirect_to opportunity_path(@opportunity), notice: "Opportunity successfully updated"
+				redirect_to opportunity_path(@opportunity), notice: "Project successfully updated"
 			else
 				render :edit
 			end

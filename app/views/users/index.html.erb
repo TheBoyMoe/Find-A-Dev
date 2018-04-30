@@ -1,10 +1,10 @@
-<div class="content-wrap">
+<div id="content-wrap" class="content-wrap">
 	<h1 class="page-title">Registered Developers</h1>
 
 	<%= render 'search' %>
 
 	<% if @users.count > 0 %>
-		<ul class="items users">
+		<ul id="dev-list" class="items users">
 			<% @users.each do |user| %>
 				<li class="item user">
 					<div class="contents-wrap clearfix">
