@@ -63,6 +63,11 @@ class UsersController < ApplicationController
 			else
 				@query = params[:search] unless params[:search].empty?
 			end
+      respond_to do |format|
+        byebug
+        format.html
+        format.json { render json: @users }
+      end
 		end
 
 		def user_params
