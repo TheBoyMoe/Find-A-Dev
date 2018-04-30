@@ -4,7 +4,7 @@
 	<%= render 'search' %>
 
 	<% if @users.count > 0 %>
-		<ul class="items users">
+		<ul id="dev-list" class="items users">
 			<% @users.each do |user| %>
 				<li class="item user">
 					<div class="contents-wrap clearfix">
