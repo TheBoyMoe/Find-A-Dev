@@ -26,6 +26,8 @@ document.addEventListener('turbolinks:load', function(){
       });
       document.getElementById('dev-list').innerHTML = htmlString;
       // set query string
+      let queryElm = document.querySelector('.query');
+      if(queryElm) queryElm.remove();
       let queryFragment = document.createRange().createContextualFragment(`<p class="query">Results for: ${ query }</p>`);
       document.querySelector('.search-wrap').insertBefore(queryFragment, form);
     } else {
