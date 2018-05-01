@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe OpportunitiesController, type: :controller do
+RSpec.describe ProjectsController, type: :controller do
 
 	let!(:user){FactoryBot.create(:user, confirmed_at: Time.now.utc)}
-	let!(:opportunity) {FactoryBot.create(:opportunity, author_id: user.id)}
+	let!(:project) {FactoryBot.create(:project, author_id: user.id)}
 
 	describe "#index" do
 		context "as a guest" do
@@ -24,7 +24,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 				expect(response).to be_success
 			end
 
-			it "redirects the user to the opportunities listing" do
+			it "redirects the user to the projects listing" do
 				expect(response).to render_template('index')
 			end
 		end
@@ -55,18 +55,18 @@ RSpec.describe OpportunitiesController, type: :controller do
 	describe "#create" do
 
 		context "as an authenticated user" do
-			it "adds an opportunity when valid data is submitted" do
+			it "adds an project when valid data is submitted" do
 				sign_in user
 				expect {
-					post :create, params: {opportunity: {title: "Looking for talent", description: "New opportunity for a Rails dev.....", author_id: user.id}}
-				}.to change(user.opportunities, :count).by(1)
+					post :create, params: {project: {title: "Looking for talent", description: "New project for a Rails dev.....", author_id: user.id}}
+				}.to change(user.projects, :count).by(1)
 			end
 
-			it "does not add a new opportunity when invalid data is supplied" do
+			it "does not add a new project when invalid data is supplied" do
 				sign_in user
 				expect {
-					post :create, params: {opportunity: {description: nil, author_id: user.id}}
-				}.to_not change(user.opportunities, :count)
+					post :create, params: {project: {description: nil, author_id: user.id}}
+				}.to_not change(user.projects, :count)
 			end
 		end
 
@@ -84,14 +84,14 @@ RSpec.describe OpportunitiesController, type: :controller do
 		context "as an authenticated user" do
 			it "renders the show view" do
 				sign_in user
-				get :show, params: {id: opportunity.id}
+				get :show, params: {id: project.id}
 				expect(response).to render_template('show')
 			end
 		end
 
 		context "as a guest user" do
 			it "redirects the user to the login page" do
-				get :show, params: {id: opportunity.id}
+				get :show, params: {id: project.id}
 				expect(response).to redirect_to new_user_session_path
 			end
 		end
@@ -103,7 +103,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 		context "as an authenticated user" do
 			it "renders the edit view" do
 				sign_in user
-				get :edit, params: {id: opportunity.id}
+				get :edit, params: {id: project.id}
 				expect(response).to render_template('edit')
 			end
 		end
@@ -113,14 +113,14 @@ RSpec.describe OpportunitiesController, type: :controller do
 
 			it "redirects the user to the welcome page" do
 				sign_in other_user
-				get :edit, params: {id: opportunity.id}
+				get :edit, params: {id: project.id}
 				expect(response).to redirect_to welcome_path
 			end
 		end
 
 		context "as a guest user" do
 			it 'redirects the user to the login page' do
-				get :edit, params: {id: opportunity.id}
+				get :edit, params: {id: project.id}
 				expect(response).to redirect_to new_user_session_path
 			end
 		end
@@ -128,13 +128,13 @@ RSpec.describe OpportunitiesController, type: :controller do
 
 
 	describe "#update" do
-		let!(:opportunity_params) {{	description: "We're looking to build the next best thing"}}
+		let!(:project_params) {{	description: "We're looking to build the next best thing"}}
 
 		context "as an authenticated user" do
-			it "updates the opportunity" do
+			it "updates the project" do
 				sign_in user
-				patch :update, params: {id: opportunity.id, opportunity: opportunity_params}
-				expect(opportunity.reload.description).to eq opportunity_params[:description]
+				patch :update, params: {id: project.id, project: project_params}
+				expect(project.reload.description).to eq project_params[:description]
 			end
 		end
 
@@ -143,11 +143,11 @@ RSpec.describe OpportunitiesController, type: :controller do
 
 			before {
 				sign_in other_user
-				patch :update, params: { id: opportunity.id, opportunity: opportunity_params}
+				patch :update, params: { id: project.id, project: project_params}
 			}
 
-			it "does not update the opportunity" do
-				expect(opportunity.reload.description).to eq "Looking to build the next Amazon!"
+			it "does not update the project" do
+				expect(project.reload.description).to eq "Looking to build the next Amazon!"
 			end
 
 			it "redirects the user to the welcome page" do
@@ -157,7 +157,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 
 		context "as a guest user" do
 			it "redirects the user to the login page" do
-				patch :update, params: {id: opportunity.id, opportunity: opportunity_params}
+				patch :update, params: {id: project.id, project: project_params}
 				expect(response).to redirect_to new_user_session_path
 			end
 		end

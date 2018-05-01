@@ -1,5 +1,5 @@
-<%= form_for opportunity do |f| %>
-	<%= render partial: 'shared/errors', locals: {obj: opportunity} %>
+<%= form_for project do |f| %>
+	<%= render partial: 'shared/errors', locals: {obj: project} %>
 
 	<fieldset class="general">
 		<legend>Describe the project</legend>
@@ -12,12 +12,12 @@
 	<fieldset class="skills">
 		<legend>Add a skill(optional)</legend>
 		<div class="skill">
-			<%= f.fields_for :opportunity_skills do |builder| %>
-				<%= render partial: 'opportunity_skill_field', locals: {f: builder} %>
+			<%= f.fields_for :project_skills do |builder| %>
+				<%= render partial: 'project_skill_field', locals: {f: builder} %>
 			<% end %>
 
 			<div class="control-group">
-				<%= add_another_field 'Add Skill', f, :opportunity_skills %>
+				<%= add_another_field 'Add Skill', f, :project_skills %>
 			</div>
 		</div>
 	</fieldset>

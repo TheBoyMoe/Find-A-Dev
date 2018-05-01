@@ -101,12 +101,12 @@ def create_projects
   i = 1
   2.times do
     user = User.find(i)
-    project = Opportunity.create!(
+    project = Project.create!(
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph,
       author_id: user.id
     )
-    project.opportunity_skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
+    project.project_skills.create!(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
     i += 1
   end
 end

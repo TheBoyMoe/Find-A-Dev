@@ -1,6 +1,6 @@
 /* developer listing styles */
 
-ul.items li.opportunity {
+ul.items li.project {
   min-width: 300px;
   border-radius: 4px;
   margin-bottom: 40px;
@@ -56,15 +56,15 @@ ul.items li.opportunity {
 
 
 	  .fa-quote-left {
-		position: absolute;
-		left: 0;
-		top: 10px;
+  		position: absolute;
+  		left: 0;
+  		top: 10px;
 	  }
 
 	  .fa-quote-right {
-		position: absolute;
-		right: 0;
-		bottom: 10px;
+  		position: absolute;
+  		right: 0;
+  		bottom: 10px;
 	  }
 
 	}
@@ -76,14 +76,14 @@ ul.items li.opportunity {
 
 }
 
-ul.items li.opportunity:last-child {
+ul.items li.project:last-child {
   margin-bottom: 0;
 }
 
 
 /* media queries */
 @media (min-width: 600px) {
-  ul.items li.opportunity {
+  ul.items li.project {
 
 	.contents-wrap {
 	  display: flex;
@@ -101,7 +101,7 @@ ul.items li.opportunity:last-child {
 	}
   }
 
-  ul.items li.opportunity:nth-child(even) {
+  ul.items li.project:nth-child(even) {
 	.contents-wrap {
 	  flex-direction: row-reverse;
 	}

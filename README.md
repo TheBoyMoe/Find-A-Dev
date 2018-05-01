@@ -1,9 +1,9 @@
 # Find-A-Dev
-Rails app which allows non-technical founders find the perfect developer to build their vision.
+Rails app which allows non-technical founders find the perfect developer to build their next project.
 
 ## Installation Guide
 
-Create a .env file in the root of the app and add the following keys for Google, Github (third party authentication) and Dropbox(file uploads). You'll need to create a Google app to get the client_id and client_secret. You'll need a Github and Dropbox accounts for their respective keys. 
+Create a .env file in the root of the app and add the following keys for Google, Github (third party authentication) and Dropbox(file uploads). You'll need to create a Google app to get the client_id and client_secret. You'll need a Github and Dropbox accounts for their respective keys.
 
 ```text
 GOOGLE_CLIENT_ID=
@@ -36,7 +36,7 @@ If you notice a problem you should raise a Github issue containing a clear descr
 
 
 ### Features to be added in the future
-[] Paginate developer/opportunity list list  
+[] Paginate developer/project list list  
 [] Display a notification when someone has sent you a message  
 [] Add option to your account page to turn notifications on/off  
 [] Add tags/categories to filter developers based on skill  

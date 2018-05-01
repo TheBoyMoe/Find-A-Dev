@@ -18,7 +18,7 @@ Specs:
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 	- use a nested form to complete the user profile, which uses two custom attribute writers `social_links_attributes=` and `user_skills_attributes=`	
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-	- THe following models include validations: User, Conversation, Message and Opportunity
+	- THe following models include validations: User, Conversation, Message and Project
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 	- User model, scope method is User.developers, url: '/users/developers'
 - [x] Include signup (how e.g. Devise)

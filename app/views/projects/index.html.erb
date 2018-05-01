@@ -1,24 +1,24 @@
 <div class="content-wrap">
 	<h1 class="page-title">Current projects</h1>
 
-	<%= link_to 'Add a new project', new_opportunity_path, class: "page-link" %>
+	<%= link_to 'Add a new project', new_project_path, class: "page-link" %>
 
-	<% if @opportunities.count > 0 %>
+	<% if @projects.count > 0 %>
 		<ul class="items opportunities">
-			<% @opportunities.each do |opportunity| %>
-				<li class="item opportunity">
+			<% @projects.each do |project| %>
+				<li class="item project">
 					<div class="contents-wrap clearfix">
 
 						<div class="profile">
 							<div class="image">
-								<%= image_tag user_avatar(opportunity.author.main_image), class: 'circle' %>
+								<%= image_tag user_avatar(project.author.main_image), class: 'circle' %>
 							</div>
 							<div class="details">
-								<h3><%= link_to opportunity.author.name.upcase, user_path(opportunity.author) %></h3>
-								<p><%= opportunity.author.email %></p>
-								<% if opportunity.author.social_links.count > 0 %>
+								<h3><%= link_to project.author.name.upcase, user_path(project.author) %></h3>
+								<p><%= project.author.email %></p>
+								<% if project.author.social_links.count > 0 %>
 									<div>
-										<% opportunity.author.social_links.each do |link| %>
+										<% project.author.social_links.each do |link| %>
 											<%= link_to link.url, target: "_blank", class: "link_icon" do %>
 												<i class="fa fa-2x fa-<%= link.name.downcase %>"></i>
 											<% end %>
@@ -29,14 +29,14 @@
 						</div>
 
 						<div class="contents">
-							<p class="title"><%= opportunity.title %></p>
+							<p class="title"><%= project.title %></p>
 							<div class="description-wrap">
 								<p class="description">
 									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<%= opportunity.description[0..200] %>...
+									<%= project.description[0..200] %>...
 									<i class="fa fa-quote-right" aria-hidden="true"></i>
 								</p>
-								<%= link_to "Read more", opportunity_path(opportunity)  %>
+								<%= link_to "Read more", project_path(project)  %>
 							</div>
 						</div>
 

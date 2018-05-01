@@ -1,9 +1,9 @@
 class Skill < ApplicationRecord
 
   def self.type
-    %w[UserSkill OpportunitySkill]
+    %w[UserSkill ProjectSkill]
   end
 
   scope :user_skills, -> {where(type: 'UserSkill')}
-  scope :opportunity_skills, -> {where(type: 'OpportunitySkill')}
+  scope :project_skills, -> {where(type: 'ProjectSkill')}
 end

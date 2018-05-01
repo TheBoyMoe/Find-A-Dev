@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 		resources :messages, only: [:index, :new, :create]
 	end
 
-	resources :opportunities, only: [:show, :index, :new, :create, :edit, :update]
+	resources :projects, only: [:show, :index, :new, :create, :edit, :update]
 
 	# root to: 'static#home'
 	root to: redirect("/sign_in")

@@ -87,7 +87,7 @@ Feature: Sign in
     Then I should be on the "welcome" page
 
   @omniauth
-  Scenario: User who is registeredand has completed their profile tries to sign in with a Github account
+  Scenario: User who is registered and has completed their profile tries to sign in with a Github account
     Given I am a registered user
     And I have completed the profile for "mock@example.com"
     And I am not signed in
