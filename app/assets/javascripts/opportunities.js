@@ -16,6 +16,27 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
+  function Project(attributes){
+    this.id = attributes.id;
+    this.title = attributes.title;
+    this.description = attributes.description;
+    this.author = new Auhtor(attributes);
+    this.skills = attributes.forEach
+  }
+
+  function Skill(attributes){
+    this.title = attributes.title;
+    this.description = attributes.description;
+  }
+
+  function Author(attributes){
+    this.id = attributes.id;
+    this.name = attributes.name;
+    this.email = attributes.email;
+    this.avatar = attributes.main_image.url;
+  }
+
+
   function displayProject(response){
     let opportunityContainer = document.querySelector('.opportunity-wrap');
 
