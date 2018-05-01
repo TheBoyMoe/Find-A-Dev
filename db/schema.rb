@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180316193223) do
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
-  create_table "opportunities", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.text "description"
     t.integer "author_id"
     t.datetime "created_at", null: false

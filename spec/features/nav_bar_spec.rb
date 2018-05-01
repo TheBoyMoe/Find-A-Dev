@@ -19,6 +19,4 @@ RSpec.feature 'Navigation bar', :devise do
 		expect(page).to have_link("Edit Profile", "#{edit_user_path(developer1)}")
 	end
 
-	scenario "clicking on 'Opportunities' reveals current opportunities"
-
 end

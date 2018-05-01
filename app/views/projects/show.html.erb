@@ -1,9 +1,9 @@
 <div class="content-wrap">
 
-	<div class="opportunity-wrap">
-		<div class="opportunity">
-	    <h2 class="page-title"><%= @opportunity.title %></h2>
-			<p><%= @opportunity.description %></p>
+	<div class="project-wrap">
+		<div class="project">
+	    <h2 class="page-title"><%= @project.title %></h2>
+			<p><%= @project.description %></p>
 
 			<% if @skills.count > 0 %>
 				<h3>You will have the following capabilities</h3>
@@ -26,7 +26,7 @@
 
 						<span>&nbsp;or </span>
 						<%= form_tag conversations_path, method: 'post' do %>
-							<%= hidden_field_tag :title, value = @opportunity.title  %>
+							<%= hidden_field_tag :title, value = @project.title  %>
 							<%= hidden_field_tag :recipient_id, value = @author.id %>
 							<%= submit_tag "start a conversation", class: "btn-conversation"	%>
 					<% end %>
@@ -35,10 +35,10 @@
 		</div>
 
 		<div id="project-nav" class="clearfix">
-    	<%= next_project_link(@opportunity.id) %>
-    	<%= prev_project_link(@opportunity.id) %>
+    	<%= next_project_link(@project.id) %>
+    	<%= prev_project_link(@project.id) %>
 		</div>
 	</div>
 
-	<%= link_to "Back to projects", opportunities_path, class: "page-link-bottom" %>
+	<%= link_to "Back to projects", projects_path, class: "page-link-bottom" %>
 </div>

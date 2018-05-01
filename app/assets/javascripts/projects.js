@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     this.title = attributes.title;
     this.description = attributes.description;
     this.author = new Author(attributes);
-    this.skills = (Array.from(attributes.opportunity_skills)).map(attributeHash => new Skill(attributeHash));
+    this.skills = (Array.from(attributes.project_skills)).map(attributeHash => new Skill(attributeHash));
   }
 
   function Skill(attributes){
@@ -36,8 +36,8 @@ $(document).on('turbolinks:load', function() {
 
   Project.prototype.renderProject = function(){
     let html =
-      `<div class="opportunity-wrap">
-        <div class="opportunity">
+      `<div class="project-wrap">
+        <div class="project">
 	   	    <h2 class="page-title">${this.title}</h2>
           <p>${this.description}</p>`;
 
@@ -73,12 +73,12 @@ $(document).on('turbolinks:load', function() {
   Project.prototype.renderSkills = function(){
     let html = '';
     if(this.skills.length > 0){
-       html += 
+       html +=
 	   		`<h3>You will have the following capabilities</h3>
 	   		 <dl class="items skills">`;
 
 	   	 this.skills.forEach((skill)=>{
-	   		html += 		
+	   		html +=
          `<dt class="skill-title">${skill.title}</dt>
 	   		  <dd class="skill-description">${skill.description}</dd>`
        });
@@ -90,7 +90,7 @@ $(document).on('turbolinks:load', function() {
   function displayProject(response){
     let project = new Project(response);
     let htmlString = project.renderProject();
-    $('.opportunity-wrap').replaceWith(htmlString);
+    $('.project-wrap').replaceWith(htmlString);
 
     // add prev/next buttons
     let btnContainer = $('<div id="project-nav" class="clearfix"></div>');
@@ -100,7 +100,7 @@ $(document).on('turbolinks:load', function() {
       $('<a/>', {
         'id': 'load-next-project',
         'text': 'Next',
-        'href': '/opportunities/' + (response.id + 1),
+        'href': '/projects/' + (response.id + 1),
         click: loadProject
       })
         .appendTo(btnContainer);
@@ -111,14 +111,14 @@ $(document).on('turbolinks:load', function() {
       $('<a/>', {
         'id': 'load-prev-project',
         'text': 'Previous',
-        'href': '/opportunities/' + (response.id - 1),
+        'href': '/projects/' + (response.id - 1),
         click: loadProject
       })
         .appendTo(btnContainer);
     }
 
     if(response.id - 1 > 0 || response.id < projectCount){
-      $('.opportunity-wrap').append(btnContainer);
+      $('.project-wrap').append(btnContainer);
     }
   }
 

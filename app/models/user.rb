@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :conversations, foreign_key: :initiator_id
   has_many :messages, foreign_key: :sender_id
-  has_many :opportunities, foreign_key: :author_id
+  has_many :projects, foreign_key: :author_id
 
   has_many :user_skills, foreign_key: :skill_id
   has_many :user_social_links

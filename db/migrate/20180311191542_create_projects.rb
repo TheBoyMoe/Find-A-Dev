@@ -1,6 +1,6 @@
-class CreateOpportunities < ActiveRecord::Migration[5.1]
+class CreateProjects < ActiveRecord::Migration[5.1]
   def change
-    create_table :opportunities do |t|
+    create_table :projects do |t|
       t.text :description
       t.integer :author_id
 
