@@ -1,6 +1,5 @@
-document.addEventListener('turbolinks:load', function(){
-  let form = document.querySelector('form.search-submit');
-  if(form) form.addEventListener('submit', searchHandler);
+$(document).on('turbolinks:load', function(){
+  let $form = $('form.search-submit').submit(searchHandler);
   let query = null;
 
   function searchHandler(e){
@@ -14,34 +13,34 @@ document.addEventListener('turbolinks:load', function(){
       dataType: 'json',
       success: displayResults
     });
-    form.reset();
+    $('#search').val('');
   }
 
   function displayResults(response){
     // check no of records returned
     if(response.length > 0){
-      let htmlString = '';
+      let html = '<ul id="dev-list" class="items users">';
       response.forEach((user)=>{
-        htmlString += listItem(user);
+        html += listItem(user);
       });
-      document.getElementById('dev-list').innerHTML = htmlString;
+      html += '</ul>';
+      $('#dev-list').replaceWith(html);
+
       // set query string
-      let queryElm = document.querySelector('.query');
-      if(queryElm) queryElm.remove();
-      let queryFragment = document.createRange().createContextualFragment(`<p class="query">Results for: ${ query }</p>`);
-      document.querySelector('.search-wrap').insertBefore(queryFragment, form);
+      let $queryElm = $('.query');
+      if($queryElm) $queryElm.remove();
+      let $queryNew = $(`<p class="query">Results for: ${ query }</p>`);
+      $queryNew.insertBefore('form.search-submit');
+
     } else {
-      let container = document.getElementById('container');
-      let resultsList = document.getElementById('content-wrap');
-      let domFragment = document.createRange().createContextualFragment(createAlertMessage());
-      container.insertBefore(domFragment, resultsList);
+      let messageHTML = alertMessage();
+      $(messageHTML).insertBefore('#content-wrap');
     }
-    form.querySelector('input[type="submit"]').disabled = false;
+    $('form input[type="submit"]').prop('disabled', false);
   }
 
-  function createAlertMessage(){
-    let alertMessage =
-	    `<div class="row">
+  function alertMessage(){
+	  return `<div class="row">
 		    <div class="col-xs-12">
 				  <div class="alert alert-warning alert-dismissible" role="alert">
 					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -49,8 +48,6 @@ document.addEventListener('turbolinks:load', function(){
 				  </div>
 		    </div>
 	    </div>`;
-
-    return alertMessage;
   }
 
   function listItem(user){
@@ -81,7 +78,7 @@ document.addEventListener('turbolinks:load', function(){
   }
 
   function displayLinks(links){
-		let linkString = '';
+		let html = '';
     if(links){
 				linkString += '<div>';
 				links.forEach((link)=>{
@@ -92,7 +89,7 @@ document.addEventListener('turbolinks:load', function(){
         });
 				linkString +=	'</div>';
      }
-     return linkString;
+     return html;
   }
 
 });
