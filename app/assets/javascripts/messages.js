@@ -1,6 +1,5 @@
-document.addEventListener('turbolinks:load', function(){
-  let form = document.querySelector('form.new_message');
-  if(form) form.addEventListener('submit', formHandler);
+$(document).on('turbolinks:load', function(){
+  $('form.new_message').submit(formHandler);
 
   function formHandler(e){
     let method = e.target.method;
